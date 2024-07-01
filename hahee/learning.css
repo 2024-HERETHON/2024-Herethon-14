@@ -142,7 +142,7 @@ nav::after {
 }
 
 .step1 {
-  height: 80px;
+  height: 60px;
   display: inline-flex;
   padding: 13px 16px;
   align-items: flex-start;
@@ -154,7 +154,7 @@ nav::after {
 }
 
 .first {
-  margin-top: 6px;
+  margin-top: -1.5px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -163,7 +163,7 @@ nav::after {
 
 .word {
   margin-left: 0;
-  margin-top: 5.5px;
+  margin-top: -2px;
   color: #000;
   text-align: center;
   font-family: "Noto Sans KR";
@@ -175,7 +175,7 @@ nav::after {
 }
 
 .step2 {
-  height: 80px;
+  height: 60px;
   display: inline-flex;
   padding: 13px 16px;
   align-items: flex-start;
@@ -186,7 +186,7 @@ nav::after {
 }
 
 .second {
-  margin-top: 6px;
+  margin-top: -1.5px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -194,7 +194,7 @@ nav::after {
 }
 
 .poem {
-  margin-top: 5.5px;
+  margin-top: -2px;
   color: #000;
   text-align: center;
   font-family: "Noto Sans KR";
@@ -206,6 +206,7 @@ nav::after {
 }
 
 .content {
+  position: absolute;
   margin-left: 164px;
   margin-top: 24px;
   width: 1400px;
@@ -219,7 +220,7 @@ nav::after {
 }
 
 .introduce {
-  margin-top: 55px;
+  margin-top: 15px;
   color: #000;
   text-align: center;
   font-family: "Noto Sans KR";
