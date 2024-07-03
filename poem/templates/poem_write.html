@@ -1,31 +1,13 @@
+{% extends 'base.html' %}
 {% load static %}
+{% block static %}
 
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-    <title>오늘의 시</title>
     <link rel="stylesheet" href="{% static 'css/poem_write.css' %}">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap');
     </style>
-</head>
-<body>
-    <nav>
-        <div class="container">
-            <img class="logo" src="{% static 'img/오늘의 시.svg'  %}" alt="logo" />
-            <div class="nav-menu">
-                <ul class="nav-btn">
-                    <li><a href="">홈</a></li>
-                    <li><a class="study" href="">학습</a></li>
-                    <li><a href="">단어장</a></li>
-                    <li><a href=""><img class="alarm" src="{% static 'img/상단_아이콘.svg' %}" alt="alarm"></a></li>
-                    <a href=""
-                ><img class="mypage" src="{% static 'img/mypage.svg' %}" alt="mypage"
-              /></a>
-                </ul>
-            </div>
-        </div>
-    </nav>
+{% endblock %}
+{% block content %}
     <div class="wrap">
         <main>
             <div class="introduce-message">
@@ -55,5 +37,4 @@
         </main>
     </div>
    <script src="{% static 'js/poem_write.js' %}"></script>
-</body>
-</html>
+   {%endblock%}

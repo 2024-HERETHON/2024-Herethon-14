@@ -1,44 +1,20 @@
+{% extends "base.html" %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="ko">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Home</title>
 
-    <link rel="stylesheet" href="{% static 'css/home.css'  %}" />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap"
-      rel="stylesheet"
-    />
-  </head>
-  <body>
-    <nav>
-      <div class="container">
-        <img class="logo" src="{% static 'img/오늘의 시.svg'  %}" alt="logo" />
-        <div class="nav-menu">
-          <ul class="nav-btn">
-            <li><a class="home" href="">홈</a></li>
-            <li><a class="learn" href="">학습</a></li>
-            <li><a class="wordlist" href="">단어장</a></li>
-            <li>
-              <a href=""
-                ><img class="alarm" src="{% static 'img/alarm.svg' %}" alt="alarm"
-              /></a>
-            </li>
-            <li>
-              <a href=""
-                ><img class="mypage" src="{% static 'img/mypage.svg' %}" alt="mypage"
-              /></a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
+  
+      {% block static %}
+      <link rel="stylesheet" href="{% static 'css/home.css'  %}" />
+  <!--이 곳에 static에 해당하는 코드 (css파일 연결 등) 작성-->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+      <link
+        href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap"
+        rel="stylesheet"
+      />
+      {% endblock %}
 
+{% block content %}
     <div class="hd">
       <div>
         <h1 class="hi">
@@ -79,5 +55,6 @@
         </div>
       </div>
     </div>
-  </body>
-</html>
+{% endblock %}
+
+
