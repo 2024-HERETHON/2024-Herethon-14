@@ -10,18 +10,19 @@ from django.contrib.auth import authenticate
 
 def signup(request): 
     if request.method == 'POST': 
-        if request.POST['password1'] == request.POST['password2']: 
+        if request.POST.get('password1') == request.POST.get('password2'): 
             user = User.objects.create_user( 
-                username=request.POST['username'], 
-                password=request.POST['password1'], 
-                email=request.POST['email'],
+                username=request.POST.get('username'), 
+                password=request.POST.get('password1'), 
+                email=request.POST.get('email'),
             ) 
+            print(user)
             auth.login(request, user) 
             return redirect('/') 
-        return render(request, 'signup.html') 
+        return render(request, 'accounts.html') 
     else: 
-        form = UserCreationForm 
-        return render(request, 'signup.html', {'form':form})
+        
+        return render(request, 'accounts.html')
     
 def login(request):
     if request.method == 'POST':
@@ -40,5 +41,5 @@ def logout(request):
     auth.logout(request)
     return redirect('/')
 
-def home(request):
+def accounts(request):
     return render(request, 'home.html')

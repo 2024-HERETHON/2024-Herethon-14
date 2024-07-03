@@ -1,0 +1,251 @@
+* {
+    margin: 0 auto;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Noto Sans KR", sans-serif;
+    font-weight: 300;
+}
+
+/* 헤더 */
+
+nav {
+    margin-top: 0;
+    background-color: white;
+    width: 100%;
+    height: 75px;
+}
+
+.container {
+    display: flex;
+    align-items: center; 
+    justify-content: space-between; 
+}
+
+.logo {
+    display: flex;
+    margin-left: 24px;
+}
+
+.nav-menu {
+    display: flex;
+    margin-right: 10px;
+    align-items: center; 
+    margin: 20px;
+}
+
+.nav-btn {
+    display: flex;
+    list-style: none;
+}
+
+.nav-btn li {
+    float: left;
+    margin: 1px;
+    margin-left: 40px;
+}
+
+.nav-btn .study {
+    color: #F07A0C;
+}
+
+.nav-btn  a {
+    font-family: "Noto Sans KR", sans-serif;
+    font-weight: 300;
+    font-size: 20px;
+    font-style: normal;
+    text-decoration: none;
+    color: #BBB;
+}
+
+/* 본문 */
+
+.wrap {
+    display: flex;
+    height: 1016px;
+    background: #F6F7FB;
+}
+
+.introduce-message1 {
+    margin-bottom: 0;
+    text-align: center;
+    font-size: 36px;
+    font-family: "Noto Sans KR", sans-serif;
+    font-weight: 400;
+    margin: 0;
+    margin-top: 65px;
+    margin-bottom: 42px;
+}
+
+/* 시 부분 */
+
+.poem-area {
+    display: flex;
+    justify-self: center;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    width: 1400px;
+    height: 664px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px 0px #BBB;
+    background-color: white;
+}
+
+.poem-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 600px;
+    height: 600px;
+    margin: 0;
+    padding: 0;
+}
+
+.gpt-poem {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 59px;
+    width: 600px;
+    height: 600px;
+    font-size: 25px;
+    border: none;
+    outline: none; 
+    resize: none; 
+}
+
+.line {
+    border: 1px solid #BBB;
+    width: 1px;
+    height: 553px;
+    margin-top: 50px;
+    margin: 70px;
+}
+
+.comment{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 600px;
+    height: 600px;
+    margin: 0;
+    overflow: auto;
+}
+
+.comment-area {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 579px;
+}
+
+.title {
+    width: 600px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-left: 0;
+    margin-bottom: 5px;
+}
+
+.profile {
+    display: flex;
+    justify-content: flex-start;
+    margin-left: 0;
+}
+
+.username {
+    margin: 10px;
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.label {
+    width: 35px;
+    height: 30px;
+    margin-top: 11px;
+    border-radius: 18px;
+    background: #D1DDFF;    
+    display: flex;
+    font-weight: 600;
+    padding: 3.275px 13.099px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 16.374px;
+}
+.edit-box {
+    margin-right: 0;
+}
+
+/* edit 버튼 눌렀을 시 */
+
+.edit-list {
+    display: none;
+    list-style: none;
+    width: 100px;
+    height: 25px;
+    background-color: white;
+    position: absolute;
+    border-radius: 5px;
+    background: #FFF;
+    box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.25);
+}
+
+.edit-list .review-delete {
+    margin-left: 20px;
+}
+
+.poem-review {
+    margin: 5px 0 5px 0;
+    font-size: 20px;
+    font-weight: 350;
+}
+.date {
+    margin-left: 0;
+    margin-bottom: 10px;
+    color: #747474;
+}
+
+.reply {
+    margin-left: 0;
+    margin-bottom: 10px;
+    color: #747474;
+    text-decoration: underline;
+}
+
+/* 댓글 입력 */
+
+.reply-input-box {
+    display: none;
+}
+
+.n {
+    margin-bottom: 15px;
+    margin-right: 3px;
+}
+
+.reply-input {
+    width: 500px;
+}
+
+/* 댓글 리스트 */
+
+.reply-list {
+    display: none;
+    width: 500px;
+}
+
+.comment-area1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 579px;
+}
+
+
+
+
+

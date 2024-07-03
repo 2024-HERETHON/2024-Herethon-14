@@ -1,9 +1,11 @@
 import random
 import requests
 from django.shortcuts import render
-from .models import Word
+from .models import Word, WordUser
 import json
 from django.conf import settings
+from poem.views import generate_and_save_poem
+from django.contrib.auth.decorators import login_required
 
 word_list = [
     "사랑", "행복", "평화", "미소", "희망", "용기", "친절", "자유", "꿈", "노력",
@@ -68,11 +70,24 @@ def fetch_and_save_random_word(word_list):
         save_word_to_db(word_data)
         return word_data
 
-def wordPost(request):
-    word = fetch_and_save_random_word(word_list)
-    if word:
-        print(word)
-        return render(request, 'word.html', {'word':word})
-    else:
-        return render(request, 'word.html', {'error': '데이터 fetch실패함'})
+def wordPost():
+    fetch_and_save_random_word(word_list)
+    generate_and_save_poem()
+
+@login_required
+def home(request):
+    word_obj = Word.objects.latest('id')
+    latest_word = word_obj.word
+    count_lday = WordUser.objects.filter(user=request.user).count()
+    all = WordUser.objects.all().filter(user=request.user).order_by('-id')
+    return render(request, 'home.html', {'word':latest_word, 'lday':count_lday, 'allWords':all})
+
+@login_required
+def learn_word(request):
+    word_obj = Word.objects.latest('id')
+    word = word_obj.word
+    desc=word_obj.description
+    exam=word_obj.example
+    count_lday = WordUser.objects.filter(user=request.user).count()
+    return render(request, 'learning.html', {'word':word, 'desc':desc, 'exam':exam, 'lday':count_lday})
 

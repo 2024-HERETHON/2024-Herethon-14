@@ -1,0 +1,59 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>오늘의 시</title>
+    <link rel="stylesheet" href="{% static 'css/poem_write.css' %}">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap');
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <img class="logo" src="{% static 'img/오늘의 시.svg'  %}" alt="logo" />
+            <div class="nav-menu">
+                <ul class="nav-btn">
+                    <li><a href="">홈</a></li>
+                    <li><a class="study" href="">학습</a></li>
+                    <li><a href="">단어장</a></li>
+                    <li><a href=""><img class="alarm" src="{% static 'img/상단_아이콘.svg' %}" alt="alarm"></a></li>
+                    <a href=""
+                ><img class="mypage" src="{% static 'img/mypage.svg' %}" alt="mypage"
+              /></a>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="wrap">
+        <main>
+            <div class="introduce-message">
+                <p class="introduce-message1">다음은 chat GPT가 작성한 시입니다<br>
+                    잘 읽고 나만의 해석과 감상을 작성해보세요!</p>
+                <p class="learning-time">🔥{{ lday }}일째 학습중</p> 
+            </div>
+            <div class="menu-bar">
+                <div class="menu-bar1"><div class="circle-number1">1</div><div id="word1">오늘의 단어</div></div>
+                <hr class="dash">
+                <div class="menu-bar2"><div class="circle-number2">2</div><div id="word2">&nbsp;오늘의 시</div></div>
+            </div>
+            <div class="poem-area">
+                <div class="poem-box">
+                    <div class="gpt-poem">{{ poem_obj.poem }}</div> 
+                </div>
+                <div class="line"></div>
+                <div class="poem-review">
+                    <form method="POST">
+                        {% csrf_token %}
+                        <input type="hidden" name="poem_id" value="{{ poem_obj.id }}">
+                        <textarea class="poem-review-input" type="text" name="post_content" placeholder="나만의 해석과 감상을 작성해보세요"></textarea>
+                        <button class="poem-review-button">저장하기</button>
+                    </form>
+                </div>
+            </div>
+        </main>
+    </div>
+   <script src="{% static 'js/poem_write.js' %}"></script>
+</body>
+</html>

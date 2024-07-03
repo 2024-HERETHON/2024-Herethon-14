@@ -1,0 +1,239 @@
+* {
+    margin: 0 auto;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Noto Sans KR", sans-serif;
+    font-weight: 300;
+}
+
+/* 헤더 */
+
+nav {
+    margin-top: 0;
+    background-color: white;
+    width: 100%;
+    height: 75px;
+}
+
+.container {
+    display: flex;
+    align-items: center; 
+    justify-content: space-between; 
+}
+
+.logo {
+    display: flex;
+    margin-left: 24px;
+}
+
+.nav-menu {
+    display: flex;
+    margin-right: 10px;
+    align-items: center; 
+    margin: 20px;
+}
+
+.nav-btn {
+    display: flex;
+    list-style: none;
+}
+
+.nav-btn li {
+    float: left;
+    margin: 1px;
+    margin-left: 40px;
+}
+
+.nav-btn .study {
+    color: #F07A0C;
+}
+
+.nav-btn  a {
+    font-family: "Noto Sans KR", sans-serif;
+    font-weight: 300;
+    font-size: 20px;
+    font-style: normal;
+    text-decoration: none;
+    color: #BBB;
+}
+
+/* 본문 */
+
+.wrap {
+    display: flex;
+    height: 1050px; 
+    background: #F6F7FB;
+}
+
+.introduce-message {
+    margin-bottom: 105px;
+}
+
+.introduce-message1 {
+    margin-bottom: 0;
+    font-size: 36px;
+    font-family: "Noto Sans KR", sans-serif;
+    font-weight: 400;
+    margin-top: 65px;
+}
+
+.learning-time {
+    margin-top: 16px;
+    font-size: 20px;
+}
+
+.menu-bar {
+    display: flex;
+    width: 350px;
+    margin: 0;
+    padding: 0;
+    margin-bottom: 26px;
+}
+
+.menu-bar .dash {
+    border: 1.5px dashed #F07A0C;
+    margin: 0;
+    margin-top: 30px;
+    display: inline-block;
+    width: 20px;
+    height: 0;
+}
+
+.menu-bar1 {
+    position: relative;
+    width: 150px;
+    height: 60px;
+    padding: 13px 16px;
+    align-items: center;
+    border-radius: 10px;
+    border: 1px solid #BBB;
+    margin: 0;
+    background-color: #fff;
+}
+.menu-bar2 {
+    position: relative;
+    display: flex;
+    width: 140px;
+    height: 60px;
+    padding: 13px 16px;
+    margin: 0;
+    border-radius: 10px;
+    border: 1px solid #F07A0C;
+    background: #FFF;
+    box-shadow: 0px 0px 11.2px 0px rgba(240, 122, 12, 0.50);
+}
+
+.circle-number1 {
+    padding: 2.5px 10px;
+    border-radius: 50%;
+    background-color: #BBB;
+    color: white;
+    position: absolute;
+    transform: translateX(-8px);
+    margin-top: 2px;
+    font-weight: 500;
+}
+.circle-number2 {
+    padding: 2.5px 10px;
+    border-radius: 50%;
+    background-color: #F07A0C;
+    color: white;
+    position: absolute;
+    transform: translateX(-8px);
+    margin-top: 2px;
+    font-weight: 500;
+}
+
+.menu-bar1 #word1 {
+    display: flex;
+    font-size: 18px;
+    font-weight: 500;
+    width: 88px;
+    margin-right: 0;
+    margin-top: 2px;
+}
+
+.menu-bar2 #word2 {
+    display: flex;
+    font-size: 18px;
+    font-weight: 500;
+    width: 80px;
+    margin-right: 0;
+    margin-top: 2px;
+}
+
+/* 시 부분 */
+
+.poem-area {
+    display: flex;
+    width: 1400px;
+    height: 457px;
+    flex-shrink: 0;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px 0px #BBB;
+    background-color: white;
+}
+
+.poem-box {
+    display: flex;
+    width: 600px;
+    height: 350px;
+}
+
+.gpt-poem {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 600px;
+    height: 350px;
+    font-size: 25px;
+    border: none;
+    outline: none; 
+    resize: none; 
+}
+
+.line {
+    border: 1px solid #BBB;
+    width: 1px;
+    height: 378px;
+    margin: 0;
+    margin-top: 40px;
+}
+
+.poem-review {
+    display: flex;
+    flex-direction: column;
+}
+
+textarea {
+    margin-top: 30px;
+    width: 600px;
+    height: 330px;
+    font-size: 25px;
+    color: #BBB;
+    border: none;
+    outline: none; 
+    resize: none; 
+}
+
+.poem-review-button {
+    display: inline-flex;
+    padding: 18px 12px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    border-style: none;
+    background-color: #BBB;
+    color: white;
+    width: 106px;
+    height: 65px;
+    font-size: 22px;
+    margin-right: 0;
+    }
+
+.poem-review-button.enabled {
+    background-color: #F07A0C;
+    cursor: pointer;
+}
+
+
