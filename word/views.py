@@ -1,10 +1,11 @@
-from django.shortcuts import render
 import random
-
-# Create your views here.
 import requests
 from django.shortcuts import render
-from .models import Word
+from .models import Word, WordUser
+import json
+from django.conf import settings
+from poem.views import generate_and_save_poem
+from django.contrib.auth.decorators import login_required
 
 word_list = [
     "사랑", "행복", "평화", "미소", "희망", "용기", "친절", "자유", "꿈", "노력",
@@ -25,42 +26,67 @@ def get_random_word(word_list):
     return word
 
 def get_word_data_from_api(word):
-    api_url = f"https://opendict.korean.go.kr/api/search?key=76512AFF0D1F5ECA035BEC724BC2071E&q={word}&req_type=json&part=word"
+    SORI_TOKEN=settings.SORI_TOKEN
+    api_url = f"https://opendict.korean.go.kr/api/search?key={SORI_TOKEN}&q={word}&req_type=json&part=word"
     response = requests.get(api_url)
-
-    api_url_ex = f"https://opendict.korean.go.kr/api/search?key=76512AFF0D1F5ECA035BEC724BC2071E&q={word}&req_type=json&part=example"
+    api_url_ex = f"https://opendict.korean.go.kr/api/search?key={SORI_TOKEN}&q={word}&req_type=json&part=exam"
     response_ex = requests.get(api_url_ex)
-    if response.status_code and response_ex.status_code == 200:
-        data = response.json()
-        print(data)
-        data_ex = response_ex.json()
-        print(data_ex)
-        # API 응답 형식에 따라 데이터 파싱
-        return {
-            'word': data['item'][0]['word'],
-            'description': data['item'][0]['definition'],
-            'example': data_ex['item'][0]['example']
-        }
-    return None
+    
+    if response.status_code == 200:
+        try:
+            data = response.json()
+            data_ex = response_ex.json()
+            #API 응답 형식에 따라 데이터 파싱하는거(아래는 콘솔디버깅용)
+            print(data['channel']['item'][0]['word'])
+            print(data['channel']['item'][0]['sense'][0]['definition'])
+            return {
+                'word': data['channel']['item'][0]['word'],
+                'description': data['channel']['item'][0]['sense'][0]['definition'],
+                'example': data_ex['channel']['item'][0]['example']
+            }
+        except (KeyError, IndexError, ValueError, json.JSONDecodeError) as e:
+            print(f"Error parsing API response: {e}")
+            print(f"Response Content: {response.text}")
+            
+            return None
+    else:
+        print(f"Response Content: {response.text}")
+        
+        return None
 
 def save_word_to_db(word_data):
     word = Word(
         word=word_data['word'],
         description=word_data['description'],
-        example=word_data['example']
+        example=word_data['example'],
     )
     word.save()
 
 def fetch_and_save_random_word(word_list):
     word = get_random_word(word_list)
     word_data = get_word_data_from_api(word)
+    print("DATA: ", word_data)
     if word_data:
         save_word_to_db(word_data)
-        print (word_data)
         return word_data
 
-# 이걸 매일 자정에 실행해주도록 scheduler등록 필요함!!
-def wordPost(request):
-    word = fetch_and_save_random_word(word_list)
-    print(word)
-    return render(request, 'word.html', word )
+def wordPost():
+    fetch_and_save_random_word(word_list)
+    generate_and_save_poem()
+
+@login_required
+def home(request):
+    word_obj = Word.objects.latest('id')
+    latest_word = word_obj.word
+    count_lday = WordUser.objects.filter(user=request.user).count()
+    all = WordUser.objects.all().filter(user=request.user).order_by('-id')
+    return render(request, 'home.html', {'word':latest_word, 'lday':count_lday, 'allWords':all})
+
+@login_required
+def learn_word(request):
+    word_obj = Word.objects.latest('id')
+    word = word_obj.word
+    desc=word_obj.description
+    exam=word_obj.example
+    count_lday = WordUser.objects.filter(user=request.user).count()
+    return render(request, 'learning.html', {'word':word, 'desc':desc, 'exam':exam, 'lday':count_lday})
