@@ -3,16 +3,16 @@
 
 
   
-      {% block static %}
-      <link rel="stylesheet" href="{% static 'css/home.css'  %}" />
+{% block static %}
+  <link rel="stylesheet" href="{% static 'css/home.css'  %}" />
   <!--이 곳에 static에 해당하는 코드 (css파일 연결 등) 작성-->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-      <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-      <link
-        href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap"
-        rel="stylesheet"
-      />
-      {% endblock %}
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap"
+    rel="stylesheet"
+  />
+{% endblock %}
 
 {% block content %}
     <div class="hd">
