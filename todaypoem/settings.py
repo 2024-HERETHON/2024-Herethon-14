@@ -145,4 +145,3 @@ def get_secret(setting, secrets=secrets):
 
 SORI_TOKEN =get_secret("SORI_TOKEN")
 GPT_TOKEN =get_secret("GPT_TOKEN")
-   

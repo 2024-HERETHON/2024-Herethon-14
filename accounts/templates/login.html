@@ -1,28 +1,67 @@
-<!--가짜임 임시임 신경 X-->
+{% load static %}
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <div class="wrapper">
-        <div style="text-align: center;">
-            <h1>로그인</h1>
-            <form method="POST">
-                {% csrf_token %}
-                아이디:
-                <br>
-                <input name="username" type="text">
-                <br>
-                비밀번호:
-                <br>
-                <input name="password" type="password">
-                <br><br>
-                <input type="submit" class="btn btn-primary" value="Login">
-            </form>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>login</title>
+
+    <link rel="stylesheet" href="{% static 'css/login.css' %}" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <nav>
+      <div class="container">
+        <img class="logo" src="{% static 'img/오늘의 시.svg'  %}" alt="logo" />
+        <div class="nav-menu">
+          <ul class="nav-btn">
+            <li><a class="home" href="">홈</a></li>
+            <li><a class="learn" href="">학습</a></li>
+            <li><a class="wordlist" href="">단어장</a></li>
+            <li>
+              <a href=""
+                ><img class="alarm" src="{% static 'img/alarm.svg'  %}" alt="alarm"
+              /></a>
+            </li>
+            <li>
+              <a href=""
+                ><img class="mypage" src="{% static 'img/mypage.svg'  %}" alt="mypage"
+              /></a>
+            </li>
+          </ul>
         </div>
+      </div>
+    </nav>
+
+    <div>
+      <img class="today_poem" src="{% static 'img/login-image.svg'  %}" alt="logo" />
     </div>
-</body>
+
+    <div>
+      <div class="welcome">Welcome Back !</div>
+      <div class="login">
+        <div class="identification">
+          <img class="id" src="{% static 'img/id.svg' %}" alt="ID" />
+          <input class="input_id" type="text" placeholder="ID" />
+        </div>
+        <img class="line" src="{% static 'img/line_login.svg' %}" alt="line" />
+        <div class="password">
+          <img class="pw" src="{% static 'img/password.svg' %}" alt="pw" />
+          <input class="input_pw" type="text" placeholder="PASSWORD" />
+        </div>
+        <img class="line" src="{% static 'img/line_login.svg' %}" alt="line" />
+      </div>
+      <button class="go-login"><div class="click">SIGN IN</div></button>
+      <div class="go-join">No account?</div>
+    </div>
+  </body>
 </html>
+
+
+<!-- image -->

@@ -1,5 +1,3 @@
-from django.shortcuts import render
-
 from django.contrib import auth 
 from django.contrib.auth.forms import UserCreationForm 
 from django.contrib.auth.models import User 
@@ -42,4 +40,4 @@ def logout(request):
     return redirect('/')
 
 def accounts(request):
-    return render(request, 'home.html')
+    return render(request, 'profileSetting.html')
