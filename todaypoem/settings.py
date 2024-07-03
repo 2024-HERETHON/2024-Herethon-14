@@ -39,10 +39,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django_extensions',
     'accounts',
     'poem',
     'word',
     'django_apscheduler',
+    'users',
 ]
 APSCHEDULER_DATETIME_FORMAT = "N j, Y, f:s a"  # Default
 
@@ -145,3 +147,7 @@ def get_secret(setting, secrets=secrets):
 
 SORI_TOKEN =get_secret("SORI_TOKEN")
 GPT_TOKEN =get_secret("GPT_TOKEN")
+
+
+# 사용자 인증 모델 설정 (users 앱의 모델)
+AUTH_USER_MODEL = 'users.User'

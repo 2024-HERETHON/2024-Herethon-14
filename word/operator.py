@@ -8,7 +8,7 @@ def start():
     scheduler=BackgroundScheduler()
     scheduler.add_jobstore(DjangoJobStore(), 'djangojobstore')
     register_events(scheduler)
-    @scheduler.scheduled_job('cron', hour=16, minute=34, second=9, name = 'wordPost')
+    @scheduler.scheduled_job('cron', hour=22, minute=51, second=9, name = 'wordPost')
     def auto_wordPost():
         wordPost()
     scheduler.start()

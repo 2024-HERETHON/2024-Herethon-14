@@ -1,15 +1,16 @@
 from django.contrib import auth 
-from django.contrib.auth.forms import UserCreationForm 
+from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import get_user_model
 from django.contrib.auth.models import User 
 from django.shortcuts import render, redirect 
 from django.contrib.auth import authenticate
-
+from django.contrib.auth.decorators import login_required
 
 
 def signup(request): 
     if request.method == 'POST': 
         if request.POST.get('password1') == request.POST.get('password2'): 
-            user = User.objects.create_user( 
+            user = get_user_model().objects.create_user( 
                 username=request.POST.get('username'), 
                 password=request.POST.get('password1'), 
                 email=request.POST.get('email'),
@@ -17,7 +18,7 @@ def signup(request):
             print(user)
             auth.login(request, user) 
             return redirect('/') 
-        return render(request, 'accounts.html') 
+        return render(request, 'login.html') 
     else: 
         
         return render(request, 'accounts.html')
@@ -35,6 +36,7 @@ def login(request):
     else:
         return render(request, 'login.html')
 
+@login_required
 def logout(request):
     auth.logout(request)
     return redirect('/')
