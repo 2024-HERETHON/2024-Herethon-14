@@ -1,0 +1,83 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+
+    <link rel="stylesheet" href="{% static 'css/home.css'  %}" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <nav>
+      <div class="container">
+        <img class="logo" src="{% static 'img/오늘의 시.svg'  %}" alt="logo" />
+        <div class="nav-menu">
+          <ul class="nav-btn">
+            <li><a class="home" href="">홈</a></li>
+            <li><a class="learn" href="">학습</a></li>
+            <li><a class="wordlist" href="">단어장</a></li>
+            <li>
+              <a href=""
+                ><img class="alarm" src="{% static 'img/alarm.svg' %}" alt="alarm"
+              /></a>
+            </li>
+            <li>
+              <a href=""
+                ><img class="mypage" src="{% static 'img/mypage.svg' %}" alt="mypage"
+              /></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="hd">
+      <div>
+        <h1 class="hi">
+            {{ request.user.username }}님, 안녕하세요 ! <br />오늘의 단어를 학습해볼까요?
+        </h1>
+        <h2 class="continue">🔥 {{ lday }}일째 학습중</h2>
+      </div>
+      <div class="sec">
+        <div class="learning">
+          <div class="intro1">오늘의 학습</div>
+          <div class="word-box">
+            <div class="word-title">{{ word }}</div>
+            <a href="{% url 'word:learn_word' %}" class="learning-btn">
+              <div class="go-learning">
+                ‘{{ word }}’가 포함된 시 학습하러 가기
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="word">
+          <div class="intro2">내 단어장</div>
+          <div>
+            {% for word in allWords %}
+                <a href="" class="word-link1"
+                ><img
+                    class="word1"
+                    src="{% static 'img/단어장 배경.svg' %}"
+                    alt="new-word" />
+                <div class="name">{{ word.word }}</div>
+                <div class="date">{{ word.writeTime|date:"m/d" }}</div>
+                <img class="go" src="{% static 'img/arrow-right.svg' %}" alt="arrow"
+                /></a>
+            {% endfor %}
+          </div>
+          <div>
+           
+          <a href=""><div class="go-word">전체보기</div></a>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

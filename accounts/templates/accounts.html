@@ -1,0 +1,56 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>오늘의 시</title>
+    <link rel="stylesheet" href="{% static 'css/accounts.css' %}">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap');
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <img class="logo" src="{% static 'img/오늘의 시.svg'  %}" alt="logo" />
+            <div class="nav-menu">
+                <!-- <ul class="nav-btn">
+                    <li><a href="">홈</a></li>
+                    <li><a class="study" href="">학습</a></li>
+                    <li><a href="">단어장</a></li>
+                    <li><a href=""><img class="alarm" src="./assets/img/상단_아이콘.svg" alt="alarm"></a></li>
+                    <li><a href=""><img class="mypage" src="./assets/img/상단_아이콘 (1).svg" alt="mypage"></a></li>
+                </ul> -->
+            </div>
+        </div>
+    </nav>
+    <div class="wrap">
+        <main>
+            <img id="main-img" src="{% static 'img/login.svg' %}">
+            <div class="login">
+                <div class="introduce-message">
+                    <p>Create Account!</p>
+                </div>
+                <form class="account" action="{% url 'accounts:signup' %}" method="POST">
+                    {% csrf_token %}
+                    <div class="login-input">
+                        <img id="security" src="{% static 'img/security-user.svg' %}"/>
+                        <input class="id" name="username" type="text" placeholder="ID" />
+                            <hr>
+                        <img id="sms" src="{% static 'img/sms-tracking.svg' %}"/>
+                        <input class="email" name="email" type="text" placeholder="E-MAIL" />
+                            <hr>
+                        <img id="lock" src="{% static 'img/lock.svg' %}"/>
+                        <input class="password" name="password1" type="text" placeholder="PASSWORD" />
+                            <hr>
+                            <img id="lock" src="{% static 'img/lock.svg' %}"/>
+                        <input class="password" name="password2" type="text" placeholder="PASSWORDCHECK" />
+                            <hr>
+                        <button type="submit"><p>SIGN UP</p></button>
+                    </div>
+                </form>
+            </div>
+        </main>
+    </div>
+    
+</body>
+</html>

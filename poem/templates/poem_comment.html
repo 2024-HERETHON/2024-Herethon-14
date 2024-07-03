@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Post Detail</title>
+</head>
+<body>
+    <h1>{{ poem_post.poem.word }}</h1>
+    <p>{{ poem_post.poem.poem }}</p>
+    <h2>Post:</h2>
+    <p>{{ poem_post.post }}</p>
+    
+    <h2>댓글</h2>
+    <ul>
+        {% for comment in comments %}
+        <li>
+            <p>{{ comment.comment }}</p>
+        </li>
+        {% endfor %}
+    </ul>
+    
+    <form method="post">
+        {% csrf_token %}
+        <textarea name="comment_content" placeholder="Write your comment here..."></textarea>
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>
