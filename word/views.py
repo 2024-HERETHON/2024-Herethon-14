@@ -36,6 +36,7 @@ def get_word_data_from_api(word):
         try:
             data = response.json()
             data_ex = response_ex.json()
+            print(data)
             #API 응답 형식에 따라 데이터 파싱하는거(아래는 콘솔디버깅용)
             print(data['channel']['item'][0]['word'])
             print(data['channel']['item'][0]['sense'][0]['definition'])
