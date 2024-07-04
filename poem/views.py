@@ -48,7 +48,7 @@ def learn_poem(request):
         post_content = request.POST.get('post_content')
         poem = get_object_or_404(Poem, id=poem_id)
         if post_content:
-            poem_post = PoemPost.objects.create(poem=poem, post=post_content)
+            poem_post = PoemPost.objects.create(user=request.user, poem=poem, post=post_content)
             print(poem_post)
             word_obj = Word.objects.latest('id')
             WordUser.objects.create(user=request.user, word = word_obj)
@@ -60,12 +60,34 @@ def learn_poem(request):
 
 def poem_detail(request, poem_post_id):
     poem_post = get_object_or_404(PoemPost, id=poem_post_id)
-    comments = PostComment.objects.filter(post=poem_post).order_by('id')
+    poem = poem_post.poem
     
+    # 로그인한 사용자의 감상평을 별도로 가져옴
+    user_post = PoemPost.objects.filter(poem=poem, user=request.user).first()
+    
+    # 로그인한 사용자의 감상평을 제외한 나머지 감상평들을 가져옴
+    all_posts = PoemPost.objects.filter(poem=poem).exclude(user=request.user).order_by('id')
+    
+    # 각 PoemPost에 대한 댓글들을 가져옴
+    post_comments = {}
+    for post in all_posts:
+        post_comments[post.id] = PostComment.objects.filter(post=post).order_by('id')
+
+    # 로그인한 사용자의 감상평에 대한 댓글들을 가져옴
+    user_post_comments = PostComment.objects.filter(post=user_post).order_by('id') if user_post else None
+
     if request.method == 'POST':
+        post_id = request.POST.get('post_id')
         comment_content = request.POST.get('comment_content')
         if comment_content:
-            PostComment.objects.create(post=poem_post, comment=comment_content)
+            post = get_object_or_404(PoemPost, id=post_id)
+            PostComment.objects.create(post=post, comment=comment_content, user=request.user)
             return redirect('poem:poem_detail', poem_post_id=poem_post.id)
     
-    return render(request, 'poem_share.html', {'poem_post': poem_post, 'comments': comments})
+    return render(request, 'poem_share.html', {
+        'poem_post': poem_post,
+        'user_post': user_post,
+        'user_post_comments': user_post_comments,
+        'all_posts': all_posts,
+        'post_comments': post_comments,
+    })

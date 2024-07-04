@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     'poem',
     'word',
     'django_apscheduler',
-    'users',
+    #'users',
 ]
 APSCHEDULER_DATETIME_FORMAT = "N j, Y, f:s a"  # Default
 
@@ -153,4 +153,4 @@ GPT_TOKEN =get_secret("GPT_TOKEN")
 
 
 # 사용자 인증 모델 설정 (users 앱의 모델)
-AUTH_USER_MODEL = 'users.User'
+AUTH_USER_MODEL = 'accounts.User'

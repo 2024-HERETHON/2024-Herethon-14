@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 {% block static %}
-    <link rel='stylesheet' type='text/css' media='screen' href='{% static 'css/profileSetting.css' %}'>
+    <link rel='stylesheet' type='text/css' media='screen' href="{% static 'css/profileSetting.css' %}">
 {% endblock %}
 
 {% block content %}
@@ -14,8 +14,8 @@
             <p>사진</p>
             <div class="profileImgBox">
                 <div class="profileImg">
-                    {% if my_model_instance.image %}
-                        <img src="{{ my_model_instance.image.url }}" alt="Image">
+                    {% if user.userImage %}
+                        <img src="{{ user.userImage.url }}" alt="Image">
                     {% else %}
                         <img src="{% static 'img/alarmImg.svg' %}" alt="Default Image">
                     {% endif %}

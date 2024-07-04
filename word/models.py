@@ -24,6 +24,7 @@ class Notice(models.Model):
     user = models.ForeignKey(get_user_model(), on_delete = models.CASCADE)
     post = models.ForeignKey(PoemPost, on_delete = models.CASCADE)
     postComment = models.ForeignKey(PostComment, on_delete = models.CASCADE)
+    write_time=models.DateTimeField(auto_now_add=True)
 
 
 

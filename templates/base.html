@@ -84,7 +84,8 @@
                     <img src="{% static 'img/logout.svg' %}"> 로그아웃
                 </button>
                 <button class="action-button">
-                    <img src="{% static 'img/setting.svg' %}"> 계정설정
+                    <img src="{% static 'img/setting.svg' %}"> 
+                    <a href="{% url 'accounts:setting' %}">계정설정</a>
                 </button>
             </div>
         </div>

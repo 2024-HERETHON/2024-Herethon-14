@@ -31,7 +31,7 @@
         <img class="line" src="{% static 'img/line_login.svg' %}" alt="line" />
       </div>
       <button class="go-login"><div class="click">SIGN IN</div></button>
-      <div class="go-join">No account?</div>
+      <div class="go-join"><a href="{% url 'accounts:signup' %}" >No account?</a></div>
     </div>
     {%endblock%}
 
