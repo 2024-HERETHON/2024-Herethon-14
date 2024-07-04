@@ -4,6 +4,7 @@
     <link rel='stylesheet' type='text/css' media='screen' href='{% static 'css/profileSetting.css' %}'>
 {% endblock %}
 
+{% block content %}
     <div class="main">
         <div class="text">
             <p>프로필 수정</p>
@@ -13,7 +14,11 @@
             <p>사진</p>
             <div class="profileImgBox">
                 <div class="profileImg">
-                    <img class="profileImg-img" src="{% static 'img/alarmImg.svg' %}" alt="profileImg">
+                    {% if my_model_instance.image %}
+                        <img src="{{ my_model_instance.image.url }}" alt="Image">
+                    {% else %}
+                        <img src="{% static 'img/alarmImg.svg' %}" alt="Default Image">
+                    {% endif %}
                 </div>
                 <div class="buttonBox">
                     <input type="file" class="fileInput" >
@@ -23,10 +28,10 @@
             <p>아이디</p>
             <input type="text"  value="{{ request.user.username }}" class="input idInput">
             <p>연동 이메일</p>
-            <input type="email" value="abcd1235@gmail.com" class="input emailInput">
+            <input type="email" value="{{ request.user.email }}" class="input emailInput">
             <p>비밀번호</p>
             <div class="passwordDiv">
-                <input type="password"  value="secret1234" class="input passwordInput">
+                <input type="password" class="input passwordInput">
                 <button class="togglePasswordBtn"><img src="{% static 'img/eyeclose.svg' %}" alt="showPassword"></button>
             </div>
         </div>

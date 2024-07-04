@@ -2,7 +2,7 @@ from django.contrib import auth
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import get_user_model
 from django.contrib.auth.models import User 
-from django.shortcuts import render, redirect 
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth import authenticate
 from django.contrib.auth.decorators import login_required
 
@@ -41,5 +41,13 @@ def logout(request):
     auth.logout(request)
     return redirect('/')
 
-def accounts(request):
-    return render(request, 'profileSetting.html')
+@login_required
+def setting(request):
+    user = request.user
+    if request.method == 'POST':
+        image = request.FILES.get('image')
+        if image:
+            user.userImage.delete()
+            user.userImage = image
+        user.save()
+    return render(request, 'profileSetting.html', {'userImg': user.userImage})

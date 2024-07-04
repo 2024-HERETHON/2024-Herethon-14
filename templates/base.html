@@ -75,8 +75,8 @@
                 </div>
             </div>
             <div class="profile-details">
-                <p class="profile-name">나는 시가 조아</p>
-                <p class="profile-email">abcd1235@gmail.com</p>
+                <p class="profile-name">{{ request.user.username }}</p>
+                <p class="profile-email">{{ request.user.email }}</p>
             </div>
             <hr>
             <div class="profile-actions">
