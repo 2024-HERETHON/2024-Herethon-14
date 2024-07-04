@@ -90,46 +90,43 @@
                                 {% endif %}
                             </div>
                         </div>
-                    </div>
-                    {% endif %}
-                        
-                    <!-- 다른 사용자들의 감상평 리스트 -->
-                    {% for post in all_posts %}
-                    
-                        <div class="comment-area">
-                            <div class="title">                                
-                                <div class="profile">
-                                    <div class="profileImg">
-                                        {% if post.user.userImage %}
-                                            <img src="{{ post.user.userImage.url }}" alt="Image">
-                                        {% else %}
-                                            <img src="{% static 'img/alarmImg.svg' %}" alt="Default Image">
-                                        {% endif %}
-                                    </div>    <!-- 프로필 이미지 -->
-                                    <div class="username">{{ post.user.username }}</div>
+                        <!-- 로그인한 사용자의 감상평 끝 -->
+                                
+                        <!-- 다른 사용자들의 감상평 리스트(상단 고정한거 아래에서 스크롤 되도록 해야함) -->
+                        {% for post in all_posts %}
+                            <div class="comment-area-else">
+                                <div class="title">                                
+                                    <div class="profile">
+                                        <div class="profileImg">
+                                            {% if post.user.userImage %}
+                                                <img src="{{ post.user.userImage.url }}" alt="Image">                                        
+                                            {% else %}
+                                                <img src="{% static 'img/alarmImg.svg' %}" alt="Default Image">
+                                            {% endif %}
+                                        </div>    <!-- 프로필 이미지 -->
+                                        <div class="username">{{ post.user.username }}</div>
+                                    </div>
+                                    <div class="edit-box">
+                                        <img class="edit" src="{% static 'img/ellipsis-vertical-sharp.svg' %}">
+                                        <!-- edit 버튼 클릭했을 시  -->
+                                        <ul class="edit-list">
+                                            <li class="review-delete">삭제하기</li>
+                                        </ul>
+                                    </div>
                                 </div>
-                                <div class="edit-box">
-                                    <img class="edit" src="{% static 'img/ellipsis-vertical-sharp.svg' %}">
-                                    <!-- edit 버튼 클릭했을 시  -->
-                                    <ul class="edit-list">
-                                        <li class="review-delete">삭제하기</li>
-                                    </ul>
-                                </div>
-                            </div>
-                            <!-- 감상평 -->
-                            <div class="poem-review">{{ post.post }}</div>
-                            <div class="date">{{ post.write_time }}</div>
-                                <!-- 댓글 -->
-                            <div class="reply">답글달기</div>
-                            <form method="POST" action="{% url 'poem:poem_detail' poem_post_id=poem_post.id %}" class="reply-input-box">
-                                {% csrf_token %}
-                                <img class="n" src="{% static 'img/ㄴ.svg' %}">
-                                <textarea type="text" name="comment_content" class="reply-input" placeholder="답글을 입력하세요"></textarea> 
-                                <input type="hidden" name="post_id" value="{{ post.id }}">
-                                <button class="reply-button" type="submit">저장</button>
-                            </form>
-                            <!-- 댓글 리스트 -->
-                            <div class="reply-list">
+                                <!-- 감상평 -->
+                                <div class="poem-review">{{ post.post }}</div>
+                                <div class="date">{{ post.write_time }}</div>
+                                    <!-- 댓글 -->
+                                <div class="reply">답글달기</div>
+                                <form method="POST" action="{% url 'poem:poem_detail' poem_post_id=poem_post.id %}" class="reply-input-box">
+                                    {% csrf_token %}
+                                    <img class="n" src="{% static 'img/ㄴ.svg' %}">
+                                    <textarea type="text" name="comment_content" class="reply-input" placeholder="답글을 입력하세요"></textarea> 
+                                    <input type="hidden" name="post_id" value="{{ post.id }}">
+                                    <button class="reply-button" type="submit">저장</button>
+                                </form>
+                                <!-- 댓글 리스트 얘도 마찬가지로 다른 사용자들이 남긴 감상에 댓글이 있다면 보임 -->
                                 {% if post_comments|length %}
                                     {% for comment in post_comments.post.id %}
                                     <div class="comment-area1">
