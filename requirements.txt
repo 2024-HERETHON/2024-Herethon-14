@@ -23,12 +23,14 @@ multidict==6.0.5
 openai==0.28.0
 openapi==2.0.0
 pillow==10.4.0
+pip==22.3.1
 pydantic==2.7.4
 pydantic_core==2.18.4
 pytz==2024.1
 referencing==0.35.1
 requests==2.32.3
 rpds-py==0.18.1
+setuptools==65.5.0
 six==1.16.0
 sniffio==1.3.1
 sqlparse==0.5.0
