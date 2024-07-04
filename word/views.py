@@ -1,11 +1,13 @@
 import random
 import requests
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .models import Word, WordUser
 import json
 from django.conf import settings
 from poem.views import generate_and_save_poem
 from django.contrib.auth.decorators import login_required
+from poem.models import PoemPost, PostComment, Poem
+
 
 word_list = [
     "사랑", "행복", "평화", "미소", "희망", "용기", "친절", "자유", "꿈", "노력",
@@ -80,7 +82,7 @@ def home(request):
     word_obj = Word.objects.latest('id')
     latest_word = word_obj.word
     count_lday = WordUser.objects.filter(user=request.user).count()
-    all = WordUser.objects.all().filter(user=request.user).order_by('-id')
+    all = WordUser.objects.all().filter(user=request.user).order_by('-id')[:3]
     return render(request, 'home.html', {'word':latest_word, 'lday':count_lday, 'allWords':all})
 
 @login_required
@@ -91,3 +93,33 @@ def learn_word(request):
     exam=word_obj.example
     count_lday = WordUser.objects.filter(user=request.user).count()
     return render(request, 'learning.html', {'word':word, 'desc':desc, 'exam':exam, 'lday':count_lday})
+
+def voca(request):
+    words=WordUser.objects.all().filter(user=request.user).order_by('-id')
+
+@login_required
+def word_detail(request, word_id):
+    word = get_object_or_404(Word, id=word_id)
+    desc=word.description
+    exam=word.example
+    
+    # 해당 단어를 학습한 사용자들의 목록 가져오기
+    users_learning_word = WordUser.objects.filter(word=word)
+    
+    # 해당 단어와 관련된 시(post) 가져오기
+    poem = Poem.objects.filter(word=word)
+    post = PoemPost.objects.filter(poem__word=word).order_by('-write_time')
+    
+    # 시(post)에 달린 댓글들 가져오기
+    post_comments = {}
+    post_comments[post.id] = PostComment.objects.filter(post=post).order_by('write_time')
+    
+    context = {
+        'word': word,
+        'desc': desc,
+        'exam': exam,
+        'post': post,
+        'post_comments': post_comments,
+    }
+    
+    return render(request, 'myVocabulary.html', context)
