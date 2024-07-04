@@ -122,17 +122,21 @@ nav {
     margin: 70px;
 }
 
+
+/* 로그인 한 사용자의 감상평 */
+
 .comment{
     display: flex;
-    justify-content: center;
-    align-items: center;
+    flex-direction: column;
     width: 600px;
     height: 600px;
     margin: 0;
-    overflow: auto;
+    overflow-x: hidden;
+    overflow-y: auto;
+    margin-bottom: 10px;
 }
 
-.comment-area {
+.comment-area_auth {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -178,6 +182,11 @@ nav {
 .edit-box {
     margin-right: 0;
 }
+
+/* 다른 사용자들의 감상평 리스트 */
+
+
+
 
 /* edit 버튼 눌렀을 시 */
 
@@ -233,7 +242,9 @@ nav {
 /* 댓글 리스트 */
 
 .reply-list {
-    display: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 500px;
 }
 
