@@ -15,81 +15,58 @@
                 <p> 🔥 단어는 보고 또 볼수록 익숙해진다는 사실! 잊지 마세요 </p>
             </div>
             <div class="dataDiv">
+                {% if message %}
+                    <p>{{ message }}</p>
+                {% else %}
                 <div class="wordDivs">
+                    {% for word in allWords %}
                     <div class="box">
                         <div class="wordDiv">
                             <div class="wordText">
-                                <p>철두철미</p>
-                                <p>학습일: 6/30</p>
+                                <p>{{ word.word }}</p>
+                                <p>학습일: {{ date|date:"m/d" }}</p>
                             </div>
-                            <img src="{% static 'img\arrow-right.svg' %}" alt="arrow">
+                            <img src="{% static 'img/arrow-right.svg' %}" alt="arrow">
                         </div>
                         <div class="linebox">
                             <hr class="line">
                         </div>
                     </div>
-                    <div class="box">
-                        <div class="wordDiv">
-                            <div class="wordText">
-                                <p>철두철미</p>
-                                <p>학습일: 6/30</p>
-                            </div>
-                            <img src="{% static 'img\arrow-right.svg' %}" alt="arrow">
-                        </div>
-                        <div class="linebox">
-                            <hr class="line">
-                        </div>
-                    </div>
-                    <div class="box">
-                        <div class="wordDiv">
-                            <div class="wordText">
-                                <p>철두철미</p>
-                                <p>학습일: 6/30</p>
-                            </div>
-                            <img src="{% static img\arrow-right.svg' %}" alt="arrow">
-                        </div>
-                        <div class="linebox">
-                            <hr class="line">
-                        </div>
-                    </div>
+                    {% endfor %}
+                    
+                    
                 </div>
                 <div class="wordData">
                     <div class="dataSection">
-                        <p class="dataTitle">6/30의 단어</p>
+                        <p class="dataTitle">{{ date|date:"m/d" }}의 단어</p>
                         <div class="word">
                             <p>💁‍♀️</p>
                             <p>
-                                "철두철미"는 '처음부터 끝까지 철저하고 빈틈이 없다'는 
+                                "{{ word.word }}"은/는 '{{ desc }}'라는/는 
                                 의미를 가진 한국어 표현입니다.<br>
-                                이는 어떤 일을 할 때 세심하게 신경 써서 
-                                완벽하게 처리하는 태도나 방식을 묘사할 때 사용됩니다.
+                                {{ exam }}
                             </p>
-                            <p><span>🟰</span>유의어로는 ‘철상철하', ‘철저히' 가 있습니다.</p>
+                            
                         </div>
                     </div>
                     <hr>
                     <div class="dataSection">
-                        <p class="dataTitle">6/30의 시</p>
+                        <p class="dataTitle">{{ date|date:"m/d" }}의 시</p>
                         <div class="poem">
                             <P>
-                                철두철미한 마음으로 하루를 시작하며
-                                작은 일에도 정성을 다해 빈틈없이 채우네
-                                바람결에도 흔들림 없는 믿음으로
-                                노력의 결실, 풍성한 열매 맺으리라 철두철미한 태도로 꿈을 가꾸며
-                                
-                                희망의 씨앗을 심는 손길
-                                웃음 지을 그날을 기다리며
-                                오늘도 묵묵히 나아가네, 철두철미한 마음으로
+                                {{ poem }}
                             </P>
                         </div>
                     </div>
                     <hr>
                     <div class="dataDiv">
-    
+                        {{ post_auth }}
+                        {{ post_rand }}
                     </div>
                 </div>
+                {% endif %}
             </div>
             
        </div>
-       <script src="{% static 'js/myVocabulary.js'%}"></script>
+       <!--<script src="{% static 'js/myVocabulary.js'%}"></script>-->
        {%endblock%}

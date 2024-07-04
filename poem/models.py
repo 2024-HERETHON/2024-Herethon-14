@@ -15,6 +15,9 @@ class PoemPost(models.Model):
     poem = models.ForeignKey(Poem, on_delete =  models.CASCADE)
     post = models.TextField(max_length = 1000)
     write_time=models.DateTimeField(auto_now_add=True)
+    def __str__(self):
+        return self.post
+    
     
 
 class PostComment(models.Model):

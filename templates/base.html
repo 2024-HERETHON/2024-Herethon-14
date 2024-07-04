@@ -16,11 +16,13 @@
             <img class="logo" src="{% static 'img/logo.svg' %}" alt="logo">
             <div class="nav-menu">
                 <ul class="nav-btn">
-                    <li><a class="home" href="">홈</a></li>
-                    <li><a class="learn" href="">학습</a></li>                            
-                    <li><a class="wordlist" href="">단어장</a></li>
+                    {% if user.is_authenticated %}
+                    <li><a class="home" href="{% url 'home' %}">홈</a></li>
+                    <li><a class="learn" href="{% url 'word:learn_word' %}">학습</a></li>                            
+                    <li><a class="wordlist" href="{% url 'word:voca' %}">단어장</a></li>
                     <li><button class="alarmBtn button"><img src="{% static 'img/alarm.svg' %}" alt="alarm"></button></li>
                     <li><button class="profileBtn button"><img src="{% static 'img/myPage.svg' %}" alt="mypage"></button></li>
+                    {% endif %}
                </ul>
             </div>
         </div>
@@ -81,7 +83,7 @@
             <hr>
             <div class="profile-actions">
                 <button class="action-button">
-                    <img src="{% static 'img/logout.svg' %}"> 로그아웃
+                    <img src="{% static 'img/logout.svg' %}"> <a href="{% url 'accounts:logout' %}">로그아웃</a>
                 </button>
                 <button class="action-button">
                     <img src="{% static 'img/setting.svg' %}"> 

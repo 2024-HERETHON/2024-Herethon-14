@@ -1,13 +1,13 @@
 import random
 import requests
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from .models import Word, WordUser
 import json
 from django.conf import settings
 from poem.views import generate_and_save_poem
 from django.contrib.auth.decorators import login_required
 from poem.models import PoemPost, PostComment, Poem
-
+from django.contrib import messages
 
 word_list = [
     "사랑", "행복", "평화", "미소", "희망", "용기", "친절", "자유", "꿈", "노력",
@@ -82,44 +82,57 @@ def home(request):
     word_obj = Word.objects.latest('id')
     latest_word = word_obj.word
     count_lday = WordUser.objects.filter(user=request.user).count()
-    all = WordUser.objects.all().filter(user=request.user).order_by('-id')[:3]
+    all = WordUser.objects.filter(user=request.user).order_by('-id')[:3]
     return render(request, 'home.html', {'word':latest_word, 'lday':count_lday, 'allWords':all})
 
 @login_required
 def learn_word(request):
     word_obj = Word.objects.latest('id')
     word = word_obj.word
+    if WordUser.objects.filter(user=request.user).filter(word=word_obj).exists():
+        messages.warning(request, '이미 학습한 단어 입니다. 새로운 단어 학습 시간까지 기다려주세요!')
+        # home 페이지로 리디렉션
+        return redirect('/')
     desc=word_obj.description
     exam=word_obj.example
     count_lday = WordUser.objects.filter(user=request.user).count()
     return render(request, 'learning.html', {'word':word, 'desc':desc, 'exam':exam, 'lday':count_lday})
 
 def voca(request):
-    words=WordUser.objects.all().filter(user=request.user).order_by('-id')
+    try:
+        word = WordUser.objects.filter(user=request.user).latest('id')
+        print(word.word)
+        return redirect('word:word_detail', word=word.word)
+    except WordUser.DoesNotExist:
+        message = "아직 학습한 단어가 없습니다."
+        return render(request, 'myVocabulary.html', {'message': message})
+
 
 @login_required
-def word_detail(request, word_id):
-    word = get_object_or_404(Word, id=word_id)
+def word_detail(request, word):
+    word = get_object_or_404(Word, word=word)
+    wordUser = WordUser.objects.filter(user=request.user).filter(word=word)
     desc=word.description
     exam=word.example
+    date=wordUser[0].writeTime
     
     # 해당 단어를 학습한 사용자들의 목록 가져오기
-    users_learning_word = WordUser.objects.filter(word=word)
+    allWords = WordUser.objects.filter(user=request.user).order_by('-id')
     
     # 해당 단어와 관련된 시(post) 가져오기
-    poem = Poem.objects.filter(word=word)
-    post = PoemPost.objects.filter(poem__word=word).order_by('-write_time')
-    
-    # 시(post)에 달린 댓글들 가져오기
-    post_comments = {}
-    post_comments[post.id] = PostComment.objects.filter(post=post).order_by('write_time')
+    poem = get_object_or_404(Poem, word=word).poem
+    post_auth = get_object_or_404(PoemPost, poem__word=word, user=request.user)
+    post_rand = PoemPost.objects.latest('id')
     
     context = {
-        'word': word,
+        'word': wordUser,
         'desc': desc,
         'exam': exam,
-        'post': post,
-        'post_comments': post_comments,
+        'poem': poem,
+        'allWords':allWords,
+        'date':date,
+        'post_auth': post_auth,
+        'post_rand': post_rand,
     }
     
     return render(request, 'myVocabulary.html', context)

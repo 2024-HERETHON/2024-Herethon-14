@@ -26,6 +26,9 @@ class Notice(models.Model):
     postComment = models.ForeignKey(PostComment, on_delete = models.CASCADE)
     write_time=models.DateTimeField(auto_now_add=True)
 
+    def __str__(self):
+        return f'Notice by {self.user.username} on {self.post}'
+
 
 
 

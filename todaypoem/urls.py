@@ -24,5 +24,5 @@ urlpatterns = [
     path('accounts/', include('accounts.urls')),
     path('word/', include('word.urls')),
     path('poem/', include('poem.urls')),
-    path('', home),
+    path('', home, name='home'),
 ]

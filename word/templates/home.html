@@ -15,6 +15,13 @@
 {% endblock %}
 
 {% block content %}
+{% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
     <div class="hd">
       <div>
         <h1 class="hi">
@@ -38,20 +45,21 @@
           <div class="intro2">내 단어장</div>
           <div>
             {% for word in allWords %}
-                <a href="" class="word-link1"
+                <a href="{% url 'word:word_detail' word=word.word %}" class="word-link1"
                 ><img
                     class="word1"
                     src="{% static 'img/단어장 배경.svg' %}"
                     alt="new-word" />
                 <div class="name">{{ word.word }}</div>
-                <div class="date">{{ word.writeTime|date:"m/d" }}</div>
+                <div class="date">학습일: {{ word.writeTime|date:"m/d" }}</div>
                 <img class="go" src="{% static 'img/arrow-right.svg' %}" alt="arrow"
                 /></a>
             {% endfor %}
           </div>
           <div>
-           
-          <a href=""><div class="go-word">전체보기</div></a>
+         
+          <a href="{% url 'word:voca' %}"><div class="go-word">전체보기</div></a>
+          
         </div>
       </div>
     </div>
