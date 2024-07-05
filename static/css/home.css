@@ -6,7 +6,9 @@ body {
   margin: 0;
   padding: 0;
 
-  .noto-sans-kr {
+  overflow: hidden;
+
+  .Noto-Sans-KR {
     font-family: "Noto Sans KR", sans-serif;
     font-optical-sizing: auto;
     font-weight: 400;
@@ -21,7 +23,7 @@ body {
 }
 
 .nav {
-  width: 1728px;
+  max-width: 100%;
   height: 75px;
   flex-shrink: 0;
   border: 1px solid #f2f2f2;
@@ -103,7 +105,7 @@ nav::after {
 }
 
 .hd {
-  width: 100%;
+  max-width: 100%;
   position: relative;
   float: left;
   color: #000;
