@@ -3,10 +3,12 @@
 }
 
 body {
-  margin: 0;
-  padding: 0;
+  width: 100vw;
+  height: 100vh;
 
-  .noto-sans-kr {
+  /* overflow: hidden; */
+
+  .Noto-Sans-KR {
     font-family: "Noto Sans KR", sans-serif;
     font-optical-sizing: auto;
     font-weight: 400;
@@ -16,12 +18,38 @@ body {
   background: #f6f7fb;
 }
 
+.messagebox {
+  display: block;
+  position: absolute;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.messages {
+  width: 565px;
+  border-radius: 14px;
+  background: #fff;
+  box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.25);
+  padding: 16px;
+}
+
+.message-content {
+  list-style-type: none;
+  text-align: center;
+  color: #000;
+  font-family: "Noto Sans KR", sans-serif;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -0.5px;
+}
 .container {
   background: #fff;
 }
 
 .nav {
-  width: 1728px;
+  width: 100%;
   height: 75px;
   flex-shrink: 0;
   border: 1px solid #f2f2f2;
@@ -103,7 +131,7 @@ nav::after {
 }
 
 .hd {
-  width: 100%;
+  max-width: 100%;
   position: relative;
   float: left;
   color: #000;
