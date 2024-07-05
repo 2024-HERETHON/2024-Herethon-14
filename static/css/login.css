@@ -3,11 +3,6 @@
 }
 
 body {
-  margin: 0;
-  padding: 0;
-
-  overflow: hidden;
-
   .Noto-Sans-KR {
     font-family: "Noto Sans KR", sans-serif;
     font-optical-sizing: auto;
@@ -205,8 +200,11 @@ nav::after {
   letter-spacing: -1.669px;
 }
 
-.go-join {
+.join {
   margin-top: 20px;
+}
+
+.go-join {
   margin-left: 337px;
   color: #000;
   font-family: "Noto Sans KR";
