@@ -119,12 +119,13 @@ nav::after {
   line-height: normal;
   letter-spacing: -1.669px;
   margin-top: 270px;
+  margin-left: 200px;
 }
 
 .login {
   width: 607px;
   margin-top: 60px;
-  margin-left: 93px;
+  /* margin-left: 93px; */
 }
 
 .line {
@@ -140,7 +141,7 @@ nav::after {
 }
 
 .id {
-  margin-left: 93px;
+  /* margin-left: 93px; */
   display: flex;
   width: 50px;
   height: 50px;
@@ -204,8 +205,8 @@ nav::after {
 
 .go-join {
   margin-top: 20px;
+  margin-left: 337px;
   color: #000;
-  text-align: center;
   font-family: "Noto Sans KR";
   font-size: 24px;
   font-style: normal;
@@ -222,4 +223,9 @@ nav::after {
   width: 605px;
   height: 2px;
   background: #7e7d7d;
+}
+
+.big-box {
+  display: flex;
+  flex-direction: row;
 }
