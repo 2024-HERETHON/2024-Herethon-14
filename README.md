@@ -2,7 +2,7 @@
 
 ## 프로젝트 이름
 
-오늘의 시
+<img src="./static/img/logo.svg">
 
 ## 프로젝트 소개
 
@@ -18,7 +18,7 @@
 
 ## key function
 
-<img src="./static/img/keyfunction.svg">
+<img src="./static/img/logo.svg" width="100%" height="100px">
 
 ## 기술 스택
 
