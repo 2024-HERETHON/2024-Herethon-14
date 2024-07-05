@@ -7,6 +7,7 @@ from django.db import migrations, models
 
 class Migration(migrations.Migration):
 
+
     initial = True
 
     dependencies = [
@@ -17,7 +18,12 @@ class Migration(migrations.Migration):
     operations = [
         migrations.CreateModel(
             name='Word',
+            name='Word',
             fields=[
+                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('word', models.CharField(max_length=10)),
+                ('description', models.CharField(max_length=500)),
+                ('example', models.CharField(max_length=500)),
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('word', models.CharField(max_length=10)),
                 ('description', models.CharField(max_length=500)),
@@ -26,7 +32,13 @@ class Migration(migrations.Migration):
         ),
         migrations.CreateModel(
             name='Notice',
+            name='Notice',
             fields=[
+                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('write_time', models.DateTimeField(auto_now_add=True)),
+                ('post', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='poem.poempost')),
+                ('postComment', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='poem.postcomment')),
+                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('write_time', models.DateTimeField(auto_now_add=True)),
                 ('post', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='poem.poempost')),
@@ -36,7 +48,12 @@ class Migration(migrations.Migration):
         ),
         migrations.CreateModel(
             name='WordUser',
+            name='WordUser',
             fields=[
+                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('writeTime', models.DateTimeField(auto_now_add=True)),
+                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
+                ('word', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='word.word')),
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('writeTime', models.DateTimeField(auto_now_add=True)),
                 ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),

@@ -30,8 +30,25 @@ class Migration(migrations.Migration):
         ),
         migrations.CreateModel(
             name='MyPage',
+            name='CustomUser',
             fields=[
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('password', models.CharField(max_length=128, verbose_name='password')),
+                ('last_login', models.DateTimeField(blank=True, null=True, verbose_name='last login')),
+                ('username', models.CharField(max_length=30, unique=True)),
+                ('email', models.EmailField(default='', max_length=100, unique=True)),
+                ('is_active', models.BooleanField(default=True)),
+                ('is_admin', models.BooleanField(default=False)),
+            ],
+            options={
+                'abstract': False,
+            },
+        ),
+        migrations.CreateModel(
+            name='MyPage',
+            fields=[
+                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('profile_image', models.ImageField(blank=True, upload_to='images/user')),
                 ('profile_image', models.ImageField(blank=True, upload_to='images/user')),
                 ('user', models.OneToOneField(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
             ],

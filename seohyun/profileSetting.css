@@ -1,0 +1,544 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  body {
+    width:1728px;
+    margin: 0;
+    padding: 0;
+    font-family: "Noto Sans KR", sans-serif;
+    .noto-sans-kr {
+      font-family: "Noto Sans KR", sans-serif;
+      font-optical-sizing: auto;
+      font-weight: 400;
+      font-style: normal;
+    }
+  
+    background: #f6f7fb;
+  }
+  .main {
+    margin-left: 164px;
+    margin-right: 164px;
+  }
+  
+  .container {
+    background: #fff;
+  }
+  
+  .nav {
+    width: 1728px;
+    height: 75px;
+    flex-shrink: 0;
+    border: 1px solid #f2f2f2;
+    background: #fff;
+  }
+  
+  .logo {
+    margin-top: 21px;
+    color: #f07a0c;
+    text-align: center;
+    font-family: "HSBomBaram 3.0";
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -0.5px;
+    margin-left: 100px;
+    margin-bottom: 10px;
+  }
+
+  .button {
+    background: none;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    color: #007bff; /* 버튼 텍스트 색상 */
+    text-decoration: underline; /* 텍스트에 밑줄 추가 */
+    display: inline-flex;
+    align-items: center;
+  }
+ 
+  .button img {
+      pointer-events: none; 
+  }
+
+  .home {
+    color: #bbb;
+    text-align: center;
+    font-family: "Noto Sans KR";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 14px; /* 70% */
+    letter-spacing: -0.5px;
+  }
+  
+  .mypage {
+    margin-right: 100px;
+  }
+  
+  .learn {
+    color: #bbb;
+    text-align: center;
+    font-family: "Noto Sans KR";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 14px; /* 70% */
+    letter-spacing: -0.5px;
+  }
+  
+  .wordlist {
+    color: #bbb;
+    text-align: center;
+    font-family: "Noto Sans KR";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 14px; /* 70% */
+    letter-spacing: -0.5px;
+  }
+  
+  .nav-menu {
+    margin-top: 21px;
+    float: right;
+    margin-right: 70px;
+  }
+  
+  .nav-btn {
+    list-style-type: none;
+    margin: 0;
+  }
+  
+  ul.nav-btn > li {
+    float: left;
+    margin-left: 40px;
+    font-size: 20px;
+    font-weight: bold;
+  }
+  
+  nav::after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+  
+  .nav-btn a{
+    text-decoration: none;
+    
+  }
+  .alarm-modal {
+    display:none;
+    max-height: 440px;
+    overflow-y: auto;
+    border-radius: 16px;
+    background: #FFF;
+    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.25);
+    position: absolute;
+    width: 390px;
+    padding: 16px;
+    z-index: 1000;
+    top: 88px; 
+    right: 88px;
+    -ms-overflow-style: none; /* 인터넷 익스플로러 */
+    scrollbar-width: none; /* 파이어폭스 */
+  }
+  .alarm-modal::-webkit-scrollbar {
+    display: none;
+  }
+  .alarm-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    overflow-y: auto;
+  }
+  .alarm-content p {
+    margin:0;
+    color: #000;
+    font-family: "Noto Sans KR";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    letter-spacing: -0.5px;
+  }
+  .alarm-content hr {
+    width: 358px;
+    border: none;
+    border-top: 1px solid #BBBBBB;
+    margin: 10px 0;
+  }
+  .alarmlist {
+    display: flex;
+    width: 100%;
+    height: 70px;
+    margin-bottom:10px;
+    align-items: center;
+
+  }
+  .alarm-img {
+    justify-content: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: none;
+    margin-right: 16px;
+    flex-shrink: 0;
+  }
+
+  .alarm-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+  }
+
+  .alarm-text {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+  }
+  .alarm-text p:nth-child(1){
+    align-self: stretch;
+    color: #000;
+    font-family: "Noto Sans KR";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -0.5px;
+  }
+  .alarm-text p:nth-child(2){
+    align-self: stretch;
+    color: #979797;
+    font-family: "Noto Sans KR";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -0.5px;
+  }
+
+  .profile-modal {
+    display:none;
+    position: absolute;
+    top: 88px; 
+    right: 29px; 
+    z-index: 1000;
+    background-color: #fff;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.25);
+    border-radius: 16px;
+    width: 360px; 
+}
+.profile-header {
+    width: 360px;
+    height: 136px;
+    flex-shrink: 0;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 16px 16px 0px 0px;
+    background: rgba(240, 122, 12, 0.50);
+}
+.profile-image {
+    width: 125px;
+    height: 125px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-top: 117px;
+    margin-left: 117px;
+    border-radius: 125px;
+    border: 2px solid #FFF;
+    background: url(images/alarmImg.svg) lightgray 50% / cover no-repeat;
+}
+.profile-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.profile-details {
+    text-align: center;
+    margin-top: 68px;
+}
+.profile-name {
+    color: #000;
+    text-align: center;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: -0.5px;
+    margin:0;
+}
+.profile-email {
+    color: #000;
+    text-align: center;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -0.5px;
+    margin: 0;
+}
+.profile-content hr {
+    width: 360px;
+    border: none;
+    border-top: 1px solid #E6E6E6;
+    margin: 10px 0 20px 0;
+}
+.profile-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+.action-button {
+    width: 200px;
+    padding: 10px 10px 10px 22px;
+    border: none;
+    background-color: transparent;
+    text-align: left;
+    cursor: pointer;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    color: #000;
+    font-family: "Noto Sans KR";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -0.5px;
+}
+.action-button img {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+    margin-right: 16px;
+}
+
+  .profile-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+  }
+
+  .profile-details {
+    text-align: center;
+    margin-top: 68px;
+  }
+
+  .profile-name {
+    color: #000;
+    text-align: center;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: -0.5px;
+    margin:0;
+  }
+
+  .profile-email {
+    color: #000;
+    text-align: center;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -0.5px;
+    margin: 0;
+  }
+
+  .profile-content hr {
+    width: 360px;
+    border: none;
+    border-top: 1px solid #E6E6E6;
+    margin: 10px 0 20px 0;
+  }
+  .profile-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 20px;
+  }
+  .action-button {
+    width: 200px;
+    padding: 10px 10px 10px 22px;
+    border: none;
+    background-color: transparent;
+    text-align: left;
+    cursor: pointer;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    color: #000;
+    font-family: "Noto Sans KR";
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -0.5px;
+  }
+  .action-button img {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+    margin-right: 16px;
+  }
+
+  .text {
+    margin-top: 87px;
+  }
+  .text p:nth-child(1) {
+    margin-bottom:0px;
+    width: 350px;
+    color: #000;
+    font-size: 36px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    letter-spacing: -0.5px;
+  }
+  .text p:nth-child(2) {
+    margin-top:10px;
+    color: #000;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -0.5px;
+  }
+  .box{
+    margin-top: 30px;
+  }
+  .box p {
+    color: #000;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -0.5px;
+  }
+  .profileImgBox {
+    display:flex;
+    flex-direction: row;
+    margin-bottom:5px;
+  }
+  .fileInput {
+    display: none;
+  }
+  .profileImg {
+    width: 125px;
+    height: 125px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right:24px;
+  }
+  .profileImg-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .buttonBox{
+    height: 125px;
+    display:flex;
+    align-items: center;
+  }
+  .uploadImgBtn {
+    display: flex;
+    width: 76px;
+    height: 48px;
+    padding: 9px 16px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border:none;
+    border-radius: 20px;
+    background: #D7D6D5;
+    color: #000;
+    text-align: center;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -0.5px;
+  }
+  .input {
+    display: flex;
+    width: 782px;
+    height: 66px;
+    padding: 18px 21px;
+    align-items: center;
+    gap: 10px;
+    align-self: stretch;
+    border-radius: 16px;
+    border: 2px solid #979797;
+    background: #FFF;
+    color: #000;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -0.5px;
+  }
+  .passwordDiv {
+    position:relative;
+    width: 782px;
+    height: 66px;
+  }
+
+  .togglePasswordBtn{
+    position: absolute;
+    top: 20px;
+    right:20px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    background-color: transparent;
+    padding: 0;
+    margin: 0;
+    cursor: pointer; 
+  }
+  .togglePasswordBtn img{
+    width: 30px;
+    height: 30px;
+  }
+
+  .saveTab {
+    position: absolute;
+    display: flex;
+    bottom:0;
+    background: #FFF;
+    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.10);
+    width: 1728px;
+    height: 80px;
+    flex-shrink: 0;
+    justify-content: center;
+    align-items: center;
+  }
+  .saveBtn {
+    display: flex;
+    width: 170px;
+    height: 45px;
+    padding: 9px 18px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+    border: none;
+    border-radius: 20px;
+    background: rgba(240, 122, 12, 0.50);
+    color: #000;
+    font-family: "Noto Sans KR";
+    text-align: center;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -0.5px;
+  }
