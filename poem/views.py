@@ -42,9 +42,12 @@ def generate_and_save_poem():
     
 @login_required
 def learn_poem(request):
-    user_profile = MyPage.objects.get(user=request.user)
- 
-    profile_image= user_profile.profile_image.url if user_profile.profile_image else None
+    try:
+        user_profile = MyPage.objects.get(user=request.user)
+        profile_image = user_profile.profile_image.url if user_profile.profile_image else None
+    except MyPage.DoesNotExist:
+        user_profile = None
+        profile_image = None
     
     count_lday = WordUser.objects.filter(user=request.user).count()
 
@@ -60,11 +63,16 @@ def learn_poem(request):
             return redirect('poem:poem_detail', poem_post_id=poem_post.id)
         
     poem_obj = Poem.objects.latest('id')
-    return render(request, 'poem_write.html', {'poem_obj': poem_obj, 'lday':count_lday , 'profile_image':profile_image[0]})
+    return render(request, 'poem_write.html', {'poem_obj': poem_obj, 'lday':count_lday , 'profile_image':profile_image})
 
 
 def poem_detail(request, poem_post_id):
-    user_profile = MyPage.objects.get(user=request.user)
+    try:
+        user_profile = MyPage.objects.get(user=request.user)
+        #profile_image = user_profile.profile_image.url if user_profile.profile_image else None
+    except MyPage.DoesNotExist:
+        user_profile = None
+        #profile_image = (None, )
 
     poem_post = get_object_or_404(PoemPost, id=poem_post_id)
     poem = poem_post.poem

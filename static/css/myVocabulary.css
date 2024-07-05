@@ -575,3 +575,541 @@
   border-top: 1px solid #BBBBBB;
   margin: 60px 0 50px 51px;
 }
+
+
+* {
+  margin: 0 auto;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Noto Sans KR", sans-serif;
+  font-weight: 300;
+}
+
+/* 헤더 */
+
+nav {
+  margin-top: 0;
+  background-color: white;
+  width: 100%;
+  height: 75px;
+}
+
+.container {
+  display: flex;
+  align-items: center; 
+  justify-content: space-between; 
+}
+
+.logo {
+  margin-top: 21px;
+  color: #f07a0c;
+  text-align: center;
+  font-family: "HSBomBaram 3.0";
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.5px;
+  margin-left: 100px;
+  margin-bottom: 10px;
+}
+
+.nav-menu .nav-btn{
+  display: flex;
+  margin-right: 10px;
+  align-items: center; 
+}
+
+.nav-btn {
+  display: flex;
+  list-style: none;
+}
+
+.nav-btn li a{
+  float: left;
+}
+
+.nav-btn li .learn {
+  color: #F07A0C;
+}
+/* .nav-btn .study {
+  color: #F07A0C;
+} */
+
+.nav-btn li a {
+  font-family: "Noto Sans KR", sans-serif;
+  font-weight: 300;
+  font-size: 20px;
+  font-style: normal;
+  text-decoration: none;
+  color: #BBB;
+}
+
+/* 본문 */
+
+.wrap {
+  display: flex;
+  height: 1016px;
+  background: #F6F7FB;
+}
+
+.introduce-message1 {
+  margin-bottom: 0;
+  text-align: center;
+  font-size: 36px;
+  font-family: "Noto Sans KR", sans-serif;
+  font-weight: 400;
+  margin: 0;
+  margin-top: 65px;
+  margin-bottom: 42px;
+}
+
+/* 시 부분 */
+
+
+.poem-area {
+  display: flex;
+  justify-self: center;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  width: 1400px;
+  height: 664px;
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px 0px #BBB;
+  background-color: white;
+}
+
+/* .poem-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 600px;
+  height: 600px;
+  margin: 0;
+  padding: 0;
+} */
+
+.poem-data {
+  font-family: "Noto Sans KR", sans-serif;
+  font-weight: 300;
+  font-size: 26px;
+}
+.gpt-poem {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 59px;
+  width: 600px;
+  height: 600px;
+  font-size: 25px;
+  border: none;
+  outline: none; 
+  resize: none; 
+}
+
+.line {
+  border: 1px solid #BBB;
+  width: 1px;
+  height: 553px;
+  margin-top: 50px;
+  margin: 70px;
+}
+
+
+/* 로그인 한 사용자의 감상평 */
+
+.comment{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 600px;
+  height: 600px;
+  margin: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  margin-bottom: 10px;
+}
+
+.comment-area_auth {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 579px;
+}
+
+.title {
+  width: 600px;
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 0;
+  margin-bottom: 5px;
+}
+
+.profile {
+  display: flex;
+  justify-content: flex-start;
+  align-items: top;
+  margin-left: 0;
+}
+
+.profileImg {
+  width: 50px;
+  height: 50px;
+}
+.username {
+  margin: 10px;
+  font-size: 22px;
+  font-weight: 600;
+}
+
+.label {
+  width: 35px;
+  height: 30px;
+  margin-top: 11px;
+  border-radius: 18px;
+  background: #D1DDFF;    
+  display: flex;
+  font-weight: 600;
+  padding: 3.275px 13.099px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 16.374px;
+}
+.edit-box {
+  margin-right: 0;
+}
+
+/* edit 버튼 눌렀을 시 */
+
+.edit-list {
+  display: none;
+  list-style: none;
+  width: 100px;
+  height: 25px;
+  background-color: white;
+  position: absolute;
+  border-radius: 5px;
+  background: #FFF;
+  box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.25);
+}
+
+.edit-list .review-delete {
+  margin-left: 20px;
+}
+
+.poem-review {
+  width: 550px;
+  height: 100px;
+  margin: 5px 0 5px 0;
+  font-size: 20px;
+  font-weight: 350;
+}
+.date {
+  margin-left: 0;
+  margin-bottom: 10px;
+  color: #747474;
+}
+
+.reply {
+  margin-left: 0;
+  margin-bottom: 30px;
+  color: #747474;
+  text-decoration: underline;
+}
+
+/* 댓글 입력 */
+
+.reply-input-box {
+  display: none;
+}
+
+.n {
+  margin-bottom: 15px;
+  margin-right: 3px;
+}
+
+.reply-input {
+  width: 500px;
+}
+
+/* 댓글 리스트 */
+
+.reply-list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 500px;
+}
+
+.comment-area1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 579px;
+}
+
+.comment-area-else {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 579px;
+}* {
+  margin: 0 auto;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Noto Sans KR", sans-serif;
+  font-weight: 300;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 1016px;
+  background-color: #F6F7FB;
+}
+
+
+.rquest {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.request-msg {
+  margin-bottom: 0;
+  text-align: center;
+  font-size: 36px;
+  font-family: "Noto Sans KR", sans-serif;
+  font-weight: 400;
+  margin: 0;
+  margin-top: 65px;
+  margin-bottom: 42px;
+}
+
+
+/* 메인 */
+
+section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 1400px;
+  height: 664px;
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px 0px #BBB;
+  background-color: white;
+}
+
+.poem-data {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 600px;
+  height: 550px;
+  padding: 0;
+}
+
+.line {
+  border: 1px solid #BBB;
+  width: 1px;
+  height: 553px;
+  margin-top: 50px;
+  margin: 0px;
+}
+
+.review-container {
+  /* display: flex;
+  flex-direction: column; */
+  width: 600px;
+}
+
+/* 여기 중요하다!!!!! */
+.review-wrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 600px;
+  max-height: 550px;
+  margin: 0;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+.user-review{
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column
+}
+
+.user-profile {
+  width: 600px;
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 0;
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+.user-profile-left {
+  display: flex;
+  justify-content: flex-start;
+  margin-left: 0;
+}
+.profile-img {
+  width: 50px;
+  height: 50px;
+}
+.user-name {
+  margin: 10px;
+  font-size: 22px;
+  font-weight: 600;
+}
+.user-label {
+  width: 35px;
+  height: 30px;
+  margin-top: 8px;
+  border-radius: 18px;
+  background: #D1DDFF;    
+  display: flex;
+  font-weight: 600;
+  padding: 3.275px 13.099px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 16.374px;
+}
+.edit-btn {
+  margin-right: 0;
+}
+
+.review-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.review {
+  width: 600px;
+  max-height: 100px;
+  margin: 5px 0 5px 0;
+  padding: 10px;
+  margin-bottom: 15px;
+  font-size: 20px;
+  font-weight: 350;
+}
+.date {
+  display: flex;
+  margin-left: 0;
+  margin-bottom: 10px;
+  color: #747474;
+}
+.reply-btn {
+  margin-left: 0;
+  margin-bottom: 30px;
+  color: #747474;
+  text-decoration: 0.05em underline  #747474;
+}
+
+.replys {
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column
+}
+.reply-input-container{
+  /* display: flex; 자바스크립트랑 충돌나서 display: flex;는 js에서 동작하게함 */
+  display: none;
+  width: 600px;
+  max-height: 200px;
+  padding: 15px 20px;
+  border-radius: 8px;
+  border: 1px solid #979797;
+  background: #FFF;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 10px;
+  margin-left: 0;
+}
+.user-profile-2 {
+  display: flex;
+  justify-content: flex-start;
+  margin-left: 0;
+}
+.profile-img-2 {
+  width: 40px;
+  height: 40px;
+}
+.user-name-2 {
+  margin: 10px;
+  font-size: 18px;
+  font-weight: 600;
+}
+.reply-input{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: 531px;
+  height: 164px;
+  padding: 10px;
+  font-size: 20px;
+  border-radius: 8px;
+  border: 1px solid #F07A0C;
+  background-color: #FFF;
+}
+.reply-save {
+  display: flex;
+  padding: 8px 12px;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+  border-style: none;
+  font-size: 16px;
+  font-weight: 400;
+  margin-right: 0;
+  border-radius: 8px;
+  color: #FFF;
+  background: #F07A0C;
+}
+
+.space-img {
+  margin-right: 5px;
+}
+
+/* 추가된 css */
+
+.replys {
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column
+}
+.reviews {
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column
+}
+.reply-input{
+  height: 30px;
+}
+
+
+
+
+

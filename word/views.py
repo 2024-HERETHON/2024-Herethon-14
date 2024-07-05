@@ -80,18 +80,27 @@ def wordPost():
 
 @login_required
 def home(request):
-    user_profile = MyPage.objects.get(user=request.user)
-    profile_image = user_profile.profile_image.url if user_profile.profile_image else None,
+    try:
+        user_profile = MyPage.objects.get(user=request.user)
+        profile_image = user_profile.profile_image.url if user_profile.profile_image else None
+    except MyPage.DoesNotExist:
+        user_profile = None
+        profile_image = None
 
     word_obj = Word.objects.latest('id')
     latest_word = word_obj.word
     count_lday = WordUser.objects.filter(user=request.user).count()
     all = WordUser.objects.filter(user=request.user).order_by('-id')[:3]
-    return render(request, 'home.html', {'word':latest_word, 'lday':count_lday, 'allWords':all, 'profile_image':profile_image[0]})
+    return render(request, 'home.html', {'word':latest_word, 'lday':count_lday, 'allWords':all, 'profile_image':profile_image})
 @login_required
 def learn_word(request):
-    user_profile = MyPage.objects.get(user=request.user)
-    profile_image= user_profile.profile_image.url if user_profile.profile_image else None,
+    try:
+        user_profile = MyPage.objects.get(user=request.user)
+        profile_image = user_profile.profile_image.url if user_profile.profile_image else None
+    except MyPage.DoesNotExist:
+        user_profile = None
+        profile_image = None
+
     word_obj = Word.objects.latest('id')
     word = word_obj.word
     if WordUser.objects.filter(user=request.user).filter(word=word_obj).exists():
@@ -101,23 +110,31 @@ def learn_word(request):
     desc=word_obj.description
     exam=word_obj.example
     count_lday = WordUser.objects.filter(user=request.user).count()
-    return render(request, 'learning.html', {'word':word, 'desc':desc, 'exam':exam, 'lday':count_lday,'profile_image':profile_image[0]})
+    return render(request, 'learning.html', {'word':word, 'desc':desc, 'exam':exam, 'lday':count_lday,'profile_image':profile_image})
 
 def voca(request):
-    user_profile = MyPage.objects.get(user=request.user)
-    profile_image= user_profile.profile_image.url if user_profile.profile_image else None,
+    try:
+        user_profile = MyPage.objects.get(user=request.user)
+        profile_image = user_profile.profile_image.url if user_profile.profile_image else None
+    except MyPage.DoesNotExist:
+        user_profile = None
+        profile_image = None
     try:
         word = WordUser.objects.filter(user=request.user).latest('id')
         print(word.word)
         return redirect('word:word_detail', word=word.word)
     except WordUser.DoesNotExist:
         message = "아직 학습한 단어가 없습니다."
-        return render(request, 'myVocabulary.html', {'message': message, 'profile_image':profile_image[0]})
+        return render(request, 'myVocabulary.html', {'message': message, 'profile_image':profile_image})
 
 
 @login_required
 def word_detail(request, word):
-    user_profile = MyPage.objects.get(user=request.user)
+    try:
+        user_profile = MyPage.objects.get(user=request.user)
+        profile_image = user_profile.profile_image.url if user_profile.profile_image else None
+    except MyPage.DoesNotExist:
+        profile_image = None
     word = get_object_or_404(Word, word=word)
     wordUser = WordUser.objects.filter(user=request.user).filter(word=word)
     desc=word.description
@@ -130,7 +147,7 @@ def word_detail(request, word):
     # 해당 단어와 관련된 시(post) 가져오기
     poem = get_object_or_404(Poem, word=word).poem
     post_auth = get_object_or_404(PoemPost, poem__word=word, user=request.user)
-    post_rand = PoemPost.objects.latest('id')
+    user_post_comments = PostComment.objects.filter(post= post_auth).order_by('id')
     
     context = {
         'word': wordUser,
@@ -141,8 +158,8 @@ def word_detail(request, word):
         'allWords': WordUser.objects.filter(user=request.user).order_by('-id'),  # 사용자 단어 목록 다시 가져오기
         'date':date,
         'post_auth': post_auth,
-        'post_rand': post_rand,
-        'profile_image': user_profile.profile_image.url if user_profile.profile_image else None,
+        'user_post_comments':  user_post_comments,
+        'profile_image': profile_image,
     }
     
     return render(request, 'myVocabulary.html', context)
