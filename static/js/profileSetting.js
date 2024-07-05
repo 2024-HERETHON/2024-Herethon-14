@@ -70,10 +70,10 @@ document.addEventListener('DOMContentLoaded', function() {
     togglePasswordBtn.addEventListener('click', function() {
         if (passwordInput.type === 'password') {
             passwordInput.type = 'text';
-            togglePasswordBtnImg.src = 'images/eyeopen.svg';
+            togglePasswordBtnImg.src = '../img/eyeopen.svg';
         } else {
             passwordInput.type = 'password';
-            togglePasswordBtnImg.src = 'images/eyeclose.svg';
+            togglePasswordBtnImg.src = '../img/eyeclose.svg';
         }
     });
 

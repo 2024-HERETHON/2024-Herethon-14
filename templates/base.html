@@ -17,9 +17,9 @@
             <div class="nav-menu">
                 <ul class="nav-btn">
                     {% if user.is_authenticated %}
-                    <li><a class="home" href="{% url 'home' %}">홈</a></li>
-                    <li><a class="learn" href="{% url 'word:learn_word' %}">학습</a></li>                            
-                    <li><a class="wordlist" href="{% url 'word:voca' %}">단어장</a></li>
+                    <li><a class="home menu-text" href="{% url 'home' %}">홈</a></li>
+                    <li><a class="learn menu-text" href="{% url 'word:learn_word' %}">학습</a></li>                            
+                    <li><a class="wordlist menu-text" href="{% url 'word:voca' %}">단어장</a></li>
                     <li><button class="alarmBtn button"><img src="{% static 'img/alarm.svg' %}" alt="alarm"></button></li>
                     <li><button class="profileBtn button"><img src="{% static 'img/myPage.svg' %}" alt="mypage"></button></li>
                     {% endif %}
