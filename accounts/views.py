@@ -65,12 +65,14 @@ def mypageUpdate(request):
         mypage_form = MyPageForm(request.POST, request.FILES, instance=mypage_info)
         
         if user_form.is_valid() and mypage_form.is_valid():
-            user = user_form.save()
+            user = user_form.save(commit=False)
+            user.set_password(user.password)
             mypage_info = mypage_form.save(commit=False)
             mypage_info.user = user
             
             try:
                 mypage_info.save()
+                user.save()
                 update_session_auth_hash(request, user)  # 비밀번호 변경 후 세션 유지
                 return redirect('home')
             except IntegrityError:

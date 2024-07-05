@@ -1,4 +1,4 @@
-from django.forms import TextInput, EmailInput, NumberInput, PasswordInput,ClearableFileInput
+from django.forms import TextInput, EmailInput, NumberInput, PasswordInput,FileInput
 from django import forms
 from .models import CustomUser,MyPage
 
@@ -35,10 +35,10 @@ class UserForm(forms.ModelForm):
             }),
             'email': EmailInput(attrs={
                 'class': "input emailInput",
-                }),
-            'password': forms.PasswordInput(attrs={
+            }),
+            'password': PasswordInput(attrs={
                 'class': "input passwordInput",
-                },)
+                }),
         }
 
 class MyPageForm(forms.ModelForm):
@@ -46,9 +46,9 @@ class MyPageForm(forms.ModelForm):
         model=MyPage
         fields = ['profile_image']
         widgets = {
-            'profile_image': forms.ClearableFileInput(attrs={
+            'profile_image': FileInput(attrs={
                 'class': "profile_image",
                 'id':"profile_image",
-                'style': 'display:none',
+                'style': "display : none;",
                 },)
         }
