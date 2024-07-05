@@ -133,8 +133,8 @@ STATICFILES_DIRS = [
 ]
 
 # 미디어 파일
-MEDIA_URL = "/media/"
-MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
@@ -153,4 +153,4 @@ GPT_TOKEN =get_secret("GPT_TOKEN")
 
 
 # 사용자 인증 모델 설정 (users 앱의 모델)
-AUTH_USER_MODEL = 'accounts.User'
+AUTH_USER_MODEL = 'accounts.CustomUser'
