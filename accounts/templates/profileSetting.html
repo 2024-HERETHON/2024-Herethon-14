@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block static %}
+    <link rel='stylesheet' type='text/css' media='screen' href="{% static 'css/profileSetting.css' %}">
+{% endblock %}
+
+{% block content %}
+    <div class="main">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="text">
+                <p>프로필 수정</p>
+                <p>프로필 사진과 아이디는 모두에게 공개됩니다. </p>
+            </div>
+            <div class="box">
+                <p>사진</p>
+                <div class="profileImgBox">
+                    <div class="profileImg">
+                        {% if mypage_info.profile_image %}
+                            <img src="{{ mypage_info.profile_image.url }}" alt="Image">
+                        {% else %}
+                            <img src="{% static 'img/alarmImg.svg' %}" alt="Default Image">
+                        {% endif %}
+                    </div>
+                    <div class="buttonBox">
+                        {{ mypage_form.profile_image }}
+                        <label for="profile_image" class="uploadImgBtn">변경</button>
+                    </div>
+                </div>
+                <p>아이디</p>
+                {{ user_form.username }}
+                <p>연동 이메일</p>
+                {{ user_form.email }}
+                <p>비밀번호</p>
+                <div class="passwordDiv">
+                    {{ user_form.password }}
+                    <button class="togglePasswordBtn"><img src="{% static 'img/eyeclose.svg' %}" alt="showPassword"></button>
+                </div>
+            </div>
+            <div class="saveTab">
+                <button type="submit" class="saveBtn">변경사항 저장</button>
+            </div>
+        </form>
+    </div>
+{% endblock %}

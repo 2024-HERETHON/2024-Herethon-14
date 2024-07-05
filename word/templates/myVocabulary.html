@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% load static %}
+  
+{% block static %}
+
+    <link rel='stylesheet' type='text/css' media='screen' href="{% static 'css/myVocabulary.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
+{% endblock %}
+{% block content %}
+       <div class="main">
+            <div class="text">
+                <p>지금까지 열심히 학습한 단어들을 복습해봅시다</p>
+                <p> 🔥 단어는 보고 또 볼수록 익숙해진다는 사실! 잊지 마세요 </p>
+            </div>
+            <div class="dataDiv">
+                {% if message %}
+                    <p>{{ message }}</p>
+                {% else %}
+                <div class="wordDivs">
+                    {% for word in allWords %}
+                    <div class="box">
+                        <div class="wordDiv">
+                            <div class="wordText">
+                                <p>{{ word.word }}</p>
+                                <p>학습일: {{ date|date:"m/d" }}</p>
+                            </div>
+                            <img src="{% static 'img/arrow-right.svg' %}" alt="arrow">
+                        </div>
+                        <div class="linebox">
+                            <hr class="line">
+                        </div>
+                    </div>
+                    {% endfor %}
+                    
+                    
+                </div>
+                <div class="wordData">
+                    <div class="dataSection">
+                        <p class="dataTitle">{{ date|date:"m/d" }}의 단어</p>
+                        <div class="word">
+                            <p>💁‍♀️</p>
+                            <p>
+                                "{{ word.word }}"은/는 '{{ desc }}'라는/는 
+                                의미를 가진 한국어 표현입니다.<br>
+                                {{ exam }}
+                            </p>
+                            
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="dataSection">
+                        <p class="dataTitle">{{ date|date:"m/d" }}의 시</p>
+                        <div class="poem">
+                            <P>
+                                {{ poem }}
+                            </P>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="dataDiv">
+                        {{ post_auth }}
+                        {{ post_rand }}
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+            
+       </div>
+       <!--<script src="{% static 'js/myVocabulary.js'%}"></script>-->
+       {%endblock%}

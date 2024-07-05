@@ -1,28 +1,13 @@
+{% extends 'base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-    <title>오늘의 시</title>
+{% block static %}
     <link rel="stylesheet" href="{% static 'css/accounts.css' %}">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap');
     </style>
-</head>
-<body>
-    <nav>
-        <div class="container">
-            <img class="logo" src="{% static 'img/오늘의 시.svg'  %}" alt="logo" />
-            <div class="nav-menu">
-                <!-- <ul class="nav-btn">
-                    <li><a href="">홈</a></li>
-                    <li><a class="study" href="">학습</a></li>
-                    <li><a href="">단어장</a></li>
-                    <li><a href=""><img class="alarm" src="./assets/img/상단_아이콘.svg" alt="alarm"></a></li>
-                    <li><a href=""><img class="mypage" src="./assets/img/상단_아이콘 (1).svg" alt="mypage"></a></li>
-                </ul> -->
-            </div>
-        </div>
-    </nav>
+{% endblock %}
+{% block content %}
+
     <div class="wrap">
         <main>
             <img id="main-img" src="{% static 'img/login.svg' %}">
@@ -40,10 +25,10 @@
                         <input class="email" name="email" type="text" placeholder="E-MAIL" />
                             <hr>
                         <img id="lock" src="{% static 'img/lock.svg' %}"/>
-                        <input class="password" name="password1" type="text" placeholder="PASSWORD" />
+                        <input class="password" name="password1" type="password" placeholder="PASSWORD" />
                             <hr>
                             <img id="lock" src="{% static 'img/lock.svg' %}"/>
-                        <input class="password" name="password2" type="text" placeholder="PASSWORDCHECK" />
+                        <input class="password" name="password2" type="password" placeholder="PASSWORDCHECK" />
                             <hr>
                         <button type="submit"><p>SIGN UP</p></button>
                     </div>
@@ -51,6 +36,4 @@
             </div>
         </main>
     </div>
-    
-</body>
-</html>
+{%endblock%}

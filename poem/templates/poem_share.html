@@ -1,106 +1,165 @@
+{% extends 'base.html' %}
 {% load static %}
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-    <title>오늘의 시</title>
+{% block static %}
     <link rel="stylesheet" href="{% static 'css/poem_share.css' %}">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap');
     </style>
-</head>
-<body>
-    <nav>
-        <div class="container">
-            <img class="logo" src="{% static 'img/오늘의 시.svg'  %}" alt="logo" />
-            <div class="nav-menu">
-                <ul class="nav-btn">
-                    <li><a href="">홈</a></li>
-                    <li><a class="study" href="">학습</a></li>
-                    <li><a href="">단어장</a></li>
-                    <li><a href=""><img class="alarm" src="{% static 'img/상단_아이콘.svg' %}" alt="alarm"></a></li>
-                    <a href=""
-                ><img class="mypage" src="{% static 'img/mypage.svg' %}" alt="mypage"
-              /></a>
-                </ul>
-            </div>
-        </div>
-    </nav>
+{% endblock %}
+{% block content %}
     <div class="wrap">
         <main>
             <div class="introduce-message">
                 <p class="introduce-message1">오늘의 학습이 종료되었습니다<br>
                     다른 학습자들은 오늘의 시를 어떻게 감상했을 지 확인해볼까요?</p>
             </div>
+            <!-- 시 띄워주는 곳 -->
             <div class="poem-area">
                 <div class="poem-box">
-                    <div class="gpt-poem">{{ poem_post.poem }}</div>
-                </div>
-                <div class="line"></div>
-                        <!-- 댓글 샘플 -->
-                <div class="comment">
-                    <div class="comment-area">
-                        <div class="title">
-                            <div class="profile">
-                                <img src="{% static 'img/assets/img/Ellipse 14.svg' %}">     <!-- 프로필 이미지 -->
-                                <div class="username">{{ request.user.username }}</div>
-                                <div class="label">나</div>
+                    <div class="gpt-poem">{{ poem_post.poem.poem }}</div>
+            </div>
+            <div class="line"></div>
+                
+            <!-- 로그인한 사용자의 감상평 -->
+
+            <div class="comment">
+                    {% if user_post %}
+                        <div class="comment-area">
+                            <div class="title">
+                                <div class="profile">
+                                    <div class="profileImg">
+                                        {% if user_post.user.userImage %}
+                                            <img src="{{ user_post.user.userImage.url }}" alt="Image">
+                                        {% else %}
+                                            <img src="{% static 'img/alarmImg.svg' %}" alt="Default Image">
+                                        {% endif %}
+                                    </div>    <!-- 프로필 이미지 -->
+                                    <div class="username">{{ user_post.user.username }}</div>
+                                    <div class="label">나</div>
+                                </div>
+                                <div class="edit-box">
+                                    <img class="edit" src="{% static 'img/ellipsis-vertical-sharp.svg' %}">
+                                    <!-- edit 버튼 클릭했을 시  -->
+                                    <ul class="edit-list">
+                                        <li class="review-delete">삭제하기</li>
+                                    </ul>
+                                </div>
                             </div>
-                            <div class="edit-box">
-                                <img class="edit" src="{% static 'img/ellipsis-vertical-sharp.svg' %}">
-                                 <!-- edit 버튼 클릭했을 시  -->
-                                <ul class="edit-list">
-                                    <li class="review-delete">삭제하기</li>
-                                </ul>
-                            </div>
-                        </div>
-                             <!-- 감상평 -->
-                        <div class="poem-review">{{poem_post.post}}
-                        </div>
-                        <div class="date">05/25 09:58</div>
+                            <!-- 감상평 -->
+                            <div class="poem-review">{{ user_post.post }}</div>
+                            <div class="date">{{ user_post.write_time }}</div>
                             <!-- 댓글 -->
-                        <div class="reply">답글달기</div>
-                        <div class="reply-input-box">
-                            <img class="n" src="./assets/img/ㄴ.svg">
-                            <textarea type="text" class="reply-input" placeholder="답글을 입력하세요"></textarea> 
-                            <button class="reply-button">저장</button>
+                            <div class="reply">답글달기</div>
+                            <form method="POST" action="{% url 'poem:poem_detail' poem_post_id=poem_post.id %}" class="reply-input-box">
+                                {% csrf_token %}
+                                <img class="n" src="{% static 'img/ㄴ.svg' %}">
+                                <textarea type="text" name="comment_content" class="reply-input" placeholder="답글을 입력하세요"></textarea> 
+                                <input type="hidden" name="post_id" value="{{ user_post.id }}">
+                                <button class="reply-button" type="submit">저장</button>
+                            </form>
+
+                            <!-- 댓글 리스트 -->
+                            <div class="reply-list">
+                                {% if user_post_comments %}
+                                    {% for comment in user_post_comments %}
+                                    <div class="comment-area1">
+                                        <div class="title">
+                                            <div class="profile">
+                                                <img class="n" src="{% static 'img/ㄴ.svg' %}">
+                                                {% if comment.user.userImage %}
+                                                    <img src="{{ comment.user.userImage.url }}" alt="Image"> <!-- 프로필 이미지 -->
+                                                {% else %}
+                                                    <img src="{% static 'img/alarmImg.svg' %}" alt="Default Image">
+                                                {% endif %}
+                                                <div class="username">{{ comment.user.username }}</div>
+                                            </div>
+                                            <div class="edit-box">
+                                                <img class="edit" src="{% static 'img/ellipsis-vertical-sharp.svg' %}">
+                                                <!-- edit 버튼 클릭했을 시  -->
+                                                <ul class="edit-list">
+                                                    <li class="review-delete">삭제하기</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="poem-review">{{ comment.comment }}</div>
+                                        <div class="date">{{ comment.write_time }}</div>
+                                    </div>
+                                    {% endfor %}
+                                {% else %}
+                                    <p>댓글이 없습니다.</p>
+                                {% endif %}
+                            </div>
                         </div>
-
-                        <!-- 댓글 리스트 -->
-
-                        <div class="reply-list">
-                            <div class="comment-area1">
-                                <div class="title">
+                        <!-- 로그인한 사용자의 감상평 끝 -->
+                                
+                        <!-- 다른 사용자들의 감상평 리스트(상단 고정한거 아래에서 스크롤 되도록 해야함) -->
+                        {% for post in all_posts %}
+                            <div class="comment-area-else">
+                                <div class="title">                                
                                     <div class="profile">
-                                        <img class="n" src="./assets/img/ㄴ.svg">
-                                        <img src="./assets/img/Ellipse 14.svg">     <!-- 프로필 이미지 -->
-                                        <div class="username">나는 시가 조아</div>
-                                        <div class="label">나</div>
+                                        <div class="profileImg">
+                                            {% if post.user.userImage %}
+                                                <img src="{{ post.user.userImage.url }}" alt="Image">                                        
+                                            {% else %}
+                                                <img src="{% static 'img/alarmImg.svg' %}" alt="Default Image">
+                                            {% endif %}
+                                        </div>    <!-- 프로필 이미지 -->
+                                        <div class="username">{{ post.user.username }}</div>
                                     </div>
                                     <div class="edit-box">
-                                        <img class="edit" src="./assets/img/ellipsis-vertical-sharp.svg">
-                                         <!-- edit 버튼 클릭했을 시  -->
+                                        <img class="edit" src="{% static 'img/ellipsis-vertical-sharp.svg' %}">
+                                        <!-- edit 버튼 클릭했을 시  -->
                                         <ul class="edit-list">
                                             <li class="review-delete">삭제하기</li>
                                         </ul>
                                     </div>
                                 </div>
-                                     <!-- 감상평 -->
-                                <div class="poem-review">이 시는 철두철미하게 사는 삶의 가치와 중요성을 아름답게 묘사합니다.
-                                    작은 일에도 정성을 다하고 꾸준히 노력하는 자세가 결국 큰 결실을 맺게 한다는 메시지가 인상 깊습니다.
-                                    희망과 성실함의 조화를 느낄 수 있었습니다.
-                                </div>
-                                <div class="date">05/25 09:58</div>
-                                <div class="reply-list"></div>
+                                <!-- 감상평 -->
+                                <div class="poem-review">{{ post.post }}</div>
+                                <div class="date">{{ post.write_time }}</div>
+                                    <!-- 댓글 -->
+                                <div class="reply">답글달기</div>
+                                <form method="POST" action="{% url 'poem:poem_detail' poem_post_id=poem_post.id %}" class="reply-input-box">
+                                    {% csrf_token %}
+                                    <img class="n" src="{% static 'img/ㄴ.svg' %}">
+                                    <textarea type="text" name="comment_content" class="reply-input" placeholder="답글을 입력하세요"></textarea> 
+                                    <input type="hidden" name="post_id" value="{{ post.id }}">
+                                    <button class="reply-button" type="submit">저장</button>
+                                </form>
+                                <!-- 댓글 리스트 얘도 마찬가지로 다른 사용자들이 남긴 감상에 댓글이 있다면 보임 -->
+                                {% if post_comments|length %}
+                                    {% for comment in post_comments.post.id %}
+                                    <div class="comment-area1">
+                                        <div class="title">
+                                            <div class="profile">
+                                                <img class="n" src="{% static 'img/ㄴ.svg' %}">
+                                                {% if comment.user.userImage %}
+                                                    <img src="{{ comment.user.userImage.url }}" alt="Image"> <!-- 프로필 이미지 -->
+                                                {% else %}
+                                                    <img src="{% static 'img/alarmImg.svg' %}" alt="Default Image">
+                                                {% endif %}
+                                                <div class="username">{{ comment.user.username }}</div>        
+                                            </div>
+                                            <div class="edit-box">
+                                                <img class="edit" src="{% static 'img/ellipsis-vertical-sharp.svg' %}">
+                                                <!-- edit 버튼 클릭했을 시  -->
+                                                <ul class="edit-list">
+                                                    <li class="review-delete">삭제하기</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="poem-review">{{ comment.comment }}</div>
+                                        <div class="date">{{ comment.write_time }}</div>
+                                    </div>
+                                    {% endfor %}
+                                {% else %}
+                                    <p>댓글이 없습니다.</p>
+                                {% endif %}
                             </div>
+                            {% endfor %}
                         </div>
                     </div>
-                </div>
-            </div>
-        </main>
-    </div>
-    <script src="./poem_share.js"></script>
-</body>
-</html>
-
-
-
+                </main>
+        <script src="{%static 'js/poem_share.js' %}"></script>
+    </div>    
+{% endblock %}

@@ -122,17 +122,23 @@ nav {
     margin: 70px;
 }
 
+
+/* 로그인 한 사용자의 감상평 */
+
 .comment{
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 600px;
     height: 600px;
     margin: 0;
-    overflow: auto;
+    overflow-x: hidden;
+    overflow-y: auto;
+    margin-bottom: 10px;
 }
 
-.comment-area {
+.comment-area_auth {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -142,6 +148,7 @@ nav {
 
 .title {
     width: 600px;
+    height: 50px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -152,9 +159,14 @@ nav {
 .profile {
     display: flex;
     justify-content: flex-start;
+    align-items: top;
     margin-left: 0;
 }
 
+.profileImg {
+    width: 50px;
+    height: 50px;
+}
 .username {
     margin: 10px;
     font-size: 22px;
@@ -198,6 +210,8 @@ nav {
 }
 
 .poem-review {
+    width: 550px;
+    height: 100px;
     margin: 5px 0 5px 0;
     font-size: 20px;
     font-weight: 350;
@@ -210,7 +224,7 @@ nav {
 
 .reply {
     margin-left: 0;
-    margin-bottom: 10px;
+    margin-bottom: 30px;
     color: #747474;
     text-decoration: underline;
 }
@@ -233,7 +247,9 @@ nav {
 /* 댓글 리스트 */
 
 .reply-list {
-    display: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 500px;
 }
 
@@ -245,6 +261,13 @@ nav {
     width: 579px;
 }
 
+.comment-area-else {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 579px;
+}
 
 
 
