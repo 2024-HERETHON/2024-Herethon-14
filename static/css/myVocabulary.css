@@ -1,593 +1,37 @@
 * {
-    box-sizing: border-box;
-  }
-  
-  body {
-    width:1728px;
-    margin: 0;
-    padding: 0;
-    font-family: "Noto Sans KR", sans-serif;
-    .noto-sans-kr {
-      font-family: "Noto Sans KR", sans-serif;
-      font-optical-sizing: auto;
-      font-weight: 400;
-      font-style: normal;
-    }
-  
-    background: #f6f7fb;
-  }
-  .main {
-    margin-left: 164px;
-    margin-right: 164px;
-  }
-  
-  .container {
-    background: #fff;
-  }
-  
-  .nav {
-    width: 1728px;
-    height: 75px;
-    flex-shrink: 0;
-    border: 1px solid #f2f2f2;
-    background: #fff;
-  }
-  
-  .logo {
-    margin-top: 21px;
-    color: #f07a0c;
-    text-align: center;
-    font-family: "HSBomBaram 3.0";
-    font-size: 32px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    letter-spacing: -0.5px;
-    margin-left: 100px;
-    margin-bottom: 10px;
-  }
-
-  .button {
-    background: none;
-    border: none;
-    padding: 0;
-    font: inherit;
-    cursor: pointer;
-    color: #007bff; /* 버튼 텍스트 색상 */
-    text-decoration: underline; /* 텍스트에 밑줄 추가 */
-    display: inline-flex;
-    align-items: center;
-  }
- 
-  .button img {
-      pointer-events: none; 
-  }
-
-  .home {
-    color: #bbb;
-    text-align: center;
-    font-family: "Noto Sans KR";
-    font-size: 20px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 14px; /* 70% */
-    letter-spacing: -0.5px;
-  }
-  
-  .mypage {
-    margin-right: 100px;
-  }
-  
-  .learn {
-    color: #bbb;
-    text-align: center;
-    font-family: "Noto Sans KR";
-    font-size: 20px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 14px; /* 70% */
-    letter-spacing: -0.5px;
-  }
-  
-  .wordlist {
-    color: #f07a0c;
-    text-align: center;
-    font-family: "Noto Sans KR";
-    font-size: 20px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 14px; /* 70% */
-    letter-spacing: -0.5px;
-  }
-  
-  .nav-menu {
-    margin-top: 21px;
-    float: right;
-    margin-right: 70px;
-  }
-  
-  .nav-btn {
-    list-style-type: none;
-    margin: 0;
-  }
-  
-  ul.nav-btn > li {
-    float: left;
-    margin-left: 40px;
-    font-size: 20px;
-    font-weight: bold;
-  }
-  
-  nav::after {
-    content: "";
-    display: block;
-    clear: both;
-  }
-  
-  .nav-btn a{
-    text-decoration: none;
-    
-  }
-  .alarm-modal {
-    display:none;
-    max-height: 440px;
-    overflow-y: auto;
-    border-radius: 16px;
-    background: #FFF;
-    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.25);
-    position: absolute;
-    width: 390px;
-    padding: 16px;
-    z-index: 1000;
-    top: 88px; 
-    right: 88px;
-    -ms-overflow-style: none; /* 인터넷 익스플로러 */
-    scrollbar-width: none; /* 파이어폭스 */
-  }
-  .alarm-modal::-webkit-scrollbar {
-    display: none;
-  }
-  .alarm-content {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
-    overflow-y: auto;
-  }
-  .alarm-content p {
-    margin:0;
-    color: #000;
-    font-family: "Noto Sans KR";
-    font-size: 20px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
-    letter-spacing: -0.5px;
-  }
-  .alarm-content hr {
-    width: 358px;
-    border: none;
-    border-top: 1px solid #BBBBBB;
-    margin: 10px 0;
-  }
-  .alarmlist {
-    display: flex;
-    width: 100%;
-    height: 70px;
-    margin-bottom:10px;
-    align-items: center;
-
-  }
-  .alarm-img {
-    justify-content: center;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    overflow: hidden;
-    border: none;
-    margin-right: 16px;
-    flex-shrink: 0;
-  }
-
-  .alarm-img img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-  }
-
-  .alarm-text {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-  }
-  .alarm-text p:nth-child(1){
-    align-self: stretch;
-    color: #000;
-    font-family: "Noto Sans KR";
-    font-size: 20px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    letter-spacing: -0.5px;
-  }
-  .alarm-text p:nth-child(2){
-    align-self: stretch;
-    color: #979797;
-    font-family: "Noto Sans KR";
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    letter-spacing: -0.5px;
-  }
-
-  .profile-modal {
-    display:none;
-    position: absolute;
-    top: 88px; 
-    right: 29px; 
-    z-index: 1000;
-    background-color: #fff;
-    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.25);
-    border-radius: 16px;
-    width: 360px; 
-}
-.profile-header {
-    width: 360px;
-    height: 136px;
-    flex-shrink: 0;
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border-radius: 16px 16px 0px 0px;
-    background: rgba(240, 122, 12, 0.50);
-}
-.profile-image {
-    width: 125px;
-    height: 125px;
-    border-radius: 50%;
-    overflow: hidden;
-    margin-top: 117px;
-    margin-left: 117px;
-    border-radius: 125px;
-    border: 2px solid #FFF;
-    background: url(images/alarmImg.svg) lightgray 50% / cover no-repeat;
-}
-.profile-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-.profile-details {
-    text-align: center;
-    margin-top: 68px;
-}
-.profile-name {
-    color: #000;
-    text-align: center;
-    font-size: 24px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: normal;
-    letter-spacing: -0.5px;
-    margin:0;
-}
-.profile-email {
-    color: #000;
-    text-align: center;
-    font-size: 20px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    letter-spacing: -0.5px;
-    margin: 0;
-}
-.profile-content hr {
-    width: 360px;
-    border: none;
-    border-top: 1px solid #E6E6E6;
-    margin: 10px 0 20px 0;
-}
-.profile-actions {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    margin-bottom: 20px;
-}
-.action-button {
-    width: 200px;
-    padding: 10px 10px 10px 22px;
-    border: none;
-    background-color: transparent;
-    text-align: left;
-    cursor: pointer;
-    font-size: 16px;
-    display: flex;
-    align-items: center;
-    color: #000;
-    font-family: "Noto Sans KR";
-    font-size: 20px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    letter-spacing: -0.5px;
-}
-.action-button img {
-    width: 24px;
-    height: 24px;
-    flex-shrink: 0;
-    margin-right: 16px;
-}
-
-  .profile-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-  }
-
-  .profile-details {
-    text-align: center;
-    margin-top: 68px;
-  }
-
-  .profile-name {
-    color: #000;
-    text-align: center;
-    font-size: 24px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: normal;
-    letter-spacing: -0.5px;
-    margin:0;
-  }
-
-  .profile-email {
-    color: #000;
-    text-align: center;
-    font-size: 20px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    letter-spacing: -0.5px;
-    margin: 0;
-  }
-
-  .profile-content hr {
-    width: 360px;
-    border: none;
-    border-top: 1px solid #E6E6E6;
-    margin: 10px 0 20px 0;
-  }
-  .profile-actions {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    margin-bottom: 20px;
-  }
-  .action-button {
-    width: 200px;
-    padding: 10px 10px 10px 22px;
-    border: none;
-    background-color: transparent;
-    text-align: left;
-    cursor: pointer;
-    font-size: 16px;
-    display: flex;
-    align-items: center;
-    color: #000;
-    font-family: "Noto Sans KR";
-    font-size: 20px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    letter-spacing: -0.5px;
-  }
-  .action-button img {
-    width: 24px;
-    height: 24px;
-    flex-shrink: 0;
-    margin-right: 16px;
-  }
-  .text {
-    margin-top: 65px;
-  }
-  .text p:nth-child(1) {
-    margin-bottom:0px;
-    width: 350px;
-    color: #000;
-    font-size: 36px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    letter-spacing: -0.5px;
-  }
-  .text p:nth-child(2) {
-    margin-top:16px;
-    color: #000;
-    font-size: 20px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    letter-spacing: -0.5px;
-  }
-  .dataDiv {
-    display: flex;
-    margin-bottom: 50px;
-  }
-  .wordDivs {
-    padding-top: 20px;
-    padding-left:10px;
-    box-sizing: content-box; /* 패딩을 내부 컨텐츠에만 적용 */
-    width:645px;
-    margin-top: 27px;
-    max-height: 1627px;
-    overflow-y: scroll;
-    scrollbar-width: none; /* Firefox용 */  
-    -ms-overflow-style: none;  /* Internet Explorer용 */
-  }
-  .wordDivs::-webkit-scrollbar { /* Chrome, Safari, Opera용 */
-    display: none;
-  }
-  .box {
-    display: flex;
-    flex-direction: row;
-  }
-  .highlight {
-    box-shadow: 0px 0px 11.2px 0px rgba(240, 122, 12, 0.50);
-  }
-  .wordDiv {
-    background-image: url("../img/wordBackground.svg");
-    position: relative;
-    display:flex;
-    flex-direction: row;
-    width: 538px;
-    height: 120px;
-    flex-shrink: 0;
-    border-radius: 8px;
-    margin-bottom: 12px;
- }
- .wordDiv img{
-  width:28px;
-  height:32px;
-  position:absolute;
-  top:44px;
-  right:0px;
- }
- .linebox {
-    width:80px;
-    height:120px;
-    display: flex;
-    align-items: center; 
- }
- .line {
-    display: none;
-    width:80px;
-    border: 2px dashed #F07A0C;
- }
- .wordText {
-    position:absolute;
-    left: 31px;
-    color: #000;
-    text-align: left;
- }
-
- .wordText p:nth-child(1) {
-    height:38px;
-    margin-top: 23px;
-    font-size: 32px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
-    letter-spacing: -0.418px;
-    margin-bottom: 12px;
- }
-
- .wordText p:nth-chile(2) {
-    margin-top:0;
-    text-align: center;
-    font-size: 20px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    letter-spacing: -0.418px;
- }
-
- .wordData {
-    margin-top: 47px;
-    position: relative;
-    width: 782px;
-    flex-shrink: 0;
-    border-radius: 8px;
-    background: #FFF;
-    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.10);
- }
-
-.dataTitle {
-  width:200px;
-  color: #F07A0C;
-  text-align: left;
-  font-size: 24px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: normal;
-  letter-spacing: -0.5px;
-  margin-top:50px;
-  margin-left:50px;
-}
-
-.word{
-  width:680px;
-  margin-left: 51px;
-}
-.word p:nth-child(1) {
-  color: #000;
-  text-align: center;
-  font-family: "Noto Sans KR", sans-serif;
-  font-size: 36px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 1.2;
-  letter-spacing: -0.5px;
-  margin-bottom: 22px;
-}
-.word p:nth-child(2) {
-  color: #000;
-  text-align: center;
-  font-family: "Noto Sans KR", sans-serif;
-  font-size: 29px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 1.2;
-  letter-spacing: -0.5px;
-  margin-bottom: 31px;
-}
-.word p:nth-child(3) {
-  color: #000;
-  text-align: center;
-  font-family: "Noto Sans KR", sans-serif;
-  font-size: 30px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 1.2;
-  letter-spacing: -0.5px;
-  margin-bottom: 31px;
-}
-
-.poem {
-  width:680px;
-  margin-left: 51px;
-}
-.poem p {
-  white-space: pre-line;
-  color: #000;
-  font-family: "Noto Sans KR", sans-serif;
-  font-size: 30px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 1.2;
-  letter-spacing: -0.5px;
-}
-
-.wordData hr {
-  width: 680px;
-  border: none;
-  border-top: 1px solid #BBBBBB;
-  margin: 60px 0 50px 51px;
-}
-
-
-* {
-  margin: 0 auto;
-  padding: 0;
   box-sizing: border-box;
-  font-family: "Noto Sans KR", sans-serif;
-  font-weight: 300;
 }
 
-/* 헤더 */
+body {
+  width:1728px;
+  margin: 0;
+  padding: 0;
+  font-family: "Noto Sans KR", sans-serif;
+  .noto-sans-kr {
+    font-family: "Noto Sans KR", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+  }
 
+  background: #f6f7fb;
+}
+.main {
+  margin-left: 164px;
+  margin-right: 164px;
+}
 
+.container {
+  background: #fff;
+}
+
+.nav {
+  width: 1728px;
+  height: 75px;
+  flex-shrink: 0;
+  border: 1px solid #f2f2f2;
+  background: #fff;
+}
 
 .logo {
   margin-top: 21px;
@@ -603,499 +47,881 @@
   margin-bottom: 10px;
 }
 
-.nav-menu .nav-btn{
-  display: flex;
-  margin-right: 10px;
-  align-items: center; 
+.button {
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  cursor: pointer;
+  color: #007bff; /* 버튼 텍스트 색상 */
+  text-decoration: underline; /* 텍스트에 밑줄 추가 */
+  display: inline-flex;
+  align-items: center;
+}
+
+.button img {
+    pointer-events: none; 
+}
+
+.home {
+  color: #bbb;
+  text-align: center;
+  font-family: "Noto Sans KR";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 14px; /* 70% */
+  letter-spacing: -0.5px;
+}
+
+.mypage {
+  margin-right: 100px;
+}
+
+.learn {
+  color: #bbb;
+  text-align: center;
+  font-family: "Noto Sans KR";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 14px; /* 70% */
+  letter-spacing: -0.5px;
+}
+
+.wordlist {
+  color: #f07a0c;
+  text-align: center;
+  font-family: "Noto Sans KR";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 14px; /* 70% */
+  letter-spacing: -0.5px;
+}
+
+.nav-menu {
+  margin-top: 21px;
+  float: right;
+  margin-right: 70px;
 }
 
 .nav-btn {
-  display: flex;
-  list-style: none;
+  list-style-type: none;
+  margin: 0;
 }
 
-.nav-btn li a{
+ul.nav-btn > li {
   float: left;
+  margin-left: 40px;
+  font-size: 20px;
+  font-weight: bold;
 }
 
-.nav-btn li .learn {
-  color: #F07A0C;
+nav::after {
+  content: "";
+  display: block;
+  clear: both;
 }
-/* .nav-btn .study {
-  color: #F07A0C;
-} */
 
-.nav-btn li a {
-  font-family: "Noto Sans KR", sans-serif;
-  font-weight: 300;
+.nav-btn a{
+  text-decoration: none;
+  
+}
+/* 알람창 */
+.alarm-modal {
+  display:none;
+  max-height: 440px;
+  overflow-y: auto;
+  border-radius: 16px;
+  background: #FFF;
+  box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.25);
+  position: absolute;
+  width: 390px;
+  padding: 16px;
+  z-index: 1000;
+  top: 88px; 
+  right: 88px;
+  -ms-overflow-style: none; /* 인터넷 익스플로러 */
+  scrollbar-width: none; /* 파이어폭스 */
+}
+.alarm-modal::-webkit-scrollbar {
+  display: none;
+}
+.alarm-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  overflow-y: auto;
+}
+.alarm-content p {
+  margin:0;
+  color: #000;
+  font-family: "Noto Sans KR";
   font-size: 20px;
   font-style: normal;
-  text-decoration: none;
-  color: #BBB;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -0.5px;
 }
-
-/* 본문 */
-
-.wrap {
-  display: flex;
-  height: 1016px;
-  background: #F6F7FB;
-}
-
-.introduce-message1 {
-  margin-bottom: 0;
-  text-align: center;
-  font-size: 36px;
-  font-family: "Noto Sans KR", sans-serif;
-  font-weight: 400;
-  margin: 0;
-  margin-top: 65px;
-  margin-bottom: 42px;
-}
-
-/* 시 부분 */
-
-
-.poem-area {
-  display: flex;
-  justify-self: center;
-  align-items: center;
-  margin: 0;
-  padding: 0;
-  width: 1400px;
-  height: 664px;
-  border-radius: 8px;
-  box-shadow: 0px 0px 10px 0px #BBB;
-  background-color: white;
-}
-
-/* .poem-box {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 600px;
-  height: 600px;
-  margin: 0;
-  padding: 0;
-} */
-
-.poem-data {
-  font-family: "Noto Sans KR", sans-serif;
-  font-weight: 300;
-  font-size: 26px;
-}
-.gpt-poem {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-left: 59px;
-  width: 600px;
-  height: 600px;
-  font-size: 25px;
+.alarm-content hr {
+  width: 358px;
   border: none;
-  outline: none; 
-  resize: none; 
+  border-top: 1px solid #BBBBBB;
+  margin: 10px 0;
+}
+.alarmlist {
+  display: flex;
+  width: 100%;
+  height: 70px;
+  margin-bottom:10px;
+  align-items: center;
+
+}
+.alarm-img {
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: none;
+  margin-right: 16px;
+  flex-shrink: 0;
 }
 
+.alarm-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.alarm-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.alarm-text p:nth-child(1){
+  align-self: stretch;
+  color: #000;
+  font-family: "Noto Sans KR";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.5px;
+}
+.alarm-text p:nth-child(2){
+  align-self: stretch;
+  color: #979797;
+  font-family: "Noto Sans KR";
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.5px;
+}
+/* 알람창 끝 */
+
+/* 프로필 모달 */
+.profile-modal {
+  display:none;
+  position: absolute;
+  top: 88px; 
+  right: 29px; 
+  z-index: 1000;
+  background-color: #fff;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.25);
+  border-radius: 16px;
+  width: 360px; 
+}
+.profile-header {
+  width: 360px;
+  height: 136px;
+  flex-shrink: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 16px 16px 0px 0px;
+  background: rgba(240, 122, 12, 0.50);
+}
+.profile-image {
+  width: 125px;
+  height: 125px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-top: 117px;
+  margin-left: 117px;
+  border-radius: 125px;
+  border: 2px solid #FFF;
+  background: url(images/alarmImg.svg) lightgray 50% / cover no-repeat;
+}
+.profile-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.profile-details {
+  text-align: center;
+  margin-top: 68px;
+}
+.profile-name {
+  color: #000;
+  text-align: center;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  letter-spacing: -0.5px;
+  margin:0;
+}
+.profile-email {
+  color: #000;
+  text-align: center;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.5px;
+  margin: 0;
+}
+.profile-content hr {
+  width: 360px;
+  border: none;
+  border-top: 1px solid #E6E6E6;
+  margin: 10px 0 20px 0;
+}
+.profile-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+.action-button {
+  width: 200px;
+  padding: 10px 10px 10px 22px;
+  border: none;
+  background-color: transparent;
+  text-align: left;
+  cursor: pointer;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  color: #000;
+  font-family: "Noto Sans KR";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.5px;
+  text-decoration: none;
+  margin-left: 0;
+}
+.action-button a {
+  text-decoration: none;
+  color: #000;
+}
+.action-button img {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  margin-right: 16px;
+}
+/* 모달창 끝 */
+
+
+
+/* 열심히 학습한 단어를 복습해봅시다 부분 */ 
+/* .text p:nth-child(1)에 margin-left: 0; 적용 */
+.text {
+  margin-top: 65px;
+}
+.text p:nth-child(1) {
+  margin-bottom:0px;
+  margin-left: 0;
+  width: 350px;
+  color: #000;
+  font-size: 36px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.5px;
+}
+.text p:nth-child(2) {
+  margin-top:16px;
+  color: #000;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.5px;
+}
+.dataDiv {
+  display: flex;
+  margin-bottom: 50px;
+}
+.wordDivs {
+  padding-top: 20px;
+  padding-left:10px;
+  box-sizing: content-box; /* 패딩을 내부 컨텐츠에만 적용 */
+  width:645px;
+  margin-top: 27px;
+  max-height: 1627px;
+  overflow-y: scroll;
+  scrollbar-width: none; /* Firefox용 */  
+  -ms-overflow-style: none;  /* Internet Explorer용 */
+}
+.wordDivs::-webkit-scrollbar { /* Chrome, Safari, Opera용 */
+  display: none;
+}
+.box {
+  display: flex;
+  flex-direction: row;
+}
+.highlight {
+  box-shadow: 0px 0px 11.2px 0px rgba(240, 122, 12, 0.50);
+}
+.wordDiv {
+  background-image: url("../img/wordBackground.svg");
+  position: relative;
+  display:flex;
+  flex-direction: row;
+  width: 538px;
+  height: 120px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  margin-bottom: 12px;
+}
+.wordDiv img{
+width:28px;
+height:32px;
+position:absolute;
+top:44px;
+right:0px;
+}
+.linebox {
+  width:80px;
+  height:120px;
+  display: flex;
+  align-items: center; 
+}
 .line {
-  border: 1px solid #BBB;
-  width: 1px;
-  height: 553px;
-  margin-top: 50px;
-  margin: 70px;
+  display: none;
+  width:80px;
+  border: 2px dashed #F07A0C;
+}
+.wordText {
+  position:absolute;
+  left: 31px;
+  color: #000;
+  text-align: left;
+}
+
+.wordText p:nth-child(1) {
+  height:38px;
+  margin-top: 23px;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -0.418px;
+  margin-bottom: 12px;
+}
+
+.wordText p:nth-child(2) {
+  margin-top:0;
+  text-align: center;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.418px;
+}
+
+.wordData {
+  margin-top: 47px;
+  position: relative;
+  width: 782px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  background: #FFF;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.10);
+}
+
+.dataTitle {
+width:200px;
+color: #F07A0C;
+text-align: left;
+font-size: 24px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+letter-spacing: -0.5px;
+margin-top:50px;
+margin-left:50px;
+}
+
+.word{
+width:680px;
+margin-left: 51px;
+}
+.word p:nth-child(1) {
+color: #000;
+text-align: center;
+font-family: "Noto Sans KR", sans-serif;
+font-size: 36px;
+font-style: normal;
+font-weight: 400;
+line-height: 1.2;
+letter-spacing: -0.5px;
+margin-bottom: 22px;
+}
+.word p:nth-child(2) {
+color: #000;
+text-align: center;
+font-family: "Noto Sans KR", sans-serif;
+font-size: 29px;
+font-style: normal;
+font-weight: 400;
+line-height: 1.2;
+letter-spacing: -0.5px;
+margin-bottom: 31px;
+}
+.word p:nth-child(3) {
+color: #000;
+text-align: center;
+font-family: "Noto Sans KR", sans-serif;
+font-size: 30px;
+font-style: normal;
+font-weight: 400;
+line-height: 1.2;
+letter-spacing: -0.5px;
+margin-bottom: 31px;
+}
+
+.poem {
+width:680px;
+margin-left: 51px;
+}
+.poem p {
+white-space: pre-line;
+color: #000;
+font-family: "Noto Sans KR", sans-serif;
+font-size: 30px;
+font-style: normal;
+font-weight: 400;
+line-height: 1.2;
+letter-spacing: -0.5px;
+}
+
+.wordData hr {
+width: 680px;
+border: none;
+border-top: 1px solid #BBBBBB;
+margin: 60px 0 50px 51px;
+}
+
+
+* {
+margin: 0 auto;
+padding: 0;
+box-sizing: border-box;
+font-family: "Noto Sans KR", sans-serif;
+font-weight: 300;
 }
 
 
 /* 로그인 한 사용자의 감상평 */
 
 .comment{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 600px;
-  height: 600px;
-  margin: 0;
-  overflow-x: hidden;
-  overflow-y: auto;
-  margin-bottom: 10px;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+width: 600px;
+height: 600px;
+margin: 0;
+overflow-x: hidden;
+overflow-y: auto;
+margin-bottom: 10px;
 }
 
 .comment-area_auth {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  width: 579px;
+display: flex;
+justify-content: center;
+align-items: center;
+flex-direction: column;
+width: 579px;
 }
 
 .title {
-  width: 600px;
-  height: 50px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-left: 0;
-  margin-bottom: 5px;
+width: 600px;
+height: 50px;
+display: flex;
+justify-content: space-between;
+align-items: center;
+margin-left: 0;
+margin-bottom: 5px;
 }
 
 .profile {
-  display: flex;
-  justify-content: flex-start;
-  align-items: top;
-  margin-left: 0;
+display: flex;
+justify-content: flex-start;
+align-items: top;
+margin-left: 0;
 }
 
 .profileImg {
-  width: 50px;
-  height: 50px;
+width: 50px;
+height: 50px;
 }
 .username {
-  margin: 10px;
-  font-size: 22px;
-  font-weight: 600;
+margin: 10px;
+font-size: 22px;
+font-weight: 600;
 }
 
 .label {
-  width: 35px;
-  height: 30px;
-  margin-top: 11px;
-  border-radius: 18px;
-  background: #D1DDFF;    
-  display: flex;
-  font-weight: 600;
-  padding: 3.275px 13.099px;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 16.374px;
+width: 35px;
+height: 30px;
+margin-top: 11px;
+border-radius: 18px;
+background: #D1DDFF;    
+display: flex;
+font-weight: 600;
+padding: 3.275px 13.099px;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+gap: 16.374px;
 }
 .edit-box {
-  margin-right: 0;
+margin-right: 0;
 }
 
 /* edit 버튼 눌렀을 시 */
 
 .edit-list {
-  display: none;
-  list-style: none;
-  width: 100px;
-  height: 25px;
-  background-color: white;
-  position: absolute;
-  border-radius: 5px;
-  background: #FFF;
-  box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.25);
+display: none;
+list-style: none;
+width: 100px;
+height: 25px;
+background-color: white;
+position: absolute;
+border-radius: 5px;
+background: #FFF;
+box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.25);
 }
 
 .edit-list .review-delete {
-  margin-left: 20px;
+margin-left: 20px;
 }
 
 .poem-review {
-  width: 550px;
-  height: 100px;
-  margin: 5px 0 5px 0;
-  font-size: 20px;
-  font-weight: 350;
+width: 550px;
+height: 100px;
+margin: 5px 0 5px 0;
+font-size: 20px;
+font-weight: 350;
 }
 .date {
-  margin-left: 0;
-  margin-bottom: 10px;
-  color: #747474;
+margin-left: 0;
+margin-bottom: 10px;
+color: #747474;
 }
 
 .reply {
-  margin-left: 0;
-  margin-bottom: 30px;
-  color: #747474;
-  text-decoration: underline;
+margin-left: 0;
+margin-bottom: 30px;
+color: #747474;
+text-decoration: underline;
 }
 
 /* 댓글 입력 */
 
 .reply-input-box {
-  display: none;
+display: none;
 }
 
 .n {
-  margin-bottom: 15px;
-  margin-right: 3px;
+margin-bottom: 15px;
+margin-right: 3px;
 }
 
 .reply-input {
-  width: 500px;
+width: 500px;
 }
 
 /* 댓글 리스트 */
 
 .reply-list {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 500px;
+display: flex;
+justify-content: center;
+align-items: center;
+width: 500px;
 }
 
 .comment-area1 {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  width: 579px;
+display: flex;
+justify-content: center;
+align-items: center;
+flex-direction: column;
+width: 579px;
 }
 
 .comment-area-else {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  width: 579px;
+display: flex;
+justify-content: center;
+align-items: center;
+flex-direction: column;
+width: 579px;
 }* {
-  margin: 0 auto;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Noto Sans KR", sans-serif;
-  font-weight: 300;
+margin: 0 auto;
+padding: 0;
+box-sizing: border-box;
+font-family: "Noto Sans KR", sans-serif;
+font-weight: 300;
 }
 
 main {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  height: 1016px;
-  background-color: #F6F7FB;
+display: flex;
+flex-direction: column;
+width: 100%;
+height: 1016px;
+background-color: #F6F7FB;
 }
 
 
 .rquest {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+display: flex;
+justify-content: center;
+align-items: center;
 }
 .request-msg {
-  margin-bottom: 0;
-  text-align: center;
-  font-size: 36px;
-  font-family: "Noto Sans KR", sans-serif;
-  font-weight: 400;
-  margin: 0;
-  margin-top: 65px;
-  margin-bottom: 42px;
+margin-bottom: 0;
+text-align: center;
+font-size: 36px;
+font-family: "Noto Sans KR", sans-serif;
+font-weight: 400;
+margin: 0;
+margin-top: 65px;
+margin-bottom: 42px;
 }
 
 
 /* 메인 */
 
 section {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 1400px;
-  height: 664px;
-  border-radius: 8px;
-  box-shadow: 0px 0px 10px 0px #BBB;
-  background-color: white;
+display: flex;
+justify-content: center;
+align-items: center;
+width: 1400px;
+height: 664px;
+border-radius: 8px;
+box-shadow: 0px 0px 10px 0px #BBB;
+background-color: white;
 }
 
 .poem-data {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 600px;
-  height: 550px;
-  padding: 0;
+display: flex;
+justify-content: center;
+align-items: center;
+width: 600px;
+height: 550px;
+padding: 0;
 }
 
 .line {
-  border: 1px solid #BBB;
-  width: 1px;
-  height: 553px;
-  margin-top: 50px;
-  margin: 0px;
+border: 1px solid #BBB;
+width: 1px;
+height: 553px;
+margin-top: 50px;
+margin: 0px;
 }
 
 .review-container {
-  /* display: flex;
-  flex-direction: column; */
-  width: 600px;
+/* display: flex;
+flex-direction: column; */
+width: 600px;
 }
 
 /* 여기 중요하다!!!!! */
 .review-wrap {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  width: 600px;
-  max-height: 550px;
-  margin: 0;
-  overflow-x: hidden;
-  overflow-y: scroll;
+display: flex;
+flex-direction: column;
+justify-content: flex-start;
+align-items: center;
+width: 600px;
+max-height: 550px;
+margin: 0;
+overflow-x: hidden;
+overflow-y: scroll;
 }
 
 .user-review{
-  margin: auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column
+margin: auto;
+display: flex;
+justify-content: center;
+align-items: center;
+flex-direction: column
 }
 
 .user-profile {
-  width: 600px;
-  height: 50px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-left: 0;
-  margin-top: 10px;
-  margin-bottom: 5px;
+width: 600px;
+height: 50px;
+display: flex;
+justify-content: space-between;
+align-items: center;
+margin-left: 0;
+margin-top: 10px;
+margin-bottom: 5px;
 }
 .user-profile-left {
-  display: flex;
-  justify-content: flex-start;
-  margin-left: 0;
+display: flex;
+justify-content: flex-start;
+margin-left: 0;
 }
 .profile-img {
-  width: 50px;
-  height: 50px;
+width: 50px;
+height: 50px;
 }
 .user-name {
-  margin: 10px;
-  font-size: 22px;
-  font-weight: 600;
+margin: 10px;
+font-size: 22px;
+font-weight: 600;
 }
 .user-label {
-  width: 35px;
-  height: 30px;
-  margin-top: 8px;
-  border-radius: 18px;
-  background: #D1DDFF;    
-  display: flex;
-  font-weight: 600;
-  padding: 3.275px 13.099px;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 16.374px;
+width: 35px;
+height: 30px;
+margin-top: 8px;
+border-radius: 18px;
+background: #D1DDFF;    
+display: flex;
+font-weight: 600;
+padding: 3.275px 13.099px;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+gap: 16.374px;
 }
 .edit-btn {
-  margin-right: 0;
+margin-right: 0;
 }
 
 .review-box {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
 }
 .review {
-  width: 600px;
-  max-height: 100px;
-  margin: 5px 0 5px 0;
-  padding: 10px;
-  margin-bottom: 15px;
-  font-size: 20px;
-  font-weight: 350;
+width: 600px;
+max-height: 100px;
+margin: 5px 0 5px 0;
+padding: 10px;
+margin-bottom: 15px;
+font-size: 20px;
+font-weight: 350;
 }
 .date {
-  display: flex;
-  margin-left: 0;
-  margin-bottom: 10px;
-  color: #747474;
+display: flex;
+margin-left: 0;
+margin-bottom: 10px;
+color: #747474;
 }
 .reply-btn {
-  margin-left: 0;
-  margin-bottom: 30px;
-  color: #747474;
-  text-decoration: 0.05em underline  #747474;
+margin-left: 0;
+margin-bottom: 30px;
+color: #747474;
+text-decoration: 0.05em underline  #747474;
 }
 
 .replys {
-  margin: auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column
+margin: auto;
+display: flex;
+justify-content: center;
+align-items: center;
+flex-direction: column
 }
 .reply-input-container{
-  /* display: flex; 자바스크립트랑 충돌나서 display: flex;는 js에서 동작하게함 */
-  display: none;
-  width: 600px;
-  max-height: 200px;
-  padding: 15px 20px;
-  border-radius: 8px;
-  border: 1px solid #979797;
-  background: #FFF;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
-  gap: 10px;
-  margin-left: 0;
+/* display: flex; 자바스크립트랑 충돌나서 display: flex;는 js에서 동작하게함 */
+display: none;
+width: 600px;
+max-height: 200px;
+padding: 15px 20px;
+border-radius: 8px;
+border: 1px solid #979797;
+background: #FFF;
+flex-direction: column;
+justify-content: center;
+align-items: flex-start;
+gap: 10px;
+margin-left: 0;
 }
 .user-profile-2 {
-  display: flex;
-  justify-content: flex-start;
-  margin-left: 0;
+display: flex;
+justify-content: flex-start;
+margin-left: 0;
 }
 .profile-img-2 {
-  width: 40px;
-  height: 40px;
+width: 40px;
+height: 40px;
 }
 .user-name-2 {
-  margin: 10px;
-  font-size: 18px;
-  font-weight: 600;
+margin: 10px;
+font-size: 18px;
+font-weight: 600;
 }
 .reply-input{
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  width: 531px;
-  height: 164px;
-  padding: 10px;
-  font-size: 20px;
-  border-radius: 8px;
-  border: 1px solid #F07A0C;
-  background-color: #FFF;
+display: flex;
+flex-direction: column;
+align-items: flex-start;
+width: 531px;
+height: 164px;
+padding: 10px;
+font-size: 20px;
+border-radius: 8px;
+border: 1px solid #F07A0C;
+background-color: #FFF;
 }
 .reply-save {
-  display: flex;
-  padding: 8px 12px;
-  justify-content: flex-end;
-  align-items: center;
-  gap: 10px;
-  border-style: none;
-  font-size: 16px;
-  font-weight: 400;
-  margin-right: 0;
-  border-radius: 8px;
-  color: #FFF;
-  background: #F07A0C;
+display: flex;
+padding: 8px 12px;
+justify-content: flex-end;
+align-items: center;
+gap: 10px;
+border-style: none;
+font-size: 16px;
+font-weight: 400;
+margin-right: 0;
+border-radius: 8px;
+color: #FFF;
+background: #F07A0C;
 }
 
 .space-img {
-  margin-right: 5px;
+margin-right: 5px;
 }
 
 /* 추가된 css */
 
 .replys {
-  margin: auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column
+margin: auto;
+display: flex;
+justify-content: center;
+align-items: center;
+flex-direction: column
 }
 .reviews {
-  margin: auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column
+margin: auto;
+display: flex;
+justify-content: center;
+align-items: center;
+flex-direction: column
 }
 .reply-input{
-  height: 30px;
+height: 30px;
 }
 
 

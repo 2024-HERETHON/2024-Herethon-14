@@ -38,6 +38,7 @@ class UserForm(forms.ModelForm):
             }),
             'password': PasswordInput(attrs={
                 'class': "input passwordInput",
+                'value':'{{ request.user.password }}',
                 }),
         }
 

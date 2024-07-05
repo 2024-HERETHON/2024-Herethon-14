@@ -75,19 +75,17 @@ def poem_detail(request, poem_post_id):
 
     poem_post = get_object_or_404(PoemPost, id=poem_post_id)
     poem = poem_post.poem
-    
-    # 로그인한 사용자의 감상평을 별도로 가져옴
+    #로그인한 사용자의 감상평을 별도로 가져옴
     user_post = PoemPost.objects.filter(poem=poem, user=request.user).first()
-    
-    # 로그인한 사용자의 감상평을 제외한 나머지 감상평들을 가져옴
+    #로그인한 사용자의 감상평을 제외한 나머지 감상평들을 가져옴
     all_posts = PoemPost.objects.filter(poem=poem).exclude(user=request.user).order_by('id')
     
-    # 각 PoemPost에 대한 댓글들을 가져옴
+    #각 PoemPost에 대한 댓글들을 가져옴
     post_comments = {}
     for post in all_posts:
         post_comments[post.id] = PostComment.objects.filter(post=post).order_by('id')
 
-    # 로그인한 사용자의 감상평에 대한 댓글들을 가져옴
+    #로그인한 사용자의 감상평에 대한 댓글들을 가져옴
     user_post_comments = PostComment.objects.filter(post=user_post).order_by('id') if user_post else None
 
     if request.method == 'POST':
