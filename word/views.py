@@ -84,7 +84,6 @@ def home(request):
         user_profile = MyPage.objects.get(user=request.user)
         profile_image = user_profile.profile_image.url if user_profile.profile_image else None
     except MyPage.DoesNotExist:
-        user_profile = None
         profile_image = None
 
     word_obj = Word.objects.latest('id')
@@ -98,7 +97,7 @@ def learn_word(request):
         user_profile = MyPage.objects.get(user=request.user)
         profile_image = user_profile.profile_image.url if user_profile.profile_image else None
     except MyPage.DoesNotExist:
-        user_profile = None
+        
         profile_image = None
 
     word_obj = Word.objects.latest('id')
@@ -117,7 +116,7 @@ def voca(request):
         user_profile = MyPage.objects.get(user=request.user)
         profile_image = user_profile.profile_image.url if user_profile.profile_image else None
     except MyPage.DoesNotExist:
-        user_profile = None
+       
         profile_image = None
     try:
         word = WordUser.objects.filter(user=request.user).latest('id')

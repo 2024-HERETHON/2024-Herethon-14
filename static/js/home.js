@@ -1,5 +1,5 @@
-const messagebox = document.querySelector('.messagebox');
+const messagebox = document.querySelector(".messagebox");
 
 setTimeout(() => {
-    messagebox.style.display = 'none';
+  messagebox.style.display = "none";
 }, 2500);

@@ -1,39 +1,61 @@
-{% extends 'base.html' %}
-{% load static %}
-{% block static %}
-    <link rel="stylesheet" href="{% static 'css/accounts.css' %}">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap');
-    </style>
-{% endblock %}
-{% block content %}
+{% extends 'base.html' %} {% load static %} {% block static %}
+<link rel="stylesheet" href="{% static 'css/accounts.css' %}" />
 
-    <div class="wrap">
-        <main>
-            <img id="main-img" src="{% static 'img/login.svg' %}">
-            <div class="login">
-                <div class="introduce-message">
-                    <p>Create Account!</p>
-                </div>
-                <form class="account" action="{% url 'accounts:signup' %}" method="POST">
-                    {% csrf_token %}
-                    <div class="login-input">
-                        <img id="security" src="{% static 'img/security-user.svg' %}"/>
-                        <input class="id" name="username" type="text" placeholder="ID" />
-                            <hr>
-                        <img id="sms" src="{% static 'img/sms-tracking.svg' %}"/>
-                        <input class="email" name="email" type="text" placeholder="E-MAIL" />
-                            <hr>
-                        <img id="lock" src="{% static 'img/lock.svg' %}"/>
-                        <input class="password" name="password1" type="password" placeholder="PASSWORD" />
-                            <hr>
-                            <img id="lock" src="{% static 'img/lock.svg' %}"/>
-                        <input class="password" name="password2" type="password" placeholder="PASSWORDCHECK" />
-                            <hr>
-                        <button type="submit"><p>SIGN UP</p></button>
-                    </div>
-                </form>
-            </div>
-        </main>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap"
+  rel="stylesheet"
+/>
+<style>
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+    width: 100vw;
+    height: 100vh;
+    box-sizing: border-box;
+  }
+</style>
+{% endblock %} {% block content %}
+
+<div class="wrap">
+  <div>
+    <img class="main-img" src="{% static 'img/login.svg' %}" />
+  </div>
+
+  <div class="login">
+    <div class="introduce-message">
+      <p>Create Account!</p>
     </div>
+    <form class="account" action="{% url 'accounts:signup' %}" method="POST">
+      {% csrf_token %}
+      <div class="login-input">
+        <img id="security" src="{% static 'img/security-user.svg' %}" />
+        <input class="id" name="username" type="text" placeholder="ID" />
+        <hr />
+        <img id="sms" src="{% static 'img/sms-tracking.svg' %}" />
+        <input class="email" name="email" type="text" placeholder="E-MAIL" />
+        <hr />
+        <img id="lock" src="{% static 'img/lock.svg' %}" />
+        <input
+          class="password"
+          name="password1"
+          type="password"
+          placeholder="PASSWORD"
+        />
+        <hr />
+        <img id="lock" src="{% static 'img/lock.svg' %}" />
+        <input
+          class="password"
+          name="password2"
+          type="password"
+          placeholder="PASSWORDCHECK"
+        />
+        <hr />
+        <button type="submit"><p>SIGN UP</p></button>
+      </div>
+    </form>
+  </div>
+</div>
 {%endblock%}
