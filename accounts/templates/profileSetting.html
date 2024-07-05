@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block static %}
+    <link rel='stylesheet' type='text/css' media='screen' href="{% static 'css/profileSetting.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet" />
+{% endblock %}
+
+{% block content %}
+    <form class="form" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="main">
+            <div class="text">
+                <p>프로필 수정</p>
+                <p>프로필 사진과 아이디는 모두에게 공개됩니다. </p>
+            </div>
+            <div class="box">
+                <p>사진</p>
+                <div class="profileImgBox">
+                    <div class="profileImg">
+                        {% if mypage_info.profile_image %}
+                            <img class="profileImg-img" src="{{ mypage_info.profile_image.url }}" alt="Image">
+                        {% else %}
+                            <img class="profileImg-img" src="{% static 'img/alarmImg.svg' %}" alt="Default Image">
+                        {% endif %}
+                    </div>
+                    <!--{{ mypage_form.profile_image }}-->
+                    <div class="buttonBox">
+                        <label for="profile_image" class="uploadImgBtn">변경</label>
+                        <input type="file" id="profile_image" name="profile_image" style="display:none;" onchange="updateFileName()">
+                    </div>
+                    <p id="fileName"></p> <!-- Element to display the file name -->
+                </div>
+                <p>아이디</p>
+                {{ user_form.username }}
+                <p>연동 이메일</p>
+                {{ user_form.email }}
+                <p>비밀번호</p>
+                <div class="passwordDiv">
+                    {{ user_form.password }}
+                </div>
+            </div>
+        </div>
+        <div class="saveTab">
+            <button type="submit" class="saveBtn">변경사항 저장</button>
+        </div>
+    </form>
+
+    <script>
+        function updateFileName() {
+            var input = document.getElementById('profile_image');
+            var fileName = document.getElementById('fileName');
+            if (input.files.length > 0) {
+                fileName.textContent = input.files[0].name;
+            } else {
+                fileName.textContent = '';
+            }
+        }
+    </script>
+{% endblock %}

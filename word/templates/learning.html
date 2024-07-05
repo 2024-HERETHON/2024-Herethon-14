@@ -1,0 +1,52 @@
+{% extends "base.html" %} {% load static %} {% block static %}
+<link rel="stylesheet" href="{% static 'css/learning.css'  %}" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap"
+  rel="stylesheet"
+/>
+{% endblock %} {% block content %}
+
+<div class="hd">
+  <div>
+    <h1 class="hi">
+      {{ request.user.username }}님, 안녕하세요 !<br />오늘의 단어를
+      학습해볼까요?
+    </h1>
+    <h2 class="continue">🔥 {{ lday }}일째 학습중</h2>
+  </div>
+  <div class="step">
+    <div class="step1">
+      <img class="first" src="{% static 'img/step1-click.svg' %}" alt="step1" />
+      <p class="word">오늘의 단어</p>
+    </div>
+    <img class="line" src="{% static 'img/점선.svg' %}" alt="line" />
+    <div class="step2">
+      <img class="second" src="{% static 'img/step2-non.svg' %}" alt="step2" />
+      <p class="poem">오늘의 시</p>
+    </div>
+  </div>
+  <div class="content">
+    <div class="introduce">💁‍♀️</div>
+    <div class="meaning">
+      "{{ word }}"는 '{{ desc }}'는 의미를 가진 한국어 표현입니다.
+    </div>
+    <!--
+        <div class="similar">
+          <div class="equal">🟰</div>
+          <div class="synonym">
+            유의어로는 ‘철상철하', ‘철저히' 가 있습니다.
+          </div>
+        </div>
+        -->
+    <div class="instance">
+      <div class="pencil">✏️</div>
+      <div class="example">‘{{ exam }}’ 와 같이 사용됩니다.</div>
+    </div>
+    <a href="{% url 'poem:learn_poem' %}" class="go-btn">
+      <div class="go">‘{{ word }}’가 포함된 시 학습하러 가기</div>
+    </a>
+  </div>
+</div>
+{% endblock %}

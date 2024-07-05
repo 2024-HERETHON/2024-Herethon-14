@@ -1,0 +1,122 @@
+{% extends "base.html" %}
+{% load static %}
+  
+{% block static %}
+
+    <link rel='stylesheet' type='text/css' media='screen' href="{% static 'css/myVocabulary.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap" rel="stylesheet">
+{% endblock %}
+{% block content %}
+       <div class="main">
+            <div class="text">
+                <p>지금까지 열심히 학습한 단어들을 복습해봅시다</p>
+                <p> 🔥 단어는 보고 또 볼수록 익숙해진다는 사실! 잊지 마세요 </p>
+            </div>
+            <div class="dataDiv">
+                {% if message %}
+                    <p>{{ message }}</p>
+                {% else %}
+                <div class="wordDivs">
+                    {% for word in allWords %}
+                    <a href="{% url 'word:word_detail' word=word.word %}" class="box">
+                        <div class="wordDiv">
+                            <div class="wordText">
+                                <p>{{ word.word }}</p>
+                                <p>학습일: {{ date|date:"m/d" }}</p>
+                            </div>
+                            <img src="{% static 'img/arrow-right.svg' %}" alt="arrow">
+                        </div>
+                        <div class="linebox">
+                            <hr class="line">
+                        </div>
+                    </a>
+                    {% endfor %}
+                </div>
+
+
+                <div class="wordData">
+                    <div class="dataSection">
+                        <p class="dataTitle">{{ date|date:"m/d" }}의 단어</p>
+                        <div class="word">
+                            <p>💁‍♀️</p>
+                            <p>
+                                "{{ word_jin }}"은/는 '{{ desc }}'(이)라는 
+                                의미를 가진 한국어 표현입니다.<br>
+                                ✏️{{ exam }}
+                            </p>
+                            
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="dataSection">
+                        <p class="dataTitle">{{ date|date:"m/d" }}의 시</p>
+                        <div class="poem">
+                            <P>
+                                {{ poem }}
+                            </P>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="dataDiv">
+                        <article class="review-container">  <!-- 오버플로우 설정할 박스 -->
+                            <div class="review-wrap">    <!-- 사용자 리뷰, 다른 사람 리뷰를 묶어줌 -->
+                                <!-- 로그인한 사용자 감상 -->
+                                <article class="user-review">
+                                    <div class="user-profile">  <!-- 유저 닉네임 정보 (프로필사진 + 이름 + 유저라벨) -->
+                                        <div class="user-profile-left">
+                                            {% if post_auth.user.userImage %}
+                                                <img src="{{ post_auth.user.userImage.url }}" alt="Image">
+                                            {% else %}
+                                                <img src="{% static 'img/alarmImg.svg' %}" alt="Default Image">
+                                            {% endif %}
+                                            <div class="user-name">{{ post_auth.user.username }}</div>
+                                            <div class="user-label">나</div>
+                                        </div>
+                                        <!-- 오른쪽 수정 버튼 -->
+                                        <img class="edit-btn" src="{% static 'img/ellipsis-vertical-sharp.svg' %}" alt="example"/>
+                                    </div>
+                                    <!-- 리뷰 불러오는 박스 -->
+                                    <div class="review-box">
+                                        <div class="review">{{ post_auth.post }}</div>
+                                        <div class="date">{{ post_auth.write_time|date:"m/d" }}</div>
+                                         <!-- 댓글입력 btn -->
+                                        <div class="reply-btn">답글달기</div>
+                                    </div>
+                                <!-- 감상에 달린 댓글들 보여주는 파트 -->
+                                {% if user_post_comments %}
+                                <article class="replys">
+                                {% for comment in user_post_comments %}
+                                    <div class="user-profile">  <!-- 유저 닉네임 정보 (프로필사진 + 이름 + 유저라벨) -->
+                                        <div class="user-profile-left">
+                                            <img class="space-img" src="{% static 'img/ㄴ.svg' %}">
+                                                <!--<img class="profile-img" src="{% static 'img/Ellipse 14.svg' %}"alt="example"/>-->
+                                            {% if comment.user.userImage %}
+                                                <img class="profile-img" src="{{ comment.user.userImage.url }}" alt="Image"> <!-- 프로필 이미지 -->
+                                            {% else %}
+                                                <img class="profile-img" src="{% static 'img/alarmImg.svg' %}" alt="Default Image">
+                                            {% endif %}
+                                            <div class="user-name">{{ comment.user.username }}</div>
+                                            <div class="user-label">나</div>
+                                        </div>
+                                        <!-- 오른쪽 수정 버튼 -->
+                                        <img class="edit-btn" src="{% static 'img/ellipsis-vertical-sharp.svg' %}" alt="example"/>
+                                    </div>
+                                    <!-- 댓글내용 -->
+                                    <div class="review-box">
+                                        <div class="review">{{ comment.comment }}</div>
+                                        <div class="date">{{ comment.write_time|date:"m/d" }}</div>
+                                    </div>
+                                    {% endfor %}
+                                </article>
+                                {% endif %}   
+                            </div>
+                    </article>
+                </div>
+                {% endif %}   
+            </div>
+        </div>
+            
+       <!--<script src="{% static 'js/myVocabulary.js'%}"></script>-->
+       {%endblock%}

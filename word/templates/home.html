@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% load static %}
+
+
+  
+{% block static %}
+  <link rel="stylesheet" href="{% static 'css/home.css'  %}" />
+  <!--이 곳에 static에 해당하는 코드 (css파일 연결 등) 작성-->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap"
+    rel="stylesheet"
+  />
+{% endblock %}
+{% block content %}
+
+{% if messages %}
+<div class="messagebox">
+  <ul class="messages">
+      {% for message in messages %}
+          <li{% if message.tags %} class="{{ message.tags }} message-content"{% endif %}>{{ message }}</li>
+      {% endfor %}
+  </ul>
+</div>
+{% endif %}
+
+    <div class="hd">
+      <div>
+        <h1 class="hi">
+            {{ request.user.username }}님, 안녕하세요 ! <br />오늘의 단어를 학습해볼까요?
+        </h1>
+        <h2 class="continue">🔥 {{ lday }}일째 학습중</h2>
+      </div>
+      <div class="sec">
+        <div class="learning">
+          <div class="intro1">오늘의 학습</div>
+          <div class="word-box">
+            <div class="word-title">{{ word }}</div>
+            <a href="{% url 'word:learn_word' %}" class="learning-btn">
+              <div class="go-learning">
+                ‘{{ word }}’가 포함된 시 학습하러 가기
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="word">
+          <div class="intro2">내 단어장</div>
+          <div>
+            {% for word in allWords %}
+                <a href="{% url 'word:word_detail' word=word.word %}" class="word-link1"
+                ><img
+                    class="word1"
+                    src="{% static 'img/단어장 배경.svg' %}"
+                    alt="new-word" />
+                <div class="name">{{ word.word }}</div>
+                <div class="date">학습일: {{ word.writeTime|date:"m/d" }}</div>
+                <img class="go" src="{% static 'img/arrow-right.svg' %}" alt="arrow"
+                /></a>
+            {% endfor %}
+          </div>
+          <div>
+         
+          <a href="{% url 'word:voca' %}"><div class="go-word">전체보기</div></a>
+          
+        </div>
+      </div>
+    </div>
+    <script src="{% static 'js/home.js'%}"></script>
+{% endblock %}
+
+

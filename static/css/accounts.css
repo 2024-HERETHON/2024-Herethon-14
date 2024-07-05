@@ -1,0 +1,138 @@
+* {
+  margin: 0 auto;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Noto Sans KR", sans-serif;
+  font-weight: 300;
+}
+
+.wrap {
+  display: flex;
+  /* width: 1728px; */
+  /* height: px;  */
+  background: #f6f7fb;
+}
+
+nav {
+  margin-top: 0;
+  background-color: white;
+  width: 100%;
+  height: 75px;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  display: flex;
+  margin-top: 20px;
+  margin-left: 24px;
+}
+
+.nav-menu {
+  display: flex;
+  margin-right: 10px;
+  align-items: center;
+  margin: 20px;
+}
+
+/* .nav-btn {
+    display: flex;
+    list-style: none;
+}
+
+.nav-btn li {
+    float: left;
+    margin: 1px;
+    margin-left: 40px;
+}
+
+.nav-btn .study {
+    color: #F07A0C;
+}
+
+.nav-btn  a {
+    font-family: "Noto Sans KR", sans-serif;
+    font-weight: 300;
+    font-size: 20px;
+    font-style: normal;
+    text-decoration: none;
+    color: #BBB;
+} */
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.main-img {
+  float: left;
+  width: 864px;
+  height: 945px;
+  flex-shrink: 0;
+}
+
+.login {
+  width: 864px;
+  margin-top: 60px;
+}
+
+.introduce-message p {
+  font-size: 48px;
+  font-family: "Noto Sans KR", sans-serif;
+  font-weight: 500;
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.account {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#security,
+#sms,
+#lock {
+  position: absolute;
+  transform: translateY(20px);
+}
+
+.input {
+  position: relative;
+}
+
+.login-input input {
+  display: flex;
+  flex-direction: column;
+  margin-right: 0;
+  width: 525px;
+  height: 90px;
+  font-size: 36px;
+  border: none;
+  background-color: #f6f7fb;
+}
+
+button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 72px;
+  width: 605px;
+  height: 62px;
+  border-radius: 40px;
+  border: 1px solid #f07a0c;
+  background: #f07a0c;
+  color: white;
+  font-size: 30px;
+}
+
+button p {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

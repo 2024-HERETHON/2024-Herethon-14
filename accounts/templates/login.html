@@ -1,0 +1,52 @@
+{% extends 'base.html' %} {% load static %} {% block static %}
+
+<link rel="stylesheet" href="{% static 'css/login.css' %}" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap"
+  rel="stylesheet"
+/>
+{% endblock %} {% block content %}
+<div class="big-box">
+  <div>
+    <img
+      class="today_poem"
+      src="{% static 'img/login-image.svg'  %}"
+      alt="logo"
+    />
+  </div>
+
+  <div>
+    <div class="welcome">Welcome Back !</div>
+    <form class="login" action="{% url 'accounts:login' %}" method="POST">
+      {% csrf_token %}
+      <div class="identification">
+        <img class="id" src="{% static 'img/id.svg' %}" alt="ID" />
+        <input class="input_id" name="username" type="text" placeholder="ID" />
+      </div>
+      <img class="line" src="{% static 'img/line_login.svg' %}" alt="line" />
+      <div class="password">
+        <img class="pw" src="{% static 'img/password.svg' %}" alt="pw" />
+        <input
+          class="input_pw"
+          name="password"
+          type="password"
+          placeholder="PASSWORD"
+        />
+      </div>
+      <img class="line" src="{% static 'img/line_login.svg' %}" alt="line" />
+
+      <button class="go-login" type="submit">
+        <div class="click">SIGN IN</div>
+      </button>
+    </form>
+    <div class="join">
+      <a class="go-join" href="{% url 'accounts:signup' %}">No account?</a>
+    </div>
+  </div>
+</div>
+{%endblock%}
+
+<!-- hahee -->
