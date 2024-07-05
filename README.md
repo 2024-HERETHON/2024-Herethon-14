@@ -2,7 +2,7 @@
 
 ## 프로젝트 이름
 
-<img src="./static/img/logo.svg">
+<img src="./static/img/logo.svg" width="100%" height="100px">
 
 ## 프로젝트 소개
 
@@ -18,7 +18,7 @@
 
 ## key function
 
-<img src="./static/img/logo.svg" width="100%" height="100px">
+<img src="./static/img/keyfunction.svg">
 
 ## 기술 스택
 
