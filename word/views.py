@@ -117,7 +117,7 @@ def word_detail(request, word):
     date=wordUser[0].writeTime
     
     # 해당 단어를 학습한 사용자들의 목록 가져오기
-    allWords = WordUser.objects.filter(user=request.user).order_by('-id')
+    #allWords = WordUser.objects.filter(user=request.user).order_by('-id')
     
     # 해당 단어와 관련된 시(post) 가져오기
     poem = get_object_or_404(Poem, word=word).poem
@@ -126,10 +126,11 @@ def word_detail(request, word):
     
     context = {
         'word': wordUser,
+        'word_jin':word.word,
         'desc': desc,
         'exam': exam,
         'poem': poem,
-        'allWords':allWords,
+        'allWords': WordUser.objects.filter(user=request.user).order_by('-id'),  # 사용자 단어 목록 다시 가져오기
         'date':date,
         'post_auth': post_auth,
         'post_rand': post_rand,

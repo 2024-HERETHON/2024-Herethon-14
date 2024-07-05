@@ -177,3 +177,6 @@ secret.json
 #.idea/
 
 # End of https://www.toptal.com/developers/gitignore/api/django
+accounts/migrations/*
+poem/migrations/*
+word/migrations/*
