@@ -38,6 +38,7 @@
                                 {% else %}
                                     <img src="{% static 'img/alarmImg.svg' %}" alt="Default Image">
                                 {% endif %}
+                                <div class="user-name">{{ user_post.user.username }}</div>
                                 <div class="user-label">나</div>
                             </div>
                             <!-- 오른쪽 수정 버튼 -->
@@ -61,10 +62,11 @@
                                 {% else %}
                                     <img class="profile-img-2" src="{% static 'img/alarmImg.svg' %}" alt="Default Image">
                                 {% endif %}
-                                <div class="user-label">나</div>
+                                
                                 <div class="user-name-2">{{ user_post.user.username }}</div>
+                                <div class="user-label">나</div>
                             </div>
-                            <textarea class="reply-input" placeholder="답글을 입력하세요"></textarea>
+                            <textarea class="reply-input" name="comment_content" placeholder="답글을 입력하세요"></textarea>
                             <input type="hidden" name="post_id" value="{{ user_post.id }}">    
                             <button type="submit" class="reply-save">등록</button>
                         </div>
@@ -130,14 +132,25 @@
                                 </div>
         
                                 <!-- 댓글 input 창  -->
+                                <form method="POST" action="{% url 'poem:poem_detail' poem_post_id=poem_post.id %}">
+                                    {% csrf_token %}
                                 <div class="reply-input-container">
                                     <div class="user-profile-2">
-                                        <img class="profile-img-2" src="{% static 'img/Ellipse 14.svg' %}" alt="example"/>
-                                        <div class="user-name-2">시가 너무 조아</div>
+                                        {% if user_post.user.userImage %}
+                                            <img class="profile-img-2" src="{{ post.user.userImage.url }}" alt="Image">
+                                        {% else %}
+                                            <img class="profile-img-2" src="{% static 'img/alarmImg.svg' %}" alt="Default Image">
+                                        {% endif %}
+                                        
+                                        <div class="user-name-2">{{ request.user.username }}</div>
+                                        <div class="user-label">나</div>
                                     </div>
-                                    <textarea class="reply-input" placeholder="답글을 입력하세요"></textarea>
-                                    <button class="reply-save">등록</button>
+                                    <textarea class="reply-input" name="comment_content" placeholder="답글을 입력하세요"></textarea>
+                                    <input type="hidden" name="post_id" value="{{ user_post.id }}">    
+                                    <button type="submit" class="reply-save">등록</button>
                                 </div>
+                            </form> 
+                                
         
         
                                         <!-- 감상에 달린 댓글들 보여주는 파트 -->
@@ -167,7 +180,7 @@
                                         {% endif %}
                             </article>
                             {% endfor %}
-                            <!— 여기까지 다른사용자꺼 감상 파트 끝 —>
+                            
                             </div>
                 </div>
             </article>

@@ -43,19 +43,9 @@ def login(request):
 def logout(request):
     auth.logout(request)
     return redirect('/')
-'''
-@login_required
-def mypage(request):
-    user = request.user
-    mypage_info = MyPage.objects.filter(user=user).first()
-    if mypage_info:
-        #값 존재할때
-        profile_image_message = "이미지를 추가해보세요" if not mypage_info.profile_image else None
-    else:
-        #존재 안할때
-        profile_image_message = "이미지를 추가해보세요"
-    return render(request, 'mypage.html', {'mypage_info': mypage_info ,'profile_image_message': profile_image_message})
-'''
+
+
+
 def mypageUpdate(request):
     user = request.user
     mypage_info = MyPage.objects.filter(user=user).first()

@@ -5,6 +5,7 @@ import openai
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
 openai.api_key = settings.GPT_TOKEN
+from accounts.models import MyPage
 
 def get_latest_word():
     word_obj = Word.objects.latest('id')
@@ -41,6 +42,10 @@ def generate_and_save_poem():
     
 @login_required
 def learn_poem(request):
+    user_profile = MyPage.objects.get(user=request.user)
+ 
+    profile_image= user_profile.profile_image.url if user_profile.profile_image else None
+    
     count_lday = WordUser.objects.filter(user=request.user).count()
 
     if request.method == 'POST':
@@ -55,10 +60,12 @@ def learn_poem(request):
             return redirect('poem:poem_detail', poem_post_id=poem_post.id)
         
     poem_obj = Poem.objects.latest('id')
-    return render(request, 'poem_write.html', {'poem_obj': poem_obj, 'lday':count_lday })
+    return render(request, 'poem_write.html', {'poem_obj': poem_obj, 'lday':count_lday , 'profile_image':profile_image[0]})
 
 
 def poem_detail(request, poem_post_id):
+    user_profile = MyPage.objects.get(user=request.user)
+
     poem_post = get_object_or_404(PoemPost, id=poem_post_id)
     poem = poem_post.poem
     
@@ -90,4 +97,5 @@ def poem_detail(request, poem_post_id):
         'user_post_comments': user_post_comments,
         'all_posts': all_posts,
         'post_comments': post_comments,
+        'profile_image': user_profile.profile_image.url[0] if user_profile.profile_image else None,
     })

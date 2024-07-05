@@ -73,7 +73,11 @@
         <div class="profile-content">
             <div class="profile-header">
                 <div class="profile-image">
+                    {% if profile_image %}
+                    <img class="profile-img" src="{{ profile_image }}" alt="Image">
+                    {% else %}
                     <img src="{% static 'img/alarmImg.svg' %}" alt="Profile Image">
+                    {% endif %}
                 </div>
             </div>
             <div class="profile-details">
