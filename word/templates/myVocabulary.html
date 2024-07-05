@@ -33,9 +33,9 @@
                         </div>
                     </a>
                     {% endfor %}
-                    
-                    
                 </div>
+
+
                 <div class="wordData">
                     <div class="dataSection">
                         <p class="dataTitle">{{ date|date:"m/d" }}의 단어</p>
@@ -44,7 +44,7 @@
                             <p>
                                 "{{ word_jin }}"은/는 '{{ desc }}'라는/는 
                                 의미를 가진 한국어 표현입니다.<br>
-                                {{ exam }}
+                                ✏️{{ exam }}
                             </p>
                             
                         </div>
@@ -60,13 +60,63 @@
                     </div>
                     <hr>
                     <div class="dataDiv">
-                        {{ post_auth }}
-                        {{ post_rand }}
-                    </div>
+                        <article class="review-container">  <!-- 오버플로우 설정할 박스 -->
+                            <div class="review-wrap">    <!-- 사용자 리뷰, 다른 사람 리뷰를 묶어줌 -->
+                                <!-- 로그인한 사용자 감상 -->
+                                <article class="user-review">
+                                    <div class="user-profile">  <!-- 유저 닉네임 정보 (프로필사진 + 이름 + 유저라벨) -->
+                                        <div class="user-profile-left">
+                                            {% if post_auth.user.userImage %}
+                                                <img src="{{ post_auth.user.userImage.url }}" alt="Image">
+                                            {% else %}
+                                                <img src="{% static 'img/alarmImg.svg' %}" alt="Default Image">
+                                            {% endif %}
+                                            <div class="user-name">{{ post_auth.user.username }}</div>
+                                            <div class="user-label">나</div>
+                                        </div>
+                                        <!-- 오른쪽 수정 버튼 -->
+                                        <img class="edit-btn" src="{% static 'img/ellipsis-vertical-sharp.svg' %}" alt="example"/>
+                                    </div>
+                                    <!-- 리뷰 불러오는 박스 -->
+                                    <div class="review-box">
+                                        <div class="review">{{ post_auth.post }}</div>
+                                        <div class="date">{{ post_auth.write_time|date:"m/d" }}</div>
+                                         <!-- 댓글입력 btn -->
+                                        <div class="reply-btn">답글달기</div>
+                                    </div>
+                                <!-- 감상에 달린 댓글들 보여주는 파트 -->
+                                {% if user_post_comments %}
+                                <article class="replys">
+                                {% for comment in user_post_comments %}
+                                    <div class="user-profile">  <!-- 유저 닉네임 정보 (프로필사진 + 이름 + 유저라벨) -->
+                                        <div class="user-profile-left">
+                                            <img class="space-img" src="{% static 'img/ㄴ.svg' %}">
+                                                <!--<img class="profile-img" src="{% static 'img/Ellipse 14.svg' %}"alt="example"/>-->
+                                            {% if comment.user.userImage %}
+                                                <img class="profile-img" src="{{ comment.user.userImage.url }}" alt="Image"> <!-- 프로필 이미지 -->
+                                            {% else %}
+                                                <img class="profile-img" src="{% static 'img/alarmImg.svg' %}" alt="Default Image">
+                                            {% endif %}
+                                            <div class="user-name">{{ comment.user.username }}</div>
+                                            <div class="user-label">나</div>
+                                        </div>
+                                        <!-- 오른쪽 수정 버튼 -->
+                                        <img class="edit-btn" src="{% static 'img/ellipsis-vertical-sharp.svg' %}" alt="example"/>
+                                    </div>
+                                    <!-- 댓글내용 -->
+                                    <div class="review-box">
+                                        <div class="review">{{ comment.comment }}</div>
+                                        <div class="date">{{ comment.write_time|date:"m/d" }}</div>
+                                    </div>
+                                    {% endfor %}
+                                </article>
+                                {% endif %}   
+                            </div>
+                    </article>
                 </div>
-                {% endif %}
+                {% endif %}   
             </div>
+        </div>
             
-       </div>
        <!--<script src="{% static 'js/myVocabulary.js'%}"></script>-->
        {%endblock%}
