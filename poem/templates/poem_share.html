@@ -2,9 +2,11 @@
 {% load static %}
 {% block static %}
     <link rel="stylesheet" href="{% static 'css/poem_share.css' %}">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap');
-    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+  href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap"
+  rel="stylesheet"/>
 {% endblock %}
 {% block content %}
     <!-- <nav> 실제페이지에서는 네비게이션 이 위치 </nav> -->
@@ -34,7 +36,7 @@
                         <div class="user-profile">  <!-- 유저 닉네임 정보 (프로필사진 + 이름 + 유저라벨) -->
                             <div class="user-profile-left">
                                 {% if user_post.user.userImage %}
-                                        <img src="{{ user_post.user.userImage.url }}" alt="Image">
+                                    <img src="{{ user_post.user.userImage.url }}" alt="Image">
                                 {% else %}
                                     <img src="{% static 'img/alarmImg.svg' %}" alt="Default Image">
                                 {% endif %}

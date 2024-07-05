@@ -22,15 +22,23 @@ nav {
 }
 
 .logo {
-    display: flex;
-    margin-left: 24px;
+    margin-top: 21px;
+    color: #f07a0c;
+    text-align: center;
+    font-family: "HSBomBaram 3.0";
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -0.5px;
+    margin-left: 100px;
+    margin-bottom: 10px;
 }
 
-.nav-menu {
+.nav-menu .nav-btn{
     display: flex;
     margin-right: 10px;
     align-items: center; 
-    margin: 20px;
 }
 
 .nav-btn {
@@ -38,17 +46,18 @@ nav {
     list-style: none;
 }
 
-.nav-btn li {
+.nav-btn li a{
     float: left;
-    margin: 1px;
-    margin-left: 40px;
 }
 
-.nav-btn .study {
+.nav-btn li .learn {
     color: #F07A0C;
 }
+/* .nav-btn .study {
+    color: #F07A0C;
+} */
 
-.nav-btn  a {
+.nav-btn li a {
     font-family: "Noto Sans KR", sans-serif;
     font-weight: 300;
     font-size: 20px;
@@ -78,6 +87,7 @@ nav {
 
 /* 시 부분 */
 
+
 .poem-area {
     display: flex;
     justify-self: center;
@@ -91,7 +101,7 @@ nav {
     background-color: white;
 }
 
-.poem-box {
+/* .poem-box {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -99,8 +109,13 @@ nav {
     height: 600px;
     margin: 0;
     padding: 0;
-}
+} */
 
+.poem-data {
+    font-family: "Noto Sans KR", sans-serif;
+    font-weight: 300;
+    font-size: 26px;
+}
 .gpt-poem {
     display: flex;
     justify-content: center;
