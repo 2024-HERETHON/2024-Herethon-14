@@ -13,15 +13,18 @@
     rel="stylesheet"
   />
 {% endblock %}
-
 {% block content %}
+
 {% if messages %}
-    <ul class="messages">
-        {% for message in messages %}
-            <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-        {% endfor %}
-    </ul>
+<div class="messagebox">
+  <ul class="messages">
+      {% for message in messages %}
+          <li{% if message.tags %} class="{{ message.tags }} message-content"{% endif %}>{{ message }}</li>
+      {% endfor %}
+  </ul>
+</div>
 {% endif %}
+
     <div class="hd">
       <div>
         <h1 class="hi">
@@ -63,6 +66,7 @@
         </div>
       </div>
     </div>
+    <script src="{% static 'js/home.js'%}"></script>
 {% endblock %}
 
 
