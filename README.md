@@ -52,17 +52,17 @@
 
   <tr width="100%">
   <td  align="center"> <p>
-      <img src="./static/img/haeun.png" width="50px",height="50px"/></p></td>
+      <img src="./static/img/haeun.png" width="100px",height="100px"/></p></td>
   <td  align="center"> <p>
-      <img src="./static/img/chosubin.jpg" width="50px",height="50px"/></p></td>
+      <img src="./static/img/chosubin.jpg" width="100px",height="100px"/></p></td>
   <td  align="center"> <p>
-      <img src="./static/img/goheeju.jpg" width="50px",height="50px"/></p></td>
+      <img src="./static/img/goheeju.jpg" width="100px",height="100px"/></p></td>
   <td  align="center"> <p>
-      <img src="./static/img/hahee.jpg" width="50px",height="50px"/></p></td>
+      <img src="./static/img/hahee.jpg" width="100px",height="100px"/></p></td>
   <td  align="center"> <p>
-      <img src="./static/img/seohyeon.jpg" width="50px",height="50px"/></p></td>
+      <img src="./static/img/seohyeon.jpg" width="100px",height="100px"/></p></td>
   <td  align="center">  <p>
-      <img src="./static/img/choheeju.jpg" width="50px",height="50px"/></p></td>
+      <img src="./static/img/choheeju.jpg" width="100px",height="100px"/></p></td>
   </tr>
   </table>
 
