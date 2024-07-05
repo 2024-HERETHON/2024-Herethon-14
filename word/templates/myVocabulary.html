@@ -20,7 +20,7 @@
                 {% else %}
                 <div class="wordDivs">
                     {% for word in allWords %}
-                    <div class="box">
+                    <a href="{% url 'word:word_detail' word=word.word %}" class="box">
                         <div class="wordDiv">
                             <div class="wordText">
                                 <p>{{ word.word }}</p>
@@ -31,7 +31,7 @@
                         <div class="linebox">
                             <hr class="line">
                         </div>
-                    </div>
+                    </a>
                     {% endfor %}
                     
                     
@@ -42,7 +42,7 @@
                         <div class="word">
                             <p>💁‍♀️</p>
                             <p>
-                                "{{ word.word }}"은/는 '{{ desc }}'라는/는 
+                                "{{ word_jin }}"은/는 '{{ desc }}'라는/는 
                                 의미를 가진 한국어 표현입니다.<br>
                                 {{ exam }}
                             </p>
