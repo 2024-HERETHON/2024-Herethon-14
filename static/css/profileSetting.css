@@ -19,6 +19,7 @@
   .main {
     margin-left: 164px;
     margin-right: 164px;
+    position:relative;
   }
   
   .container {
@@ -61,6 +62,9 @@
  
   .button img {
       pointer-events: none; 
+  }
+  .menu-text:hover{
+    color:#f07a0c;
   }
 
   .home {
@@ -439,8 +443,8 @@
     margin-right:24px;
   }
   .profileImg-img {
-    width: 100%;
-    height: 100%;
+    width: 125px;
+    height: 125px;
     object-fit: cover;
   }
   .buttonBox{
@@ -510,18 +514,21 @@
   }
 
   .saveTab {
-    position: absolute;
+    position: fixed;
     display: flex;
-    bottom:0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     background: #FFF;
     box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.10);
-    width: 1728px;
+    width: 100%;
     height: 80px;
     flex-shrink: 0;
     justify-content: center;
     align-items: center;
-  }
-  .saveBtn {
+    box-sizing: border-box;
+}
+.saveBtn {
     display: flex;
     width: 170px;
     height: 45px;
@@ -541,4 +548,4 @@
     font-weight: 400;
     line-height: normal;
     letter-spacing: -0.5px;
-  }
+}

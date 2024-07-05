@@ -5,9 +5,9 @@
 {% endblock %}
 
 {% block content %}
-    <div class="main">
-        <form method="post" enctype="multipart/form-data">
-            {% csrf_token %}
+    <form class="form" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="main">
             <div class="text">
                 <p>프로필 수정</p>
                 <p>프로필 사진과 아이디는 모두에게 공개됩니다. </p>
@@ -17,9 +17,9 @@
                 <div class="profileImgBox">
                     <div class="profileImg">
                         {% if mypage_info.profile_image %}
-                            <img src="{{ mypage_info.profile_image.url }}" alt="Image">
+                            <img class="profileImg-img" src="{{ mypage_info.profile_image.url }}" alt="Image">
                         {% else %}
-                            <img src="{% static 'img/alarmImg.svg' %}" alt="Default Image">
+                            <img class="profileImg-img" src="{% static 'img/alarmImg.svg' %}" alt="Default Image">
                         {% endif %}
                     </div>
                     {{ mypage_form.profile_image }}
@@ -37,9 +37,10 @@
                     <button class="togglePasswordBtn"><img src="{% static 'img/eyeclose.svg' %}" alt="showPassword"></button>
                 </div>
             </div>
-            <div class="saveTab">
-                <button type="submit" class="saveBtn">변경사항 저장</button>
-            </div>
-        </form>
-    </div>
+        </div>
+        <div class="saveTab">
+            <button type="submit" class="saveBtn">변경사항 저장</button>
+        </div>
+        
+    </form>
 {% endblock %}

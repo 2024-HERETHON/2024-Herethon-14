@@ -278,11 +278,10 @@ nav::after {
 .instance {
   display: flex;
   justify-content: center;
+  text-align: center;
   display: flex;
   flex-direction: row;
   margin-top: 14px;
-  /* width: 1200px; */
-  padding: 10px;
 }
 
 .pencil {
@@ -294,7 +293,6 @@ nav::after {
   font-weight: 400;
   line-height: normal;
   letter-spacing: -0.625px;
-  padding-left: 80px;
 }
 
 .example {
@@ -306,10 +304,6 @@ nav::after {
   font-weight: 400;
   line-height: normal;
   letter-spacing: -0.5px;
-  word-wrap: break-word; /* 또는 overflow-wrap: break-word; */
-  word-break: break-all;
-  white-space: normal;
-  padding-right: 80px;
 }
 
 .go-btn {

@@ -43,7 +43,7 @@ body {
 }
 
 .home {
-  color: #bbb;
+  color: #f07a0c;
   text-align: center;
   font-family: "Noto Sans KR";
   font-size: 20px;
@@ -58,7 +58,7 @@ body {
 }
 
 .learn {
-  color: #f07a0c;
+  color: #bbb;
   text-align: center;
   font-family: "Noto Sans KR";
   font-size: 20px;
@@ -108,7 +108,6 @@ nav::after {
   float: left;
   color: #000;
   margin-top: 45px;
-  margin-bottom: 20px;
 }
 
 .hi {
@@ -134,188 +133,56 @@ nav::after {
   margin-left: 164px;
 }
 
-.step {
-  margin-top: 45px;
-  margin-left: 164px;
+.sec {
   display: flex;
   flex-direction: row;
+  margin-top: 80px;
 }
 
-.step1 {
-  height: 60px;
-  display: inline-flex;
-  padding: 13px 16px;
-  align-items: flex-start;
-  gap: 10px;
-  border-radius: 10px;
-  border: 1px solid #f07a0c;
-  background: #fff;
-  box-shadow: 0px 0px 11.2px 0px rgba(240, 122, 12, 0.5);
-}
-
-.first {
-  margin-top: -1.5px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 8.351px;
-}
-
-.word {
-  margin-left: 0;
-  margin-top: -2px;
-  color: #000;
-  text-align: center;
-  font-family: "Noto Sans KR";
-  font-size: 24px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: normal;
-  letter-spacing: -0.5px;
-}
-
-.step2 {
-  height: 60px;
-  display: inline-flex;
-  padding: 13px 16px;
-  align-items: flex-start;
-  gap: 10px;
-  border-radius: 10px;
-  border: 1px solid #bbb;
-  background: #fff;
-}
-
-.second {
-  margin-top: -1.5px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 8.351px;
-}
-
-.poem {
-  margin-top: -2px;
-  color: #000;
-  text-align: center;
-  font-family: "Noto Sans KR";
-  font-size: 24px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: normal;
-  letter-spacing: -0.5px;
-}
-
-.content {
-  position: absolute;
+.learning {
   margin-left: 164px;
-  margin-top: 24px;
-  width: 1400px;
+}
+
+.intro1 {
+  color: #000;
+  font-family: "Noto Sans KR";
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.5px;
+  width: 180px;
+}
+
+.word-box {
+  margin-top: 16px;
+  width: 782px;
   height: 457px;
   flex-shrink: 0;
   border-radius: 8px;
   background: #fff;
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.1);
   text-align: center;
-  align-items: center;
+  position: absolute;
 }
 
-.introduce {
-  margin-top: 15px;
+.word-title {
   color: #000;
-  text-align: center;
-  font-family: "Noto Sans KR";
-  font-size: 40px;
+  font-family: Pretendard;
+  font-size: 96px;
   font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-  letter-spacing: -0.625px;
-}
-
-.meaning {
-  margin-top: 30px;
-  color: #000;
-  text-align: center;
-  font-family: "Noto Sans KR";
-  font-size: 32px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
+  font-weight: 800;
   letter-spacing: -0.5px;
+  display: block;
+  margin-top: 123px;
 }
 
-.similar {
-  display: flex;
-  justify-content: center;
-  text-align: center;
-  align-items: center;
-  display: flex;
-  flex-direction: row;
-  margin-top: 33px;
-}
-
-.equal {
-  color: #000;
-  text-align: center;
-  font-family: "Noto Sans KR";
-  font-size: 40px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-  letter-spacing: -0.625px;
-}
-
-.synonym {
-  color: #000;
-  text-align: center;
-  font-family: "Noto Sans KR";
-  font-size: 32px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-  letter-spacing: -0.5px;
-}
-
-.instance {
-  display: flex;
-  justify-content: center;
-  display: flex;
-  flex-direction: row;
-  margin-top: 14px;
-  /* width: 1200px; */
-  padding: 10px;
-}
-
-.pencil {
-  color: #000;
-  text-align: center;
-  font-family: "Noto Sans KR";
-  font-size: 40px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-  letter-spacing: -0.625px;
-  padding-left: 80px;
-}
-
-.example {
-  color: #000;
-  text-align: center;
-  font-family: "Noto Sans KR";
-  font-size: 32px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-  letter-spacing: -0.5px;
-  word-wrap: break-word; /* 또는 overflow-wrap: break-word; */
-  word-break: break-all;
-  white-space: normal;
-  padding-right: 80px;
-}
-
-.go-btn {
-  margin-top: 40px;
+.learning-btn {
+  margin-top: 34px;
+  width: 336px;
+  height: 29px;
   display: inline-flex;
-  padding: 10px 10px;
+  padding: 18px 12px;
   justify-content: center;
   align-items: center;
   gap: 10px;
@@ -324,19 +191,129 @@ nav::after {
   border-color: transparent;
 }
 
-.go {
+.go-learning {
   color: #fff;
   text-align: center;
   font-family: "Noto Sans KR";
-  font-size: 20px;
+  font-size: 15px;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
   letter-spacing: -0.5px;
 }
 
+.word {
+  margin-left: 718px;
+}
+
+.intro2 {
+  color: #000;
+  font-family: "Noto Sans KR";
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.5px;
+}
+
+.word1 {
+  width: 538px;
+  height: 120px;
+  flex-shrink: 0;
+  display: block;
+  border-radius: 8px;
+  background: rgba(240, 122, 12, 0.1);
+}
+
+.word-link1 {
+  margin-top: 16px;
+  position: relative;
+  display: inline-block;
+}
+
+.name {
+  left: 31px;
+  top: 23px;
+  position: absolute;
+  color: #000;
+  text-align: center;
+  font-family: "Noto Sans KR";
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  letter-spacing: -0.418px;
+}
+
+.date {
+  left: 31px;
+  top: 73px;
+  position: absolute;
+  color: #000;
+  text-align: center;
+  font-family: "Noto Sans KR";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.418px;
+}
+
+.go {
+  left: 506px;
+  top: 44px;
+  position: absolute;
+  display: flex;
+  width: 28px;
+  height: 32px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+.word-link2 {
+  margin-top: 12px;
+  position: relative;
+  display: inline-block;
+}
+
+.word2 {
+  width: 538px;
+  height: 120px;
+  flex-shrink: 0;
+  display: block;
+  border-radius: 8px;
+  background: rgba(240, 122, 12, 0.1);
+}
+
+.word-link3 {
+  margin-top: 12px;
+  position: relative;
+  display: inline-block;
+}
+
+.word3 {
+  width: 538px;
+  height: 120px;
+  flex-shrink: 0;
+  display: block;
+  border-radius: 8px;
+  background: rgba(240, 122, 12, 0.1);
+}
+
+.go-word {
+  color: #ababab;
+  font-family: "Noto Sans KR";
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: -0.5px;
+  margin-left: 232px;
+  margin-top: 16px;
+}
+
 a {
   text-decoration: none;
 }
-
-/* hahee */

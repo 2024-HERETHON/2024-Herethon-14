@@ -2,13 +2,18 @@
 
 import django.db.models.deletion
 from django.conf import settings
+from django.conf import settings
 from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
 
+
     initial = True
 
+    dependencies = [
+        migrations.swappable_dependency(settings.AUTH_USER_MODEL),
+    ]
     dependencies = [
         migrations.swappable_dependency(settings.AUTH_USER_MODEL),
     ]
@@ -16,7 +21,11 @@ class Migration(migrations.Migration):
     operations = [
         migrations.CreateModel(
             name='Poem',
+            name='Poem',
             fields=[
+                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('word', models.CharField(max_length=50)),
+                ('poem', models.TextField(max_length=1000)),
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('word', models.CharField(max_length=50)),
                 ('poem', models.TextField(max_length=1000)),
@@ -24,7 +33,13 @@ class Migration(migrations.Migration):
         ),
         migrations.CreateModel(
             name='PoemPost',
+            name='PoemPost',
             fields=[
+                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('post', models.TextField(max_length=1000)),
+                ('write_time', models.DateTimeField(auto_now_add=True)),
+                ('poem', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='poem.poem')),
+                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('post', models.TextField(max_length=1000)),
                 ('write_time', models.DateTimeField(auto_now_add=True)),
@@ -34,7 +49,13 @@ class Migration(migrations.Migration):
         ),
         migrations.CreateModel(
             name='PostComment',
+            name='PostComment',
             fields=[
+                ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
+                ('comment', models.TextField(max_length=500)),
+                ('write_time', models.DateTimeField(auto_now_add=True)),
+                ('post', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to='poem.poempost')),
+                ('user', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, to=settings.AUTH_USER_MODEL)),
                 ('id', models.BigAutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('comment', models.TextField(max_length=500)),
                 ('write_time', models.DateTimeField(auto_now_add=True)),

@@ -90,7 +90,7 @@
   }
   
   .wordlist {
-    color: #f07a0c;
+    color: #bbb;
     text-align: center;
     font-family: "Noto Sans KR";
     font-size: 20px;
@@ -389,8 +389,9 @@
     flex-shrink: 0;
     margin-right: 16px;
   }
+
   .text {
-    margin-top: 65px;
+    margin-top: 87px;
   }
   .text p:nth-child(1) {
     margin-bottom:0px;
@@ -398,12 +399,12 @@
     color: #000;
     font-size: 36px;
     font-style: normal;
-    font-weight: 400;
+    font-weight: 600;
     line-height: normal;
     letter-spacing: -0.5px;
   }
   .text p:nth-child(2) {
-    margin-top:16px;
+    margin-top:10px;
     color: #000;
     font-size: 20px;
     font-style: normal;
@@ -411,167 +412,133 @@
     line-height: normal;
     letter-spacing: -0.5px;
   }
-  .dataDiv {
-    display: flex;
-    margin-bottom: 50px;
+  .box{
+    margin-top: 30px;
   }
-  .wordDivs {
-    padding-top: 20px;
-    padding-left:10px;
-    box-sizing: content-box; /* 패딩을 내부 컨텐츠에만 적용 */
-    width:645px;
-    margin-top: 27px;
-    max-height: 1627px;
-    overflow-y: scroll;
-    scrollbar-width: none; /* Firefox용 */  
-    -ms-overflow-style: none;  /* Internet Explorer용 */
+  .box p {
+    color: #000;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -0.5px;
   }
-  .wordDivs::-webkit-scrollbar { /* Chrome, Safari, Opera용 */
-    display: none;
-  }
-  .box {
-    display: flex;
-    flex-direction: row;
-  }
-  .highlight {
-    box-shadow: 0px 0px 11.2px 0px rgba(240, 122, 12, 0.50);
-  }
-  .wordDiv {
-    background-image: url("../img/wordBackground.svg");
-    position: relative;
+  .profileImgBox {
     display:flex;
     flex-direction: row;
-    width: 538px;
-    height: 120px;
-    flex-shrink: 0;
-    border-radius: 8px;
-    margin-bottom: 12px;
- }
- .wordDiv img{
-  width:28px;
-  height:32px;
-  position:absolute;
-  top:44px;
-  right:0px;
- }
- .linebox {
-    width:80px;
-    height:120px;
-    display: flex;
-    align-items: center; 
- }
- .line {
+    margin-bottom:5px;
+  }
+  .fileInput {
     display: none;
-    width:80px;
-    border: 2px dashed #F07A0C;
- }
- .wordText {
-    position:absolute;
-    left: 31px;
+  }
+  .profileImg {
+    width: 125px;
+    height: 125px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin-right:24px;
+  }
+  .profileImg-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .buttonBox{
+    height: 125px;
+    display:flex;
+    align-items: center;
+  }
+  .uploadImgBtn {
+    display: flex;
+    width: 76px;
+    height: 48px;
+    padding: 9px 16px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border:none;
+    border-radius: 20px;
+    background: #D7D6D5;
     color: #000;
-    text-align: left;
- }
-
- .wordText p:nth-child(1) {
-    height:38px;
-    margin-top: 23px;
-    font-size: 32px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
-    letter-spacing: -0.418px;
-    margin-bottom: 12px;
- }
-
- .wordText p:nth-chile(2) {
-    margin-top:0;
     text-align: center;
     font-size: 20px;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
-    letter-spacing: -0.418px;
- }
-
- .wordData {
-    margin-top: 47px;
-    position: relative;
+    letter-spacing: -0.5px;
+  }
+  .input {
+    display: flex;
     width: 782px;
-    flex-shrink: 0;
-    border-radius: 8px;
+    height: 66px;
+    padding: 18px 21px;
+    align-items: center;
+    gap: 10px;
+    align-self: stretch;
+    border-radius: 16px;
+    border: 2px solid #979797;
     background: #FFF;
-    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.10);
- }
+    color: #000;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -0.5px;
+  }
+  .passwordDiv {
+    position:relative;
+    width: 782px;
+    height: 66px;
+  }
 
-.dataTitle {
-  width:200px;
-  color: #F07A0C;
-  text-align: left;
-  font-size: 24px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: normal;
-  letter-spacing: -0.5px;
-  margin-top:50px;
-  margin-left:50px;
-}
+  .togglePasswordBtn{
+    position: absolute;
+    top: 20px;
+    right:20px;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    background-color: transparent;
+    padding: 0;
+    margin: 0;
+    cursor: pointer; 
+  }
+  .togglePasswordBtn img{
+    width: 30px;
+    height: 30px;
+  }
 
-.word{
-  width:680px;
-  margin-left: 51px;
-}
-.word p:nth-child(1) {
-  color: #000;
-  text-align: center;
-  font-family: "Noto Sans KR", sans-serif;
-  font-size: 36px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 1.2;
-  letter-spacing: -0.5px;
-  margin-bottom: 22px;
-}
-.word p:nth-child(2) {
-  color: #000;
-  text-align: center;
-  font-family: "Noto Sans KR", sans-serif;
-  font-size: 29px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 1.2;
-  letter-spacing: -0.5px;
-  margin-bottom: 31px;
-}
-.word p:nth-child(3) {
-  color: #000;
-  text-align: center;
-  font-family: "Noto Sans KR", sans-serif;
-  font-size: 30px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 1.2;
-  letter-spacing: -0.5px;
-  margin-bottom: 31px;
-}
-
-.poem {
-  width:680px;
-  margin-left: 51px;
-}
-.poem p {
-  white-space: pre-line;
-  color: #000;
-  font-family: "Noto Sans KR", sans-serif;
-  font-size: 30px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 1.2;
-  letter-spacing: -0.5px;
-}
-
-.wordData hr {
-  width: 680px;
-  border: none;
-  border-top: 1px solid #BBBBBB;
-  margin: 60px 0 50px 51px;
-}
+  .saveTab {
+    position: absolute;
+    display: flex;
+    bottom:0;
+    background: #FFF;
+    box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.10);
+    width: 1728px;
+    height: 80px;
+    flex-shrink: 0;
+    justify-content: center;
+    align-items: center;
+  }
+  .saveBtn {
+    display: flex;
+    width: 170px;
+    height: 45px;
+    padding: 9px 18px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+    border: none;
+    border-radius: 20px;
+    background: rgba(240, 122, 12, 0.50);
+    color: #000;
+    font-family: "Noto Sans KR";
+    text-align: center;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    letter-spacing: -0.5px;
+  }
