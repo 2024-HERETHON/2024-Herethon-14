@@ -142,7 +142,7 @@ def word_detail(request, word):
         'date':date,
         'post_auth': post_auth,
         'post_rand': post_rand,
-        'profile_image': user_profile.profile_image.url[0] if user_profile.profile_image else None,
+        'profile_image': user_profile.profile_image.url if user_profile.profile_image else None,
     }
     
     return render(request, 'myVocabulary.html', context)

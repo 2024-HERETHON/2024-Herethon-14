@@ -97,5 +97,5 @@ def poem_detail(request, poem_post_id):
         'user_post_comments': user_post_comments,
         'all_posts': all_posts,
         'post_comments': post_comments,
-        'profile_image': user_profile.profile_image.url[0] if user_profile.profile_image else None,
+        'profile_image': user_profile.profile_image.url if user_profile.profile_image else None,
     })
