@@ -12,4 +12,6 @@ urlpatterns = [
     path('logout/', logout, name= 'logout'),
     path('setting/', mypageUpdate, name= 'setting'),
     
+    
+    
 ] +static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

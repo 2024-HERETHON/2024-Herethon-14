@@ -7,6 +7,7 @@ from django.conf import settings
 from poem.views import generate_and_save_poem
 from django.contrib.auth.decorators import login_required
 from poem.models import PoemPost, PostComment, Poem
+from accounts.models import MyPage
 from django.contrib import messages
 
 word_list = [
@@ -79,14 +80,18 @@ def wordPost():
 
 @login_required
 def home(request):
+    user_profile = MyPage.objects.get(user=request.user)
+    profile_image = user_profile.profile_image.url if user_profile.profile_image else None,
+
     word_obj = Word.objects.latest('id')
     latest_word = word_obj.word
     count_lday = WordUser.objects.filter(user=request.user).count()
     all = WordUser.objects.filter(user=request.user).order_by('-id')[:3]
-    return render(request, 'home.html', {'word':latest_word, 'lday':count_lday, 'allWords':all})
-
+    return render(request, 'home.html', {'word':latest_word, 'lday':count_lday, 'allWords':all, 'profile_image':profile_image[0]})
 @login_required
 def learn_word(request):
+    user_profile = MyPage.objects.get(user=request.user)
+    profile_image= user_profile.profile_image.url if user_profile.profile_image else None,
     word_obj = Word.objects.latest('id')
     word = word_obj.word
     if WordUser.objects.filter(user=request.user).filter(word=word_obj).exists():
@@ -96,20 +101,23 @@ def learn_word(request):
     desc=word_obj.description
     exam=word_obj.example
     count_lday = WordUser.objects.filter(user=request.user).count()
-    return render(request, 'learning.html', {'word':word, 'desc':desc, 'exam':exam, 'lday':count_lday})
+    return render(request, 'learning.html', {'word':word, 'desc':desc, 'exam':exam, 'lday':count_lday,'profile_image':profile_image[0]})
 
 def voca(request):
+    user_profile = MyPage.objects.get(user=request.user)
+    profile_image= user_profile.profile_image.url if user_profile.profile_image else None,
     try:
         word = WordUser.objects.filter(user=request.user).latest('id')
         print(word.word)
         return redirect('word:word_detail', word=word.word)
     except WordUser.DoesNotExist:
         message = "아직 학습한 단어가 없습니다."
-        return render(request, 'myVocabulary.html', {'message': message})
+        return render(request, 'myVocabulary.html', {'message': message, 'profile_image':profile_image[0]})
 
 
 @login_required
 def word_detail(request, word):
+    user_profile = MyPage.objects.get(user=request.user)
     word = get_object_or_404(Word, word=word)
     wordUser = WordUser.objects.filter(user=request.user).filter(word=word)
     desc=word.description
@@ -134,6 +142,7 @@ def word_detail(request, word):
         'date':date,
         'post_auth': post_auth,
         'post_rand': post_rand,
+        'profile_image': user_profile.profile_image.url if user_profile.profile_image else None,
     }
     
     return render(request, 'myVocabulary.html', context)
