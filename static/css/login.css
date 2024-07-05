@@ -2,15 +2,16 @@
   box-sizing: border-box;
 }
 
+/* 
 body {
-  .Noto-Sans-KR {
-    font-family: "Noto Sans KR", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 400;
-    font-style: normal;
-  }
-
   background: #f6f7fb;
+} */
+
+.Noto-Sans-KR {
+  font-family: "Noto Sans KR", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
 }
 
 .container {
