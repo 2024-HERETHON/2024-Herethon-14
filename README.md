@@ -54,9 +54,9 @@
   <td  align="center"> <p>
       <img src="./static/img/haeun.png" width="100px",height="100px"/></p></td>
   <td  align="center"> <p>
-      <img src="./static/img/chosubin.jpg" width="100px",height="100px"/></p></td>
-  <td  align="center"> <p>
       <img src="./static/img/goheeju.jpg" width="100px",height="100px"/></p></td>
+  <td  align="center"> <p>
+      <img src="./static/img/chosubin.jpg" width="100px",height="100px"/></p></td>
   <td  align="center"> <p>
       <img src="./static/img/hahee.jpg" width="100px",height="100px"/></p></td>
   <td  align="center"> <p>
