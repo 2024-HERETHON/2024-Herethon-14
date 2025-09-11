@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <title>Document</title>
+    <link rel="stylesheet" href="./poem_review.css">
+</head>
+<body>
+    <!-- <nav> 실제페이지에서는 네비게이션 이 위치 </nav> -->
+    <main>
+        <!-- 안내 문구 -->
+        <div class="request-container">
+            <div class="request">
+                <p class="request-msg">오늘의 학습이 종료되었습니다<br>
+                    다른 학습자들은 오늘의 시를 어떻게 감상했을 지 확인해볼까요?</p>
+            </div>
+        </div>
+
+        
+         <!-- 메인 박스 -->
+        <section>
+            <!-- gpt poem 로딩 -->
+            <article class="poem-data"></article>
+
+            <div class="line"></div>
+
+            <!-- 리뷰 박스 -->
+            <article class="review-container">  <!-- 오버플로우 설정할 박스 -->
+                <div class="review-wrap">    <!-- 사용자 리뷰, 다른 사람 리뷰를 묶어줌 -->
+                    
+                    <!-- 사용자 리뷰 -->
+                    <article class="user-review">
+                        <div class="user-profile">  <!-- 유저 닉네임 정보 (프로필사진 + 이름 + 유저라벨) -->
+                            <div class="user-profile-left">
+                                <img class="profile-img" src="./img/Ellipse 14.svg" alt="example"/>
+                                <div class="user-name">시가 너무 조아</div>
+                                <div class="user-label">나</div>
+                            </div>
+                            <!-- 오른쪽 수정 버튼 -->
+                            <img class="edit-btn" src="./img/ellipsis-vertical-sharp.svg" alt="example"/>
+                        </div>
+                        <!-- 리뷰 불러오는 박스 -->
+                        <div class="review-box">
+                            <div class="review"></div>
+                            <div class="date">2024.07.05</div>
+                             <!-- 댓글입력 btn -->
+                            <div class="reply-btn">답글달기</div>
+                        </div>
+
+                        <!-- 댓글 input 창  -->
+                        <div class="reply-input-container">
+                            <div class="user-profile-2">
+                                <img class="profile-img-2" src="./img/Ellipse 14.svg" alt="example"/>
+                                <div class="user-name-2">시가 너무 조아</div>
+                            </div>
+                            <textarea class="reply-input" placeholder="답글을 입력하세요"></textarea>
+                            <button class="reply-save">등록</button>
+                        </div>
+
+
+                                <!-- 다른사람이 쓴 댓글이 있을 경우 -->
+                                <article class="user-review">
+                                    <div class="user-profile">  <!-- 유저 닉네임 정보 (프로필사진 + 이름 + 유저라벨) -->
+                                        <div class="user-profile-left">
+                                            <img class="space-img" src="./img/ㄴ.svg">
+                                            <img class="profile-img" src="./img/Ellipse 14.svg" alt="example"/>
+                                            <div class="user-name">시가 너무 조아</div>
+                                            <div class="user-label">나</div>
+                                        </div>
+                                        <!-- 오른쪽 수정 버튼 -->
+                                        <img class="edit-btn" src="./img/ellipsis-vertical-sharp.svg" alt="example"/>
+                                    </div>
+                                    <!-- 리뷰 불러오는 박스 -->
+                                    <div class="review-box">
+                                        <div class="review"></div>
+                                        <div class="date">2024.07.05</div>
+                                        <!-- 댓글입력 btn -->
+                                        <div class="reply-btn">답글달기</div>
+                                    </div>
+            
+                                    <!-- 댓글 input 창  -->
+                                    <div class="reply-input-container">
+                                        <div class="user-profile-2">
+                                            <img class="profile-img-2" src="./img/Ellipse 14.svg" alt="example"/>
+                                            <div class="user-name-2">시가 너무 조아</div>
+                                        </div>
+                                        <textarea class="reply-input" placeholder="답글을 입력하세요"></textarea>
+                                        <button class="reply-save">등록</button>
+                                    </div>
+                                </div>
+                            </article>
+
+
+                </div>
+            </article>
+        </section>
+        
+        
+    </main>
+</body>
+</html>
+
+<!-- 제일 상위요소 article 태그 통일
+container - wrap - box 순 -->
